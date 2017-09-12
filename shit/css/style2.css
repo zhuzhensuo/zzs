@@ -1,0 +1,128 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0px; padding:0px;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+em,strong,th,i{ font-weight:normal; font-style:normal;}
+ol,ul{ list-style-type:none; list-style-position:outside;}
+caption,th{ text-align:left;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+body{font-family:'MicroSoft YaHei'; font-size:14px;}
+div{margin-left:auto;margin-right:auto;}
+a{text-decoration:none;}
+.clearfix:after { 
+   content: ".";
+   display: block;
+   height: 0;
+   clear: both;
+   visibility: hidden;
+   font-size: 0;
+}
+.clearfix {display:inline-block;}
+*html .clearfix {height:1%;}
+.clearfix {display: block;}
+.clearfix {zoom: 1;}
+
+.f_r{float:right;_display:inline;}
+.f_l{float:left;_display:inline;}
+.tc{ text-align:center;}
+.minwidth{min-width:1000px;}
+@font-face{font-family:'FZLTXHK';src:url(fangzheng.ttf);}
+html{ overflow:hidden;}
+body{ height:100%; width:100%; position:absolute;left:0;top:0;}
+.w1000{ width:1000px;}
+
+.wraper{height:100%;width:100%; position:absolute;left:0;top:0; overflow:hidden; z-index:10;}
+.wraper .wraps{width:100%; position:absolute;left:0;top:0;}
+.wraper .wraps .steps{width:100%; position:relative;left:0;top:0; overflow:hidden;}
+
+
+/****section1****/
+.steps_1{ background:#EFEEEF;}
+.section_1{ height:682px; background:#EFEEEF url(../images/part1_bg.png) no-repeat center -108px; overflow:hidden;}
+
+.banner{ height:546px; background:url(../images/banner.png) no-repeat 255px top;}
+
+.leftPart{padding-top:270px;}
+.leftPart dl dt,.leftPart dl dd{font-size:48px;color:white; font-family:'FZLTXHK';margin-top:5px;}
+.leftPart dl dt span{ background:#1C95CA;padding:0 5px;}
+.leftPart dl dd.d1{ width:390px; background:#126FB4;}
+.leftPart dl dd.d2{ width:200px; background:#084A95;}
+.leftPart dl dd.d3{color:#DE534C;}
+
+.look_more{ width:60px; height:60px;margin-top:-30px; position:relative; cursor:pointer; text-align:center;}
+.load_wrap{ position:relative; height:45px;}
+.loads{ text-align:center; position:absolute; width:100%; display:none;}
+.look_more p{color:#1C95CA; position:absolute;left:0; bottom:-5px; width:100%;}
+
+/****section2****/
+.steps_2{ background:#AEDEF8;}
+.section_2{ height:965px; overflow:hidden; background:#AEDEF8 url(../images/part2_bg.png) no-repeat center top;
+ position:relative;}
+.section2_wrap{ position:relative; height:100%;}
+.gs_info{ position:absolute; width:600px; right:-600px;top:50%; opacity:0;filter:alpha(opacity=0);margin-top:-200px;}
+.gs_info dl dt{font-size:22px;color:#4D4F50; line-height:30px; font-family:'FZLTXHK'; letter-spacing:1px;}
+.gs_info dl dd{color:#1a95ca; font-size:18px;margin-top:5px;}
+.gs_info dl dd a{color:#1a95ca;}
+.gs_info dl dd a:hover{ text-decoration:underline;}
+.shangchuang{ width:264px; height:84px;bottom:38%; position:absolute;right:0;}
+.heng{ position:absolute;left:0;top:0; width:100%;height:100%; display:none;}
+.li{ position:absolute;left:-19px; width:100%;height:100%;bottom:145px;}
+.gaizi{ position:absolute;left:0;top:0; z-index:10;}
+.bottom{ position:absolute;left:1px;top:0; z-index:9;}
+.same{ position:absolute;left:0;top:0; z-index:8;}
+
+
+/****section3****/
+.steps_3{ background:#ADDEF8;}
+.section_3{background:url(../images/part3_bg.png) no-repeat center -1px;
+ position:relative; z-index:101; height:100%;}
+.section3_wrap{ position:absolute; height:400px; left:50%;top:50%;margin:-200px 0 0 -500px;}
+.sjrz{width:500px;margin-left:0;}
+.sjrz dl dt,.sjrz dl dd{color:#0086BF;font-family:'FZLTXHK';margin-top:5px;}
+.sjrz dl dt{ font-size:26px;}
+.sjrz dl dd{ font-size:34px;}
+.sjrz p{margin-top:10px; font-size:17px; line-height:26px;}
+.look_demo{ height:30px; line-height:30px; text-align:right;}
+.look_demo a{font-size:16px;color:#008AC2;}
+.look_demo a:hover{ text-decoration:underline;}
+.house{ height:235px;left:0;bottom:0px; width:100%;}
+.house_1,.house_2,.house_3{ position:absolute;bottom:0;transform-origin:0 100%;transform:rotateX(90deg);
+	transition:1s linear;
+}
+.house_1{left:10px;}
+.house_2{left:345px;}
+.house_3{right:25px;}
+.house div.active{transform:rotateX(0deg);}
+.wjj{width:245px; height:407px; background:url(../images/car.png) no-repeat left top; position:absolute;bottom:-85px;right:-245px; opacity:0;}
+.wjj div{left:-69px;top:7px; position:absolute;}
+
+.wing{
+	-webkit-animation:swings 5s infinite linear;
+	-moz-animation:swings 5s infinite linear;
+	-o-animation:swings 5s infinite linear;
+	animation:swings 5s infinite linear;
+	transform-origin:44% 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

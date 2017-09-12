@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>PICC承保</title>
+<style>
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0px; padding:0px;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+em,strong,th,i{ font-weight:normal; font-style:normal;}
+ol,ul{ list-style-type:none; list-style-position:outside;}
+caption,th{ text-align:left;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+body{ font-size:14px;}
+div{margin-left:auto;margin-right:auto;}
+a{text-decoration:none;}
+.clearfix:after { 
+   content: ".";
+   display: block;
+   height: 0;
+   clear: both;
+   visibility: hidden;
+   font-size: 0;
+}
+.clearfix {display:inline-block;}
+*html .clearfix {height:1%;}
+.clearfix {display: block;}
+.clearfix {zoom: 1;}
+
+.f_r{float:right;_display:inline;}
+.f_l{float:left;_display:inline;}
+
+/*media*/
+
+@media (min-width: 500px) and (max-width: 640px) {
+  html {
+    font-size: 60%;}
+}
+@media (min-width: 400px) and (max-width: 500px) {
+  html {
+    font-size: 55%;} 
+}
+@media (min-width: 340px) and (max-width: 400px) {
+  html {
+    font-size: 50%;} 
+}
+@media all and (max-width: 340px) {
+  html {
+    font-size: 46%;} 
+}
+
+/*******start******/
+
+html{ min-height:100%;}
+body{font-family:'Microsoft YaHei';min-height:100%; position:absolute; width:100%; background:#FF8461;}
+.wrapper{width:100%;height:100%; position:fixed;left:0;top:0;}
+.wrappers{height:100%;min-width:320px;max-width:415px;background:url(images/dzp-bg.png) no-repeat center top; background-size:100% 100%; position:relative;}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+.dzp-wrap{position:absolute;width:78%;left:50%; top:28%;-webkit-transform:scale(0.9);transform:scale(0.9);}
+.dzp{ position:absolute;width:100%;left:0;top:0;background:url(images/deng1.png) no-repeat center top; background-size:100%; height:100%;z-index:2;}
+.dzp-active{background:url(images/deng2.png) no-repeat center top; background-size:100% 100%;}
+.prize{ position:relative; height:100%;}
+.prizez{ text-align:center;height:100%;}
+.prizez img{ width:84%; position:absolute;left:50%;top:50%;margin:-42% 0 0 -42%;}
+.prizes{ width:60%; height:60%; position:absolute;left:50%;top:50%;margin:-30% 0 0 -30%; background:url(images/start.png) no-repeat 60% center;
+ background-size:60% 50%; outline:none 0;  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);tap-highlight-color: rgba(0, 0, 0, 0);}
+.prize-end{ background:url(images/start-end.png) no-repeat 60% center; background-size:60% 50%; }
+.shadow{ position:absolute; width:100%; text-align:center;left:0;bottom:-10px; z-index:1;}
+.shadow img{ width:70%;}
+.cjjh{width:100%; text-align:center; position:absolute;left:0;bottom:-90px;color:white;min-height:70px;}
+.cjjh p span{color:#ffea35;}
+.asking{ position:absolute; right:5%;top:75%; text-align:right;}
+.asking img{width:50%;}
+.ruler{ position:absolute;left:0;top:0; width:100%; height:100%; display:none;}
+.shadow-bg{ position:absolute;left:0;top:0; background:#000; width:100%; height:100%; opacity:0.5;filter:alpha(opacity=50); z-index:3;}
+.ruler-wrap{ background:white; width:84%; z-index:4; position:absolute;left:50%;margin-left:-42%;border-radius:4%;top:50%;margin-top:-164px;}
+.rulers{padding:1em;}
+.rulers p{ text-align:right; font-size:2em;}
+.rulers p img{ width:6%;}
+.rulers dt{font-size:1.2em; height:2.5em;}
+.rulers dd{ line-height:22px;}
+.suprise{ position:fixed; width:100%; text-align:right;left:0;bottom:2%;color:white; z-index:10;}
+.suprise dt{-webkit-animation:move infinite 2s ease;animation:move infinite 2s ease; position:absolute; width:100%;top:0px;right:25%;}
+.suprise dd{padding-right:1em;}
+@-webkit-keyframes move{
+	0%{top:0px;}
+	50%{top:-20px;}
+	100%{top:0px;}
+}
+@keyframes move{
+	0%{top:0px;}
+	50%{top:-20px;}
+	100%{top:0px;}
+}
+.suprise dt img{ width:6%;}
+.activity{ position:absolute;left:0;top:0; text-align:center; width:100%;-webkit-transform:scale(0.92);transform:scale(0.92);}
+.activity img{ width:90%;}
+
+.warning{ position:absolute; width:100%; height:100%; text-align:center;}
+.warning table{ width:100%; text-align:center; position:absolute; height:100%; font-size:20px; font-weight:bold;}
+
+
+</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="wrappers">
+			<div class="activity"><div class="activitys"><img src="images/activity.png" /></div></div>
+			<div class="dzp-wrap">
+				<div class="shadow"><img src="images/shadow.png" /></div>
+				<div class="dzp" id="dzp">
+					<div class="prize">
+						<div class="prizez">
+							<img src="images/transform.png" />
+						</div>
+						<!---如果按钮不能用，追加一个class='prize-end'--->
+						<div class="prizes" id="startbtn"></div>
+					</div>
+				</div>
+				<!----抽奖机会文字---->
+				<div class="cjjh" id="cjjh">
+					<p style="display:block;">您有1次抽奖机会</p>
+					<p style="display:none;">恭喜您获得一张<span>1%加息券</span><br />请前往我的加息券查看使用</p>
+				</div>
+			</div>
+			<div class="asking"><img src="images/asking.png" /></div>
+			<div class="ruler">
+				<div class="shadow-bg"></div>
+				<div class="ruler-wrap">
+					<div class="rulers">
+						<p class="close"><img src="images/close.png" /></p>
+						<dl>
+							<dt>活动规则</dt>
+							<dd>1.活动截止时间2017年2月15日</dd>
+							<dd>2.活动期间用户每天可抽奖1次</dd>
+							<dd>3.奖项内容为0.1%、0.2%，0.3%、0.5%、1%的加息券</dd>
+							<dd>4.加息券的使用无投资金额限制，有效期自领取日起30天</dd>
+							<dd>5.加息券使用的前提：通过爱有钱注册并一键开通平台的用户或者是与平台建立注册绑定关系的可以使用加息券；原来已经在平台上注册过的老用户，在爱有钱上只做登录绑定关系的无法使用加息券</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/rotate.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+	wx.ready(function () {
+	  // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+	 
+	  document.querySelector('#checkJsApi').onclick = function () {
+		wx.checkJsApi({
+		  jsApiList: [
+			'getNetworkType',
+			'previewImage'
+		  ],
+		  success: function (res) {
+			alert(JSON.stringify(res));
+		  }
+		});
+  	};
+// 2. 分享接口
+  // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+  document.querySelector('#onMenuShareAppMessage').onclick = function () {
+    wx.onMenuShareAppMessage({
+      title: '互联网之子',
+      desc: '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。',
+      link: 'http://movie.douban.com/subject/25785114/',
+      imgUrl: 'http://demo.open.weixin.qq.com/jssdk/images/p2166127561.jpg',
+      trigger: function (res) {
+        // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+        alert('用户点击发送给朋友');
+      },
+      success: function (res) {
+        alert('已分享');
+      },
+      cancel: function (res) {
+        alert('已取消');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+    alert('已注册获取“发送给朋友”状态事件');
+  };
+  
+  // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+  document.querySelector('#cjjh').onclick = function () {
+    wx.onMenuShareTimeline({
+      title: '互联网之子',
+      link: 'http://movie.douban.com/subject/25785114/',
+      imgUrl: 'http://demo.open.weixin.qq.com/jssdk/images/p2166127561.jpg',
+      trigger: function (res) {
+        // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+        alert('用户点击分享到朋友圈');
+      },
+      success: function (res) {
+        alert('已分享');
+      },
+      cancel: function (res) {
+        alert('已取消');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+    alert('已注册获取“分享到朋友圈”状态事件');
+  };
+  });
+	var func={
+			init:function(){
+				this.set();
+				//this.changebg();
+				this.changesize();
+				this.addEvent();
+			},
+			set:function(){
+				$(".dzp-wrap").css("width",80+"%");
+				var h=$(".dzp-wrap").outerWidth();
+				$(".dzp-wrap").css({height:h,width:h,marginLeft:-h/2});
+			},
+			changebg:function(){
+				var done=false;
+				this.timer=setInterval(function(){
+					if(done){
+						$(".dzp").addClass("dzp-active");
+						done=!done;
+					}else{
+						$(".dzp").removeClass("dzp-active");
+						done=!done;
+					}
+				},200);
+				
+			},
+			changesize:function(){
+				var _this=this;
+				
+				$(window).resize(_this.set);
+			},
+			addEvent:function(){
+				$(".close").click(function(){
+					$(".ruler").hide();
+				});
+				$(".asking").click(function(){
+					$(".ruler").show();
+				});
+			},
+			stopbg:function(){
+				clearInterval(this.timer);
+			}
+		}
+		
+	$(function(){
+		func.init();
+		$("#startbtn").rotate({
+			bind:{
+				click:function(){
+					$(this).addClass("prize-end").unbind("click");
+					func.changebg();
+					var a = Math.floor(Math.random() * 360);
+					 $(".prizez").rotate({
+							duration:5000,
+							angle: 0, 
+							animateTo:1440+a,
+							easing: $.easing.easeOutSine,
+							callback: function(){
+								//alert('中奖了！'+a);
+							
+								func.stopbg();
+							}
+					 });
+				}
+			}
+		});	
+	});
+	
+</script>
+</html>

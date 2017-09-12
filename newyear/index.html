@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>新年抽奖</title>
+<link type="text/css" rel="stylesheet" href="css/swipe.css" />
+<style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+	
+	
+	
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0px; padding:0px;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+em,strong,th,i{ font-weight:normal; font-style:normal;}
+ol,ul{ list-style-type:none; list-style-position:outside;}
+caption,th{ text-align:left;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+body{ font-size:14px;}
+div{margin-left:auto;margin-right:auto;}
+a{text-decoration:none;}
+.clearfix:after { 
+   content: ".";
+   display: block;
+   height: 0;
+   clear: both;
+   visibility: hidden;
+   font-size: 0;
+}
+.clearfix {display:inline-block;}
+*html .clearfix {height:1%;}
+.clearfix {display: block;}
+.clearfix {zoom: 1;}
+
+.f_r{float:right;_display:inline;}
+.f_l{float:left;_display:inline;}
+
+/*media*/
+
+@media (min-width: 500px) and (max-width: 640px) {
+  html {
+    font-size: 60%;}
+}
+@media (min-width: 400px) and (max-width: 500px) {
+  html {
+    font-size: 55%;} 
+}
+@media (min-width: 340px) and (max-width: 400px) {
+  html {
+    font-size: 50%;} 
+}
+@media all and (max-width: 340px) {
+  html {
+    font-size: 46%;} 
+}
+
+/*******start******/
+
+html{ min-height:100%;}
+body{font-family:'Microsoft YaHei';min-height:100%; position:absolute; width:100%; background:#FF8461;}
+.wrapper{width:100%;height:100%; position:relative;left:0;top:0;}
+.wrappers{height:100%;min-width:320px;max-width:415px;background:url(images/dzp-bg.png) no-repeat center top; background-size:100% 100%; position:relative;}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+.dzp-wrap{position:absolute;width:78%;left:50%; top:28%;}
+.dzp{ position:absolute;width:100%;left:0;top:0;background:url(images/deng1.png) no-repeat center top; background-size:100%; height:100%;z-index:2;}
+.dzp-active{background:url(images/deng2.png) no-repeat center top; background-size:100% 100%;}
+.prize{ position:relative; height:100%;}
+.prizez{ text-align:center;height:100%;}
+.prizez img{ width:84%; position:absolute;left:50%;top:50%;margin:-42% 0 0 -42%;}
+.prizes{ width:60%; height:60%; position:absolute;left:50%;top:50%;margin:-30% 0 0 -30%; background:url(images/start.png) no-repeat 60% center;
+ background-size:60% 50%; outline:none 0;  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);tap-highlight-color: rgba(0, 0, 0, 0);}
+.prize-end{ background:url(images/start-end.png) no-repeat 60% center; background-size:60% 50%; }
+.shadow{ position:absolute; width:100%; text-align:center;left:0;bottom:-10px; z-index:1;}
+.shadow img{ width:70%;}
+.cjjh{width:100%; text-align:center; position:absolute;left:0;bottom:-90px;color:white;min-height:70px;}
+.cjjh p span{color:#ffea35;}
+.asking{ position:absolute; right:5%;top:75%; text-align:right;}
+.asking img{width:50%;}
+.shares{ position:absolute; right:5%;top:50%; text-align:right;}
+.shares img{width:50%;}
+.ruler,.shareing{ position:absolute;left:0;top:0; width:100%; height:100%; display:none;}
+.shadow-bg{ position:absolute;left:0;top:0; background:#000; width:100%; height:100%; opacity:0.5;filter:alpha(opacity=50); z-index:3;}
+.ruler-wrap{ background:white; width:84%; z-index:4; position:absolute;left:50%;margin-left:-42%;border-radius:4%;top:50%;margin-top:-164px;}
+.rulers{padding:1em;}
+p.close{ text-align:right; font-size:2em;}
+p.close img{ width:6%;}
+.rulers dt{font-size:1.2em; height:2.5em;}
+.rulers dd{ line-height:22px;}
+.suprise{ position:absolute; width:100%; text-align:right;left:0;bottom:2%;color:white; z-index:10;}
+.suprise dt{-webkit-animation:move infinite 2s ease;animation:move infinite 2s ease; position:relative;top:10px;float:right;}
+.suprise dd{padding:0 1em;float:right;}
+@-webkit-keyframes move{
+	0%{top:10px;}
+	50%{top:-10px;}
+	100%{top:10px;}
+}
+@keyframes move{
+	0%{top:10px;}
+	50%{top:-10px;}
+	100%{top:10px;}
+}
+.suprise dt img{ width:40%;}
+.activity{ position:absolute;left:0;top:0; text-align:center; width:100%;}
+.activity2{margin-top:-2.5em;}
+.activity img{ width:90%;}
+
+.warning{ position:absolute; width:100%; height:100%; text-align:center;left:0;top:0;}
+.warning table{ width:100%; text-align:center; position:absolute; height:100%; font-size:20px; font-weight:bold;}
+
+
+	
+.fp-wrap{top:24%; position:absolute; width:100%;left:0; height:100%;}
+.kapai{ position:absolute; width:40%;left:50%;margin-left:-20%;overflow:hidden; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);tap-highlight-color: rgba(0, 0, 0, 0);top:0;}
+.kapais{ position:absolute;left:0;top:0; width:100%; height:100%; background:url(images/kapai.png) no-repeat center top; background-size:100% 100%;opacity:1;z-index:2;}
+.kapai-wrap{ position:absolute;left:0;top:0; width:100%; height:100%; overflow:hidden; text-align:center;-webkit-transform:rotateY(-180deg);z-index:1;}
+.kapai-wrap .ji{ display:none;}
+.kapai-wrap img{ width:95%;}	
+.ji{ position:absolute; width:100%; height:100%;left:0;top:0;}
+.ji1{ background:url(images/ji1.png) no-repeat center top; background-size:100% 100%;}
+.ji2{ background:url(images/ji2.png) no-repeat center top; background-size:100% 100%;}
+.ji3{ background:url(images/ji3.png) no-repeat center top; background-size:100% 100%;}
+.ji4{ background:url(images/ji4.png) no-repeat center top; background-size:100% 100%;}
+.ji5{ background:url(images/ji5.png) no-repeat center top; background-size:100% 100%;}
+.kapai-active .kapais{-webkit-transform:rotateY(180deg);transition:1s ease;z-index:1;}
+.kapai-active .kapai-wrap{-webkit-transform:rotateY(0deg);transition:1s ease;z-index:2;}
+.kapai-active .kapai-wrap .ji{ display:block;}
+.oppotunity{text-align:center;color:white; line-height:30px;}
+.oppotunity span{color:#ffea35;}
+.xiaoji{ position:absolute;left:0;top:43%;width:100%;color:white; font-size:12px;}
+.xiaoji dl{ width:20%; text-align:center;float:left;}
+.xiaoji dl dt{margin-bottom:3px;}
+.xiaoji dl dd{ line-height:12px;}
+.xiaoji dl dt div{ width:80%;height:6em; position:relative;}
+.xiaoji .dl1 dt div{ background:url(images/xj1.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl2 dt div{ background:url(images/xj2.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl3 dt div{ background:url(images/xj3.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl4 dt div{ background:url(images/xj4.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl5 dt div{ background:url(images/xj5.png) no-repeat center top; background-size:100% 100%;}
+
+.xiaoji .dl1-active dt div{ background:url(images/xj1-active.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl2-active dt div{ background:url(images/xj2-active.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl4-active dt div{ background:url(images/xj4-active.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl5-active dt div{ background:url(images/xj5-active.png) no-repeat center top; background-size:100% 100%;}
+.xiaoji .dl1-active,.xiaoji .dl2-active,.xiaoji .dl3-active,.xiaoji .dl4-active,.xiaoji .dl5-active{color:#ffea35;}
+
+.xiaoji .dl3-active dt div{ background:url(images/xj3-active.png) no-repeat center top; background-size:100% 100%;}
+.copys{ position:absolute;opacity:0.6;z-index:20;}
+.askings{top:40%;}
+.duihuan{ position:absolute; bottom:7%; width:60%; height:2em; background:url(images/duihuan.png) no-repeat center top; background-size:auto 100%;left:50%;margin-left:-30%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);tap-highlight-color: rgba(0, 0, 0, 0);}
+.duihuan a{ display:block; width:100%; height:100%;}
+.duihuan-active{ background:url(images/duihuan-active.png) no-repeat center top; background-size:auto 100%; }
+.jiaxiquan{color:white; font-size:12px; text-align:center; position:absolute; width:100%;left:0;bottom:5px; display:none;}
+.jiaxiquan span{color:#ffea35;}
+
+/*****分享*****/
+.sharewrap{    background: white;
+    width: 84%;
+    z-index: 4;
+    position: absolute;
+    left: 50%;
+    margin-left: -42%;
+    border-radius: 4%;
+    top: 50%;margin-top:-98px;}
+.sharewrap dl{float:left; width:50%; text-align:center;}
+.sharewrap dl dt img{width:40%;}
+.sharewrap dl dd{margin-top:10px;}
+.sharewraps{padding:1em;}
+.sharewraps .clearfix{padding:2.5em 1em;}
+</style>
+	
+</head>
+
+<body>
+	<div class="wrapper">
+						<div class="wrappers">
+							<div class="activity activity2"><div class="activitys"><img src="images/activity2.png" /></div></div>
+							<div class="fp-wrap">
+								<div class="kapaiwrap">
+									<div class="kapai" value="2">
+										<div class="kapais"></div>
+										<div class="kapai-wrap"><div class="ji"></div></div>
+									</div>
+								</div>
+								<div class="oppotunity">您有1次翻牌机会</div>
+								<div class="xiaoji">
+									<dl class="dl1">
+										<dt><div></div></dt>
+										<dd>闻鸡起舞</dd>
+										<dd>x 1</dd>
+									</dl>
+									<dl class="dl2">
+										<dt><div></div></dt>
+										<dd>金鸡独立</dd>
+										<dd>x 1</dd>
+									</dl>
+									<dl class="dl3">
+										<dt><div></div></dt>
+										<dd>鸡年大吉</dd>
+										<dd> x 2</dd>
+									</dl>
+									<dl class="dl4">
+										<dt><div></div></dt>
+										<dd>金鸡报晓</dd>
+										<dd>x 1</dd>
+									</dl>
+									<dl class="dl5">
+										<dt><div></div></dt>
+										<dd>鸡年纳福</dd>
+										<dd>x 1</dd>
+									</dl>
+								</div>
+							</div>
+							<div class="asking askings"><img src="images/asking.png" /></div>
+							<div class="shares"><img src="images/share.png" /></div>
+							<div class="ruler rulerings">
+								<div class="shadow-bg"></div>
+								<div class="ruler-wrap">
+									<div class="rulers">
+										<p class="close"><img src="images/close.png" /></p>
+										<dl>
+											<dt>活动规则</dt>
+											<dd>1.活动截止时间2017年2月15日</dd>
+											<dd>2.活动期间用户每天可翻牌1次，成功分享活动可增加1次翻牌机会，每天最多2次机会</dd>
+											<dd>3.集齐五张牌，可兑换1张1%的加息券</dd>
+											<dd>4.加息券的使用无投资金额限制，有效期自领取日起30天</dd>
+											<dd>5.加息券使用的前提：通过爱有钱注册并一键开通平台的用户或者是与平台建立注册绑定关系的可以使用加息券；原来已经在平台上注册过的老用户，在爱有钱上只做登录绑定关系的无法使用加息券</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							
+							<div class="shareing">
+								<div class="shadow-bg"></div>
+								<div class="sharewrap">
+									<div class="sharewraps">
+										<p class="close shareclose"><img src="images/close.png" /></p>
+										<div class="clearfix">
+											<dl>
+												<dt><img src="images/wxfriend.png" /></dt>
+												<dd>微信好友</dd>
+											</dl>
+											<dl>
+												<dt><img src="images/pyquan.png" /></dt>
+												<dd>朋友圈</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!--变色添加 duihuan-active--->
+							<div class="duihuan"></div>
+							<div class="jiaxiquan">恭喜您获得一张<span>1%加息券</span><br />请前往我的加息券查看使用</div>
+						</div>
+					</div>
+</body>
+<script src="js/swipe.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/rotate.js"></script>
+<script type="text/javascript">
+	  var swiper = new Swiper('.swiper-container', {
+			paginationClickable: true,
+			direction: 'vertical'
+		});
+	var shares={
+		init:function(){
+			this.addEvent();
+		},
+		addEvent:function(){
+			$(".shares").click(function(){
+				$(".shareing").show();
+			});
+			$(".shareclose").click(function(){
+				$(".shareing").hide();
+			});
+		}
+	}
+	shares.init();
+	var fp={
+		init:function(){
+			this.addEvent();
+			this.resets();
+			this.done=false;
+			this.haschance=true;
+		},
+		resets:function(){
+			var w=$(".kapai").outerWidth();
+			var div=$(".xiaoji").find("div")
+			var w2=div.outerWidth();
+			var h=w*(4/3);
+			var h2=w2*(4/3);
+			$(".kapai,.kapaiwrap").css("height",h);
+			div.css("height",h2);
+		},
+		addEvent:function(){
+			var _this=this;
+			$(".kapai").click(function(){
+				if(_this.done || !_this.haschance){return}
+				$(this).addClass("kapai-active");
+				_this.v=parseInt($(this).attr("value"));
+				_this.fanpai();
+				_this.done=true;
+			});
+		},
+		fanpai:function(){
+			var v=this.v;
+			$(".ji").addClass("ji"+v);
+			var _this=this;
+			_this.timer=setTimeout(function(){
+				_this.clones();
+			},2000);
+		},
+		clones:function(){
+			clearTimeout(this.timer);
+			var _this=this;
+			var j=i=this.v;
+			i-=1;
+			var x=$(".kapai").offset().left-$(".wrappers").offset().left;
+			var y=$(".kapai").position().top;
+			var w=$(".kapai").outerWidth();
+			var h=$(".kapai").outerHeight();
+			var copy=$(".ji").clone(true);
+			$(".fp-wrap").append(copy);
+			
+			var targetw=$(".xiaoji dt div").outerWidth();
+			var targeth=$(".xiaoji dt div").outerHeight();
+			
+			var xj=$(".xiaoji").position().top;
+			var dl=$(".xiaoji").find("dl").eq(i);
+			var targetleft=dl.find("div").offset().left-$(".wrappers").offset().left;
+			var targettop=xj;
+			
+			$(".kapai").removeClass("kapai-active");
+			//$(".ji").removeClass().addClass("ji");
+			copy.addClass("copys").css({left:x,top:y,width:w,height:h}).animate({width:targetw,height:targeth,left:targetleft,top:targettop},"slow",function(){
+			copy.remove();
+			dl.addClass("dl"+j+"-active");
+			_this.done=false;
+});
+			
+		}
+	}
+	fp.init();
+	var func={
+			init:function(){
+				this.set();
+				//this.changebg();
+				this.changesize();
+				this.addEvent();
+			},
+			set:function(){
+				$(".dzp-wrap").css("width",80+"%");
+				var h=$(".dzp-wrap").outerWidth();
+				$(".dzp-wrap").css({height:h,width:h,marginLeft:-h/2});
+			},
+			changebg:function(){
+				var done=false;
+				this.timer=setInterval(function(){
+					if(done){
+						$(".dzp").addClass("dzp-active");
+						done=!done;
+					}else{
+						$(".dzp").removeClass("dzp-active");
+						done=!done;
+					}
+				},200);
+				
+			},
+			changesize:function(){
+				var _this=this;
+				
+				$(window).resize(_this.set);
+			},
+			addEvent:function(){
+				$(".close").click(function(){
+					$(".ruler").hide();
+				});
+				$(".asking2").click(function(){
+					$(".rulering").show();
+				});
+				$(".askings").click(function(){
+					$(".rulerings").show();
+				});
+				var _this=this;
+			},
+			stopbg:function(){
+				clearInterval(this.timer);
+			}
+		}
+		
+	$(function(){
+		func.init();
+		$("#startbtn").rotate({
+			bind:{
+				click:function(){
+					$(this).addClass("prize-end").unbind("click");
+					func.changebg();
+					var a = Math.floor(Math.random() * 360);
+					 $(".prizez").rotate({
+							duration:5000,
+							angle: 0, 
+							animateTo:1440+a,
+							easing: $.easing.easeOutSine,
+							callback: function(){
+								//alert('中奖了！'+a);
+							
+								func.stopbg();
+							}
+					 });
+				}
+			}
+		});
+	});
+</script>
+</html>

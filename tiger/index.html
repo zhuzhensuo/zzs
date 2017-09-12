@@ -1,0 +1,463 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>老虎机</title>
+<style>
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0px; padding:0px;font-family:sans-serif;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+em,strong,th,i{ font-weight:normal; font-style:normal;}
+ol,ul{ list-style-type:none; list-style-position:outside;}
+caption,th{ text-align:left;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+body{ font-size:14px;}
+div{margin-left:auto;margin-right:auto;}
+a{text-decoration:none;}
+.clearfix:after { 
+   content: ".";
+   display: block;
+   height: 0;
+   clear: both;
+   visibility: hidden;
+   font-size: 0;
+}
+.clearfix {display:inline-block;}
+*html .clearfix {height:1%;}
+.clearfix {display: block;}
+.clearfix {zoom: 1;}
+
+.f_r{float:right;_display:inline;}
+.f_l{float:left;_display:inline;}
+
+/*media*/
+
+@media (min-width: 500px) and (max-width: 640px) {
+  html {
+    font-size: 60%;}
+}
+@media (min-width: 400px) and (max-width: 500px) {
+  html {
+    font-size: 55%;} 
+}
+@media (min-width: 340px) and (max-width: 400px) {
+  html {
+    font-size: 50%;} 
+}
+@media all and (max-width: 340px) {
+  html {
+    font-size: 46%;} 
+}
+
+/*******start******/
+
+html{ min-height:100%;}
+body{font-family:'Microsoft YaHei';min-height:100%; position:absolute; width:100%;}
+.wrappers{min-height:100%;min-width:320px;max-width:415px;background:#430462 url(images/bg.png) no-repeat center top; background-size:100% auto; position:relative;padding-bottom:2em;}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+
+.block{ height:19.5em;}
+.ruler{ text-align:right;padding-right:1em;}
+.ruler a{color:white; text-decoration:underline; font-size:16px;}
+.tiger{ width:95%;margin-top:1em; background:url(images/prize.png) no-repeat left top; background-size:100% 100%;padding-bottom:15px; position:relative;}
+.deng{background:url(images/deng.png) no-repeat left top; background-size:100% 100%; height:98.5%; position:absolute; width:100%;left:0;top:0;}
+.deng-active{background:url(images/dengactive.png) no-repeat left top; background-size:100% 100%; }
+.prizewrap{padding:1.1em 1.1em 0; position:relative;}
+.gift{float:left; width:33.3%; overflow:hidden;}
+.gifts{ text-align:center;}
+.gifting{ background:#FFEECB; overflow:hidden; height:96%; width:96%;border-radius:5px; position:relative;}
+.gifting dt{ position:relative; height:100%;}
+.gifting dd{color:#4b1b82; position:absolute; width:100%;left:0; bottom:10px;}
+.startbtn{ background:url(images/start.png) no-repeat left top; background-size:100% 100%;height:98%; }
+.endbtn{background:url(images/end.png) no-repeat left top;background-size:100% 100%; }
+.gift-active .gifting{ background:white;}
+.gift1 .gifting dt img,.gift3 .gifting dt img,.gift6 .gifting dt img,.gift8 .gifting dt img,.gift4 .gifting dt img{ width:80%;margin-top:10px;}
+.gift2 .gifting dt img{ width:90%;margin-top:5px;}
+.gift5 .gifting dt img{ width:55%;margin-top:5px;}
+.gift7 .gifting dt img{ width:80%;margin-top:5px;}
+.myprize{ text-align:center;color:white;padding-top:10px;}
+.myprize dd{margin-top:5px;}
+.myprize dd span{color:#ffd400; font-size:20px;}
+.myprize dd img{width:65%;margin:0 auto; display:block;}
+.getprize{margin-top:1.5em;}
+.getprize div.p{ text-align:center;}
+.getprize div.p img{ width:90%;}
+.winnerlist{ position:relative; background:#C787FF;width:86%;margin-top:-5px; overflow:hidden;}
+.winlist{width:90%; position:relative; height:245px; }
+.winlist ul { position:absolute;left:0;top:0;width:100%;}
+.winlist ul li{ height:40px; line-height:40px;color:#401266;border-bottom:1px solid #581684;}
+.winlist ul li span{float:left;}
+.winlist ul li font{float:right;}
+.guizhe{margin-top:1.5em;width:85%;}
+.guizhe h6{ position:relative; text-align:center;color:#ffa633; font-size:20px;}
+.guizhe h6 i{ position:absolute; width:100%; height:1px; background:#C787FF;left:0;top:10px;}
+.guizhe h6 span{ background:#5B0A7F; position:relative;padding:0 1em;}
+.rulelist{border:1px solid #C787FF;color:#fff;border-radius:10px;margin-top:1.5em;}
+.rulelist ul{padding:1em;}
+.rulelist ul li{ line-height:30px; text-align:justify;}
+
+.shadow{ position:fixed;width:100%;height:100%;left:0;top:0; z-index:1000;}
+.shadow_bg{ position:absolute;left:0;top:0; height:100%; width:100%; background:#000;filter:alpha(opacity=50); opacity:0.5;}
+
+.winner{width:80%; position:absolute;left:50%;margin-left:-40%;top:18%; }
+.winner p{padding:1em 0;}
+.winner dl{ position:relative; top:12px; left:0; width:100%;padding-bottom:2em;}
+.winner p img{width:60%;}
+.winner dl dd{color:white; font-size:1.2em;padding-top:0px;}
+.winner dl dd span{font-size:1.5em;}
+.winner dl dd a{font-size:15px;color:#ffea00;}
+.btn{  width:100%;margin-top:10px;}
+.btn button{border:none 0; background:#FFA729; width:100%;padding:12px 0;color:white; font-size:16px;border-radius:5px;}
+.winners{background:url(images/winner.png) no-repeat left top; background-size:100% 100%;top:15%; text-align:center;padding-bottom:10px;}
+.gift_shadow{ display:none;}
+
+.mobi{width:80%; position:absolute;left:50%;margin-left:-40%;top:18%; }
+.mobilewrap{ background:white; overflow:hidden;border-radius:10px;padding:1em 2em 3em;}
+.mobilewrap h1{ text-align:center;color:#333; font-size:20px; line-height:50px;}
+.form-box dt{color:#ffeb62;line-height:22px;letter-spacing:2px;}
+.form-box dt span{color:#fff;}
+.form-box dd input{border:none;border-radius:5px;}
+.form-box dd.mobile input{width:100%; height:43px; text-indent:1em;font-size:14px;border:1px solid #ccc;}
+.form-box dd{margin-top:10px;}
+.form-box dd.clearfix input{float:left; width:60%; height:42px; text-indent:1em;font-size:14px;border:1px solid #ccc;}
+.form-box dd.clearfix a{float:right;width:38%; height:43px; text-align:center; background:#FE4477;color:#fff;border-radius:5px; line-height:43px;font-size:16px;}
+.form-box dd.clearfix a.active{ background:#ccc;}
+.form-box dd.last {margin-top:20px;}
+.form-box dd.last input{width:100%; height:45px; background:#FE4477;color:#fff; font-size:1.2em; -webkit-appearance: none !important;}
+.form-box dd.checkbox{padding:20px 0 12px;}
+.form-box dd.checkbox input{border:1px solid #fff;}
+.form-box dd.checkbox span{padding-left:5px;}
+.form-box dd.checkbox span,.form-box dd.checkbox a{color:#fff;}
+.close{ text-align:center;margin-top:2em;}
+.close img{ width:15%;}
+
+</style>
+</head>
+
+<body>
+	<div class="wrappers">
+		<div class="block"></div>
+		<div class="content">
+			<p class="ruler"><a href="#ruler">活动规则&nbsp;>></a></p>
+			<div class="tiger">
+				<div class="deng"></div>
+				<div class="prizewrap">
+					<div class="prizelist clearfix">
+						<div class="gift gift1">
+							<div class="gifts gifting">
+								<dl>
+									<dt><img src="images/jiaxi3.png" /></dt>
+									<dd>1%加息券</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="gift gift2  gift-active">
+							<div class="gifts gifting">
+								<dl>
+									<dt><img src="images/lvyou.png" /></dt>
+									<dd>云南双人游</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="gift gift3">
+							<div class="gifts gifting">
+									<dl>
+										<dt><img src="images/jiaxi2.png" /></dt>
+										<dd>2.5%加息券</dd>
+									</dl>
+								</div>
+						</div>
+						<div class="gift gift8">
+							<div class="gifts gifting">
+									<dl>
+										<dt><img src="images/cash2.png" /></dt>
+										<dd>10元现金券</dd>
+									</dl>
+								</div>
+						</div>
+						<div class="gift">
+							<div class="startbtn"></div>
+						</div>
+						<div class="gift gift4">
+							<div class="gifts gifting">
+									<dl>
+										<dt><img src="images/cash.png" /></dt>
+										<dd>20元现金券</dd>
+									</dl>
+								</div>
+						</div>
+						<div class="gift gift7">
+								<div class="gifts gifting">
+									<dl>
+										<dt><img src="images/cleaner.png" /></dt>
+										<dd>车载净化器</dd>
+									</dl>
+								</div>
+							</div>
+						<div class="gift gift6">
+							<div class="gifts gifting">
+									<dl>
+										<dt><img src="images/jiaxi.png" /></dt>
+										<dd>2%加息券</dd>
+									</dl>
+								</div>
+						</div>
+						<div class="gift gift5">
+							<div class="gifts gifting">
+									<dl>
+										<dt><img src="images/yinxiang.png" /></dt>
+										<dd>坚果音响</dd>
+									</dl>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="myprize">
+				<dl>
+					<dd>手机号136****1234的用户</dd>
+					<dd>您今日还有<span>3</span>次抽奖机会</dd>
+					<dd><a href="#"><img src="images/prizebtn.png" /></a></dd>
+				</dl>
+			</div>
+			
+			<div class="getprize">
+				<div class="p"><img src="images/getprize.png" /></div>
+				<div class="winnerlist">
+					<div class="winlist">
+						<ul id="those_ul">
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+							<li>
+								<span>136****1234</span>
+								<font>获得20元现金券</font>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="guizhe">
+				<h6 id="ruler"><i></i><span>活动规则</span></h6>
+				<div class="rulelist">
+					<ul>
+						<li>1、礼品数量有限，抽完即止。</li>
+						<li>2、用户抽到投资奖品后需前往对应平台投资（满足投资条件）激活奖品，若获得的奖品在活动期间内未被激活则作废。</li>
+						<li>3、抽中平台券码，需前往对应平台个人中心激活。</li>
+						<li>4、已激活实物奖品需在对应平台“个人中心-收货地址”中填写收货地址。</li>
+						<li>5、所有奖品需在活动期间内进行激活，在活动结束后（7月20日23:59:59之后）才激活奖品，视为无效。</li>
+						<li>6、本活动仅限通过爱有钱注册用户，已绑定平台用户不参与。</li>
+						<li>*本活动最终解释权归爱有钱所有*</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	
+	<div class="shadow gift_shadow" style="display:block;">
+		<div class="shadow_bg"></div>
+		<div class="winner">
+			<div class="winners">
+				<div style="height:5em;"></div>
+				<p><img src="images/jiaxi2.png" /></p>
+				<dl>
+					<dd>恭喜您获得</dd>
+					<dd><span>云南双人游</span></dd>
+					<dd><a href="javascript:void(0);">请前往爱有钱APP活动页面激活</a></dd>
+				</dl>
+			</div>
+			<div class="btn"><button type="submit">领取</button></div>
+		</div>
+		
+	</div>
+	
+	
+	
+	<div class="shadow mobiles" style="display:none;">
+		<div class="shadow_bg"></div>
+		<div class="mobi">
+			<div class="mobilewrap">
+				<h1>请输入手机号码</h1>
+				<div class="form-box">
+					<form>
+						<dl>
+							
+							<dd class="mobile"><input type="number" placeholder="手机号码"></dd>
+							<dd class="clearfix">
+								<input type="text" placeholder="验证码">
+								<!---用户点击此按钮后添加一个class="active"--->
+								<a href="#">发送</a>
+							</dd>
+							<dd class="last"><input type="submit" value="注册" class="get-btn"></dd>
+						</dl>
+					</form>
+				</div>
+			</div>
+			
+			<div class="close"><img src="images/close.png" /></div>
+		</div>
+	</div>
+	
+	
+	
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+	$(function(){
+		var setting=function(){
+			var w=$(".gift").outerWidth();
+			$(".gift").css("height",w);
+		}
+		setting();
+		
+		var zzs={
+			speed:100,
+			cycle:30,
+			i:0,
+			maxvalue:9,
+			minvalue:2
+
+		}
+		
+		var randoms=function(max,min){
+			return Math.floor(Math.random()*(max-min+1)+min);
+		}
+		var done=false;
+		
+		var data={
+			timer:null,
+			changebg:function(){
+				var done=false;
+				data.timer=setInterval(function(){
+					if(done){
+						$(".deng").addClass("deng-active");
+						done=!done;
+					}else{
+						$(".deng").removeClass("deng-active");
+						done=!done;
+					}
+				},200);
+				
+			},
+
+		}
+		
+		
+		var move=function(n,ran,fn){
+			var lucky=function(){
+				zzs.i++;
+				if(zzs.i>zzs.cycle){
+					zzs.speed+=20;
+				}
+				zzs.minvalue++;
+				fn && fn();
+				zzs.minvalue>=zzs.maxvalue && (zzs.minvalue=0);
+				
+				lucky.timer=setTimeout(arguments.callee,zzs.speed);
+				if(zzs.i>=zzs.cycle+ran && zzs.minvalue==n){
+					clearTimeout(lucky.timer);
+					zzs={
+						speed:100,
+						cycle:30,
+						i:0,
+						maxvalue:9,
+						minvalue:2
+					}
+					done=false;
+					clearInterval(data.timer);
+					$(".startbtn").removeClass("endbtn")
+				}
+			}
+			lucky();
+		}
+		
+		
+		$(".startbtn").on("click",function(){
+			if(done){return}
+			$(".startbtn").addClass("endbtn");
+			var r=randoms(15,5);
+			move(1,r,function(){
+				var index=zzs.minvalue;
+				$(".gift").removeClass("gift-active");
+				$(".gift"+index).addClass("gift-active");
+			});
+			done=true;
+			data.changebg();
+			
+		});
+		
+		function slowMove(id,time){
+			this.id=$(id);
+			this.time=time || 20;
+			this.init.apply(this,arguments);
+		}
+		slowMove.prototype={
+			init:function(){
+				this.move();
+			},
+			move:function(){
+				var _this=this;
+				var fn=function(){
+					var li=_this.id.find("li:first"),h=li.outerHeight(),tmp=0;
+					fn.timer=setInterval(function(){
+						if(tmp>=h){
+							_this.id.append(li);
+							_this.id.css("top",0);
+							clearInterval(fn.timer);
+							fn();
+							return;
+						}
+						tmp++;
+						_this.id.css("top",-tmp);
+					},_this.time);
+				}
+				fn();
+			}
+		}
+
+		new slowMove("#those_ul",50);
+		
+		var closes=function(){
+			$(".close,.shadow_bg").click(function(){
+				$(".shadow").hide();
+			});
+		}
+		closes();
+		
+	});
+</script>
+</html>

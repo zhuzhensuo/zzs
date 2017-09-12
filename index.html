@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="Keywords" content="个人作品" />
+<meta name="Description" content="欢迎来到我的个人网站，我将和大家一起分享我的前端作品。。。" />
+<title>一个作品集</title>
+<link rel="shortcut icon" href="zzs.ico" />
+<style>
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0px; padding:0px;}
+	table{ border-collapse:collapse; border-spacing:0;}
+	fieldset,img{border:0;}
+	em,strong,th,i{ font-weight:normal; font-style:normal;}
+	ol,ul{ list-style-type:none; list-style-position:outside;}
+	caption,th{ text-align:left;}
+	h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+	body{font-family:微软雅黑; font-size:14px;}
+	div{margin-left:auto;margin-right:auto;}
+	a{text-decoration:none;}
+	.clearfix:after { 
+	   content: ".";
+	   display: block;
+	   height: 0;
+	   clear: both;
+	   visibility: hidden;
+	   font-size: 0;
+	}
+	.clearfix {display:inline-block;}
+	*html .clearfix {height:1%;}
+	.clearfix {display: block;}
+	.clearfix {zoom: 1;}
+	
+	.f_r{float:right;_display:inline;}
+	.f_l{float:left;_display:inline;}
+	
+	body{ overflow:hidden;}
+	span{ position:absolute;font-size:60px;top:-100px;}
+	
+	
+	.ido{ text-align:center; line-height:50px; font-size:20px;}
+	.ido li{ position:absolute;left:0;top:-50px; width:100%; text-align:center;}
+	.ido li.active a{color:#cc0000; text-decoration:underline;}
+	.ido a{color:#000;border:2px solid white;}
+	.ido a:hover{ text-decoration:underline;color:#cc0000;}
+	.ido a.lastest{border:2px solid red;}
+	
+	.slideleft{position:absolute;left:0;top:0; width:10%; height:100%;}
+	.slideright{position:absolute;right:0;top:0; width:90%; height:100%;}
+	.tmpdiv{ width:0px;height:0px; background:#eee;left:50%;top:50%; position:absolute; overflow:hidden;}
+	.blur{filter:blur(5px);}
+</style>
+</head>
+
+<body>
+	<div id="slideleft" class="slideleft">
+		<ul class="ido">
+        	<li><a src="https://zhuzhensuo.github.io/app2.0/" href="javascript:void(0);">作品1</a></li>
+            <li><a src="https://zhuzhensuo.github.io/single/" href="javascript:void(0);">作品2</a></li>
+            <li><a src="https://zhuzhensuo.github.io/j8/" href="javascript:void(0);">作品3</a></li>
+            <li><a src="https://zhuzhensuo.github.io/fuck/" href="javascript:void(0);">作品4</a></li>
+            <li><a src="https://zhuzhensuo.github.io/anli/" href="javascript:void(0);">作品5</a></li>
+            <li><a src="https://zhuzhensuo.github.io/app_ipad/" href="javascript:void(0);">作品6</a></li>
+            <li><a src="https://zhuzhensuo.github.io/ecshopheji/" href="javascript:void(0);">作品7</a></li>
+            <li><a src="https://zhuzhensuo.github.io/html/" href="javascript:void(0);">作品8</a></li>
+            <li><a src="https://zhuzhensuo.github.io/official/" href="javascript:void(0);">作品9</a></li>
+            <li><a src="https://zhuzhensuo.github.io/shit/" href="javascript:void(0);">作品10</a></li>
+            <li><a src="https://zhuzhensuo.github.io/tiger/" href="javascript:void(0);">作品11</a></li>
+            <li><a src="https://zhuzhensuo.github.io/jdbg/" href="javascript:void(0);">作品12</a></li>
+            <li><a src="https://zhuzhensuo.github.io/newyear/" href="javascript:void(0);">作品12</a></li>
+            <li><a src="https://zhuzhensuo.github.io/newyear/indexs.html" href="javascript:void(0);">作品13</a></li>
+			<li><a src="https://zhuzhensuo.github.io/vue/" href="javascript:void(0);">作品14</a></li>
+        </ul>
+	</div>
+	<div id="slideright" class="slideright">
+	</div>
+	<!------
+	<div class="ido">
+    	
+    </div>
+	-------->
+</body>
+<script type="text/javascript" src="https://zhuzhensuo.github.io/js/basic.js"></script>
+<script>
+(function(){
+		
+
+	var el=zzs.$$("slideleft","li");
+	var done=true;
+	var doclick=false;
+	var j=0;
+	var k=-1;
+	
+	var getArr=function(el){
+		return Array.prototype.slice.call(el);
+	}
+	var buju=function(){
+		zzs.$("slideleft").style["height"]="100%";
+		zzs.$("slideright").style["height"]="100%";
+		try{
+			zzs.$$$("tmpdiv","slideright")[0].style["height"]="100%";
+		}catch(e){
+		}
+		
+	}
+	
+	var tiaodong=function(){
+		var ar=[];
+		var len=el.length;
+		var h=document.documentElement.clientHeight;
+
+		for(var i=0;i<len;i++){
+			ar[i]=parseInt((h/len)*(i));
+		}
+		
+		var sorts=function(){
+			getArr(el).forEach(function(ele,k){
+				clearInterval(ele.timer);
+				var max=ar[k],ispeed=0;ele.num=0;
+				ele.timer=setInterval(function(){
+					var top=ele.offsetTop;
+					ispeed+=2;
+					var total=top+ispeed;
+					if(total>=max){
+						total=max;
+						ispeed*=-0.75;
+						ele.num++;
+					}else{
+						ele.num=0;
+					}
+					if(ele.num>1){
+						clearInterval(ele.timer);
+						j++;
+						if(j==len-1){
+							doclick=true;
+						}
+					}
+					ele.style["top"]=total+"px";
+				},30);
+			});
+		}
+		sorts();
+		
+		
+	}
+	tiaodong();
+	
+	getArr(el).forEach(function(ele,key,arr){
+		ele.onclick=function(event){
+			if(!done || !doclick || k==key) return;
+			if(k>=0) arr[k].className="";
+			k=key;
+			done=false;
+			
+			ele.className="active";
+			var ev=event || window.event;
+			var sre=ev.srcElement || ev.target;
+			var src=sre.getAttribute("src");
+			move(src);
+		}	
+	})
+
+	var move=function(url){
+		var id=document.getElementById("slideright");
+		var t=zzs.$$$("tmpdiv",id)[0];
+		if(t){
+			zzs.doMove(t,{width:0,height:0,top:parseInt((id.offsetHeight)/2),left:parseInt((id.offsetWidth)/2)},20,function(){
+				cb();
+				id.removeChild(t);
+			});
+		}else{
+			cb();
+		}
+		function cb(){
+			var div=document.createElement("div");
+			div.className="tmpdiv blur";
+			id.appendChild(div);
+			div.innerHTML="<iframe height='100%' width='100%' frameborder='no' src='"+url+"' border='no' scrolling='0'></iframe>";
+			zzs.doMove(div,{width:id.offsetWidth,height:id.offsetHeight,left:0,top:0},30,function(){
+				zzs.removeClass("blur",div);
+				done=true;
+			});
+		}
+		
+	}
+
+	window.onresize=function(){
+		buju();
+		tiaodong();
+	}
+})();
+</script>
+</html>
