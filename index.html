@@ -150,7 +150,10 @@
 		ar.push(ele.childNodes[0].innerHTML);
 		ele.onclick=function(event){
 			if(!done || !doclick || k==key) return;
-			if(k>=0) arr[k].className="";
+			if(k>=0) {
+				arr[k].className="";
+				arr[k].childNodes[0].innerHTML=ar[key];
+			}
 			k=key;
 			done=false;
 			
