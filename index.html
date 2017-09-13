@@ -5,7 +5,7 @@
 
 <meta name="Keywords" content="个人作品" />
 <meta name="Description" content="欢迎来到我的个人网站，我将和大家一起分享我的前端作品。。。" />
-<title>一个作品集</title>
+<title>&nbsp;APP商城安卓版</title>
 <link rel="shortcut icon" href="zzs.ico" />
 <style>
 	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0px; padding:0px;}
@@ -41,7 +41,7 @@
 	.ido{ text-align:center; line-height:50px; font-size:20px;}
 	.ido li{ position:absolute;left:0;top:-50px; width:100%; text-align:center;}
 	.ido li.active a{color:#cc0000; text-decoration:underline;}
-	.ido a{color:#000;border:2px solid white;}
+	.ido a{color:#000;border:2px solid white; display: block;}
 	.ido a:hover{ text-decoration:underline;color:#cc0000;}
 	.ido a.lastest{border:2px solid red;}
 	
@@ -84,15 +84,16 @@
 <script>
 (function(){
 		
-
+	var tit=['APP商城安卓版','模板堂十一促销','基于jquery的小特效','网店系统','案例展示','活动页面','模板促销活动','EC+官网','大京东官网','商创2.0','H5抽奖','H5活动页','H5新年抽奖','H5大转盘','基于vue官网重构']
 	var el=zzs.$$("slideleft","li");
 	var done=true;
 	var doclick=false;
 	var j=0;
 	var k=-1;
+	var ar=[];
 	
 	var getArr=function(el){
-		return Array.prototype.slice.call(el);
+		return Array.prototype.slice.call(el,0);
 	}
 	var buju=function(){
 		zzs.$("slideleft").style["height"]="100%";
@@ -146,6 +147,7 @@
 	tiaodong();
 	
 	getArr(el).forEach(function(ele,key,arr){
+		ar.push(ele.childNodes[0].innerHTML);
 		ele.onclick=function(event){
 			if(!done || !doclick || k==key) return;
 			if(k>=0) arr[k].className="";
@@ -157,7 +159,15 @@
 			var sre=ev.srcElement || ev.target;
 			var src=sre.getAttribute("src");
 			move(src);
-		}	
+		}
+		ele.onmouseover=function(){
+			if(!done || !doclick || k==key) return;
+			this.childNodes[0].innerHTML=tit[key];
+		}
+		ele.onmouseout=function(){
+			if(!done || !doclick || k==key) return;
+			this.childNodes[0].innerHTML=ar[key];
+		}
 	})
 
 	var move=function(url){
