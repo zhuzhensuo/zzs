@@ -94,17 +94,16 @@
 <script type="text/javascript" src="./js/basic.js"></script>
 <script>
 (function(){
-	var el=zzs.$$("slideleft","li");
-	var done=true;
-	var doclick=false;
-	var j=0;
-	var k=-1;
-	var ar=[];
-	
-	var getArr=function(el){
+	var el=zzs.$$("slideleft","li"),
+	done=true,
+	doclick=false,
+	j=0,
+	k=-1,
+	ar=[],
+	getArr=function(el){
 		return Array.prototype.slice.call(el,0);
-	}
-	var buju=function(){
+	},
+	buju=function(){
 		zzs.$("slideleft").style["height"]="100%";
 		zzs.$("slideright").style["height"]="100%";
 		try{
@@ -112,9 +111,8 @@
 		}catch(e){
 		}
 		
-	}
-	
-	var tiaodong=function(){
+	},
+	tiaodong=function(){
 		var ar=[];
 		var len=el.length;
 		var h=document.documentElement.clientHeight;
