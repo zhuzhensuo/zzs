@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="x5-orientation" content="portrait">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/jqvmap.min.css">
+    <link rel="stylesheet" href="css/my-app.css">
+</head>
+
+<body>
+
+    <div class="views tabs">
+        <div class="view tab active" id="dqfx">
+            <div class='navbarwrap'>
+                <div class="navbar">
+                    <div class="navbar-inner navbar-on-center">
+                        <div class="center sliding">地区分析</div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-block choosearea selectchoose">
+                <form id="my-form" class="lstore-data">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">选择地区</div>
+                                    <div class="item-input">
+                                        <span class='selectIcon'></span>
+                                        <select class='areachoose'></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </form>
+            </div>
+            <div class="pages">
+                <div class="page toolbar-through" data-page="dqfx">
+                    <div class="page-content tabs pull-to-refresh-content" data-ptr-distance="66">
+                        <div class="pull-to-refresh-layer">
+                            <div class="preloader"></div>
+                            <div class="pull-to-refresh-arrow"></div>
+                        </div>
+                        <div class="maps">
+                            <div style='height:0.1rem; background: #07202D;'></div>
+                            <div class="map" id="map"></div>
+                        </div>
+                        <div class="list-block" style='display: none;'>
+                            <div class="list-group">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-media"></div>
+                                        <div class="item-inner">
+                                            <div class="item-title">第一条新闻</div>
+                                            <div class="item-after">两小时前</div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-media"></div>
+                                        <div class="item-inner">
+                                            <div class="item-title">第二条新闻</div>
+                                            <div class="item-after">两小时前</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="secondpage smallmenu">
+                            <div class="toolbar tabbar tabbar-labels">
+                                <div class="toolbar-inner">
+                                    <a href="#slgm" class="tab-link active">
+                                        <i class="icon demo-icon-5"></i>
+                                        <span>数量规模</span>
+                                    </a>
+
+                                    <a href="#xgjg" class="tab-link">
+                                        <i class="icon demo-icon-6"></i>
+                                        <span>相关机构</span>
+                                    </a>
+                                    <a href="#yjfx" class="tab-link">
+                                        <i class="icon demo-icon-7"></i>
+                                        <span>证券私募</span>
+                                    </a>
+                                    <a href="#smgq" class="tab-link">
+                                        <i class="icon demo-icon-8"></i>
+                                        <span>私募股权</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view tab static active dqfxpage view-slgm" id="slgm">
+                            <div class="page" data-page="slgm">
+                                <div class="page-content">
+                                    <div class="zhuxingtu">
+                                        <div class="dqfxslgm dqfx">
+                                            <h5>基金数量增长图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxslgm1"></div>
+                                        </div>
+                                        <div class="dqfxslgm mt3 dqfx">
+                                            <h5>数量占比图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxslgm2"></div>
+                                        </div>
+                                        <div class="dqfxslgm dqfx mt3">
+                                            <h5>规模占比图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxslgm3"></div>
+                                        </div>
+
+                                        <div class="dqfxslgm mt3 dqfx">
+                                            <h5>实际运行期分布<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxslgm4"></div>
+                                        </div>
+
+                                        <div class="dqfxslgm mt3 dqfx">
+                                            <h5>基金平均规模<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxslgm5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view tab static dqfxpage" id="xgjg">
+                            <div class="page" data-page="xgjg">
+                                <div class="page-content">
+                                    <div class="dqfxxgjg dqfx">
+                                        <h5>管理人、托管人数量增长图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id="dqfxxgjg1"></div>
+                                    </div>
+                                    <div class="dqfxxgjg dqfx mt3">
+                                        <h5>管理人类型占比<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id="dqfxxgjg2"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="view tab static dqfxpage" id="yjfx">
+                            <div class="page" data-page="yjfx">
+                                <div class="page-content">
+                                    <div class="dqfxyjfxwrap">
+                                        <div class="dqfxyjfx dqfx">
+                                            <h5>基金平均收益率变化图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxyjfx1"></div>
+                                        </div>
+                                        <div class="dqfxyjfx mt3 dqfx">
+                                            <h5>地域收益率离散性<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxyjfx2"></div>
+                                        </div>
+
+                                        <div class="dqfxyjfx mt3 dqfx">
+                                            <h5>最大回撤率<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxyjfx3"></div>
+                                        </div>
+                                        <div class="dqfxyjfx mt3 dqfx">
+                                            <h5>收益率分布图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxyjfx4"></div>
+                                        </div>
+                                        <div class="dqfxyjfx mt3 dqfx">
+                                            <h5>夏普比率<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxyjfx5" style='height:4.9rem;'></div>
+                                        </div>
+                                        <div class="dqfxyjfx mt3 dqfx">
+                                            <h5>beta系数<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id="dqfxyjfx6" style='height:4.9rem;'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view tab static dqfxpage" id="smgq">
+                            <div class="page" data-page='smgq'>
+                                <div class="page-content">
+                                    <div class="dqfxsmgq dqfx">
+                                        <h5>全部基金数量和股权类基金变化<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id='dqfxsmgq1'></div>
+                                    </div>
+                                    <div class="mt3 dqfxsmgq dqfx">
+                                        <h5>法律形式数量变化<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id='dqfxsmgq2'></div>
+                                    </div>
+                                    <div class="mt3 dqfxsmgq dqfx">
+                                        <h5>法律形式占比<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id='dqfxsmgq3' style="height:4.2rem;"></div>
+                                    </div>
+                                    <div class="mt3 dqfxsmgq dqfx">
+                                        <h5>基金风格等级分布图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id='dqfxsmgq4'></div>
+                                    </div>
+                                    <div class="mt3 dqfxsmgq dqfx">
+                                        <h5>基金收益等级分布图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id='dqfxsmgq5'></div>
+                                    </div>
+                                    <div class="mt3 dqfxsmgq dqfx">
+                                        <h5>基金风险等级分布图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                        <div class="chart" id='dqfxsmgq6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view tab" id="clfx">
+            <div class='navbarwrap'>
+                <div class="navbar">
+                    <div class="navbar-inner navbar-on-center">
+                        <div class="center sliding">策略分析</div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-block clchoose selectchoose">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">策略选择</div>
+                                <div class="item-input">
+                                    <!-- Make sure that input have "name attrobute" -->
+                                    <span class="selectIcon"></span>
+                                    <select class="clselect"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="pages">
+                <div class="page toolbar-through" data-page="clfx">
+
+                    <div class="page-content tabs pull-to-refresh-content pull-to-refresh-content2" data-ptr-distance="66">
+                        <div class="pull-to-refresh-layer">
+                            <div class="preloader"></div>
+                            <div class="pull-to-refresh-arrow"></div>
+                        </div>
+                        <div class="clfxpie">
+                            <div id='clfxpie'></div>
+                        </div>
+                        <div class="list-block" style="display: none;">
+                            <div class="list-group">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-media"></div>
+                                        <div class="item-inner">
+                                            <div class="item-title">第一条新闻</div>
+                                            <div class="item-after">两小时前</div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-media"></div>
+                                        <div class="item-inner">
+                                            <div class="item-title">第二条新闻</div>
+                                            <div class="item-after">两小时前</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clfxsecondpage smallmenu">
+                            <div class="toolbar tabbar tabbar-labels">
+                                <div class="toolbar-inner">
+                                    <a href="#clfxslgm" class="tab-link active">
+                                        <i class="icon demo-icon-5"></i>
+                                        <span>数量规模</span>
+                                    </a>
+
+                                    <a href="#clfxxgjg" class="tab-link">
+                                        <i class="icon demo-icon-6"></i>
+                                        <span>相关机构</span>
+                                    </a>
+                                    <a href="#clfxsyfx" class="tab-link">
+                                        <i class="icon demo-icon-9"></i>
+                                        <span>收益分析</span>
+                                    </a>
+                                    <a href="#clfxfxfx" class="tab-link">
+                                        <i class="icon demo-icon-10"></i>
+                                        <span>风险分析</span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view tab static active clfxpage" id='clfxslgm' data-page='clfxslgm'>
+                            <div class="page" data-page='clfxslgm'>
+                                <div class="page-content">
+                                    <div class="clfxslgmwrap">
+                                        <div class="clfxslgm clfx">
+                                            <h5>基金数量和证券类基金数量变化<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxslgm1'></div>
+                                        </div>
+
+                                        <div class="clfxslgm mt3 clfx">
+                                            <h5>实际运行期分布<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxslgm2'></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view tab static clfxpage" id='clfxxgjg' data-page='clfxxgjg'>
+                            <div class="page" data-page='clfxxgjg'>
+                                <div class="page-content">
+                                    <div class="clfxxgjgwrap">
+                                        <div class="clfxxgjg clfx">
+                                            <h5>排名前十的托管人数量及地域分类<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxxgjg1'></div>
+                                        </div>
+                                        <div class="clfxxgjg mt3 clfx">
+                                            <h5>排名前十的管理人数量及地域分类<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxxgjg2'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view tab static clfxpage" id='clfxsyfx' data-page='clfxsyfx'>
+                            <div class="page" data-page='clfxsyfx'>
+                                <div class="page-content">
+                                    <div class="clfxsyfxwrap">
+                                        <div class="clfxsyfx clfx">
+                                            <h5>平均收益率变化图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxsyfx1'></div>
+                                        </div>
+                                        <div class="clfxsyfx mt3 clfx">
+                                            <h5>最佳最差月度回报<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxsyfx2'></div>
+                                        </div>
+                                        <div class="clfxsyfx mt3 clfx">
+                                            <h5>正收益率占比<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxsyfx3'></div>
+                                        </div>
+
+                                        <div class="clfxsyfx mt3 clfx">
+                                            <h5>收益分布<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxsyfx4'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view tab static clfxpage" id='clfxfxfx' data-page='clfxfxfx'>
+                            <div class="page" data-page='clfxfxfx'>
+                                <div class="page-content">
+                                    <div class="clfxfxfxwrap">
+                                        <div class="clfxfxfx clfx">
+                                            <h5>投资品种占比饼状图<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxfxfx1'></div>
+                                        </div>
+                                        <div class="clfxfxfx mt3 clfx">
+                                            <h5>风险总结<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxfxfx2'></div>
+                                        </div>
+                                        <div class="clfxfxfx mt3 clfx">
+                                            <h5>策略风险分析<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxfxfx3'></div>
+                                        </div>
+                                        <div class="clfxfxfx mt3 clfx">
+                                            <h5>beta系数<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxfxfx4'></div>
+                                        </div>
+                                        <div class="clfxfxfx mt3 clfx">
+                                            <h5>夏普比率<span class='addfavor'></span><i class='zoomIcon'></i></h5>
+                                            <div class="chart" id='clfxfxfx5'></div>
+                                        </div>
+                                        <div class="clfxfxfx mt3">
+                                            <h5>风险系数表格</h5>
+                                            <div class="charttable" id='clfxfxfx6'>
+                                                <table>
+                                                    <tr></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view tab view-main" id='search'>
+        	
+            <div class="pages">
+                <div class="page" data-page='searchs'>
+                	<div class="navbarwrap">
+		                <div class="navbar">
+		                    <div class="navbar-inner navbar-on-center">
+		                        <div class="center sliding">基金产品</div>
+		                    </div>
+		                </div>
+		            </div>
+                    <div class="page-content jjcppart">
+                    	<div class="generalSearch">
+                    		<form class="searchbar searchbar-init" style="background: none;">
+							    <div class="searchbar-input">
+						      		<input type="search" placeholder="输入关键字搜索" onsearch='handleSearch(this)' class="">
+							    </div>
+							</form>
+							<div>
+						    	<div class="clearfix searchcondition row no-gutter">
+							    	<div class="col-33"><a href="#jg" class="tab-link active">搜机构</a></div>
+							    	<div class="col-33"><a href="#jj" class="tab-link">搜基金</a></div>
+							    	<div class="col-33"><a href="#ry" class="tab-link">搜人员</a></div>
+							    </div>
+							    <div class="tabs partcontent">
+							    	<div class='tab active' id='jg'>
+							    		<div class="hotsuggest">
+							    			<span>热门推荐</span>
+							    			<a href="javascript:;">换一批</a>
+							    		</div>
+							    		<div class="row hotsuggests">
+							    			<div class=col-50>
+							    				<dl>
+							    					<dd><a href='javascript:;'>上海新方程资产上海新方程资产</a><span>管理机构</span></dd>
+							    					<dd><a href='javascript:;'>上海新方程资产</a><span>管理机构</span></dd>
+							    					<dd><a href='javascript:;'>上海新方程资产上海新方程资产</a><span>管理机构</span></dd>
+							    					<dd><a href='javascript:;'>上海新方程资产</a><span>管理机构</span></dd>
+							    				</dl>
+							    			</div>
+							    			<div class=col-50>
+							    				<dl>
+							    					<dd><a href='#'>上海新方程资产</a><span>管理机构</span></dd>
+							    					<dd><a href='#'>上海新方程资产</a><span>管理机构</span></dd>
+							    					<dd><a href='#'>上海新方程资产</a><span>管理机构</span></dd>
+							    					<dd><a href='#'>上海新方程资产</a><span>管理机构</span></dd>
+							    				</dl>
+							    			</div>
+							    		</div>
+							    	</div>
+							    	<div class='tab' id='jj'>基金</div>
+							    	<div class='tab' id='ry'>人员</div>
+							    </div>
+						    </div>
+                    	</div>
+                        
+                        <div class="menulist">
+                            <div class="row no-gutter">
+                                <div class="col-20">
+                                	<a href='searchpage.html'>
+	                                    <dl>
+	                                        <dt>
+											<img src="images/syfx.png" />
+										</dt>
+	                                        <dd>基金产品</dd>
+	                                    </dl>
+                                    </a>
+                                </div>
+                                <div class="col-20">
+                                	<a href='searchpage.html?page=gljg'>
+	                                    <dl>
+	                                        <dt><img src="images/syfx.png" /></dt>
+	                                        <dd>管理机构</dd>
+	                                    </dl>
+                                    </a>
+                                </div>
+                                <div class="col-20">
+                                	<a href="searchpage.html?page=ynrs">
+	                                    <dl>
+	                                        <dt>
+											<img src="images/syfx.png" />
+										</dt>
+	                                        <dd>业内人士</dd>
+	                                    </dl>
+                                    </a>
+                                </div>
+                                <div class="col-20">
+                                	<a href='https://alpha.genesisfin.net' target="_blank">
+	                                    <dl>
+	                                        <dt><img src="images/syfx.png" /></dt>
+	                                        <dd>资源配置</dd>
+	                                    </dl>
+                                    </a>
+                                </div>
+                                <div class="col-20">
+                                	<a href="ycjgsearch.html">
+                                		<dl>
+	                                        <dt><img src="images/syfx.png" /></dt>
+	                                        <dd>异常机构</dd>
+	                                    </dl>
+                                	</a>
+                                </div>
+                                <div class="col-20">
+                                    <dl>
+                                        <dt><img src="images/syfx.png" /></dt>
+                                        <dd>企业图谱</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-20">
+                                    <dl>
+                                        <dt><img src="images/syfx.png" /></dt>
+                                        <dd>关系查找</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-20">
+                                    <dl>
+                                        <dt><img src="images/syfx.png" /></dt>
+                                        <dd>附近机构</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-20">
+                                    <dl>
+                                        <dt><img src="images/syfx.png" /></dt>
+                                        <dd>行业新闻</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-20">
+                                    <dl>
+                                        <dt><img src="images/syfx.png" /></dt>
+                                        <dd>展开全部</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner">
+                            <img src='http://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1531808789&di=192aac1897c554733ca9060d5da89d1c&imgtype=jpg&src=http%3A%2F%2Fimg6.bdstatic.com%2Fimg%2Fimage%2Fpublic%2Fwuqiuhuang.jpg' />
+                        </div>
+                        <div class='article'>
+                        	<div>
+                        	<div class="row">
+                        		<div class="col-30">
+                        			<a href="javascript:;">
+                        				<img src='images/demo-icon-11-active.jpg'  />
+                        			</a>
+                        		</div>
+                        		<div class="col-70">
+                        			<div class="articleTit">
+                        				<dl>
+                        					<dt>文章标题文章标题</dt>
+                        					<dd class="content">这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容</dd>
+                        					<dd class="last">
+                        						<span>作者</span>
+                        						<span>2018-06-29</span>
+                        					</dd>
+                        				</dl>
+                        			</div>
+                        		</div>
+                        	</div>
+                        	</div>
+                        	<div class="mt5">
+                        	<div class="row">
+                        		<div class="col-30">
+                        			<a href="javascript:;">
+                        				<img src='images/demo-icon-11-active.jpg'  />
+                        			</a>
+                        		</div>
+                        		<div class="col-70">
+                        			<div class="articleTit">
+                        				<dl>
+                        					<dt>文章标题文章标题</dt>
+                        					<dd class="content">这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容内容这是内容这是内容</dd>
+                        					<dd class="last">
+                        						<span>作者</span>
+                        						<span>2018-06-29</span>
+                        					</dd>
+                        				</dl>
+                        			</div>
+                        		</div>
+                        	</div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view tab" id="jgfx">
+            <div class='navbarwrap'>
+                <div class="navbar">
+                    <div class="navbar-inner navbar-on-center">
+                        <div class="center sliding">机构分析</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pages">
+                <div class="page toolbar-through" data-page='jgfx'>
+                    <div class="page-content tabs pull-to-refresh-content pull-to-refresh-content2" data-ptr-distance="66">
+                        <div class="pull-to-refresh-layer">
+                            <div class="preloader"></div>
+                            <div class="pull-to-refresh-arrow"></div>
+                        </div>
+                        <div class="jgfxsecondpage">
+                            <div class="toolbar tabbar tabbar-labels">
+                                <div class="toolbar-inner">
+                                    <a href="#jgfxglrbd" class="tab-link active">
+                                        <i class="icon demo-icon-11"></i>
+                                        <span>管理人榜单</span>
+                                    </a>
+                                    <a href="#jgfxslgm" class="tab-link">
+                                        <i class="icon demo-icon-5"></i>
+                                        <span>数量规模</span>
+                                    </a>
+                                    <a href="#jgfxdqfx" class="tab-link">
+                                        <i class="icon demo-icon-5"></i>
+                                        <span>地区分析</span>
+                                    </a>
+                                    <a href="#jgfxyctj" class="tab-link">
+                                        <i class="icon demo-icon-12"></i>
+                                        <span>异常统计</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='view tab active static jgfxpage' id='jgfxglrbd' data-page='jgfxglrbd'>
+                            <div class="page">
+                                <div class="page-content">
+                                    <div class="jgfxglrbdwrap">
+                                        <div class="list-block clchoose selectchoose">
+                                            <ul>
+                                                <li>
+                                                    <div class="item-content">
+                                                        <div class="item-inner">
+                                                            <div class="item-title label">收益率最优管理人榜单</div>
+                                                            <div class="item-input">
+                                                                <!-- Make sure that input have "name attrobute" -->
+                                                                <span class="selectIcon"></span>
+                                                                <select class="jgselect"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="jgfxglrbd jgfx mt3">
+                                            <h5>收益率最优管理人榜单<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxglrbd1'></div>
+                                        </div>
+                                        <div class="jgfxglrbd mt3">
+                                            <h5>收益率最优管理人榜单</h5>
+                                            <div class="minichrt">
+                                                <table id="table-sparkline">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>管理人</th>
+                                                            <th>年收益</th>
+                                                            <th>年规模</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbody-sparkline"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='view tab jgfxpage static' id='jgfxslgm' data-page='jgfxslgm'>
+                            <div class="page">
+                                <div class="page-content">
+                                    <div class="jgfxslgmwrap">
+                                        <div class="jgfxslgm jgfx">
+                                            <h5>地区管理人数量<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxslgm1'></div>
+                                        </div>
+                                        <div class="jgfxslgm jgfx mt3">
+                                            <h5>管理人规模分布图<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxslgm2'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class='view tab jgfxpage static' id='jgfxdqfx' data-page='jgfxdqfx'>
+                            <div class="page">
+                                <div class="page-content">
+                                    <div class="jgfxdqfxwrap">
+                                        <div class="list-block clchoose selectchoose">
+                                            <ul>
+                                                <li>
+                                                    <div class="item-content">
+                                                        <div class="item-inner">
+                                                            <div class="item-title label">选择地区</div>
+                                                            <div class="item-input" style="width:1.8rem;">
+                                                                <!-- Make sure that input have "name attrobute" -->
+                                                                <span class="selectIcon"></span>
+                                                                <select class="jgselect2"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="jgfxdqfx jgfx mt3">
+                                            <h5>上海及上海部分地区管理人数量统计<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxdqfx1'></div>
+                                        </div>
+                                        <div class="jgfxdqfx jgfx mt3">
+                                            <h5>管理人平均收益分布图<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxdqfx2'></div>
+                                        </div>
+                                        <div class="jgfxdqfx jgfx mt3">
+                                            <h5>管理人管理基金数量分布图<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxdqfx3'></div>
+                                        </div>
+                                        <div class="jgfxdqfx jgfx mt3">
+                                            <h5>非本地区注册管理人注册地区及数量统计<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxdqfx4'></div>
+                                        </div>
+                                        <div class="jgfxdqfx jgfx mt3">
+                                            <h5>非本地区注册管理人注册地区占比<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxdqfx5'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class='view tab jgfxpage static' id='jgfxyctj' data-page='jgfxyctj'>
+                            <div class="page">
+                                <div class="page-content">
+                                    <div class="jgfxyctjwrap">
+                                        <div class="jgfxyctj jgfx">
+                                            <h5>失联管理人统计<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxyctj1'></div>
+                                        </div>
+                                        <div class="jgfxyctj jgfx mt3">
+                                            <h5>异常机构占比统计<span class="addfavor"></span><i class="zoomIcon"></i></h5>
+                                            <div class="chart" id='jgfxyctj2'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view tab another-view" id="gxh">
+            <div class='navbarwrap gxhview'>
+                <div class="navbar">
+                    <div class="navbar-inner navbar-on-center">
+                        <div class="center sliding">个性化</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pages">
+                <div class="page toolbar-through" data-page="gxh">
+                    <div class="page-content gxh">
+                        <div class="favors">
+                            <div class="dqfxmodel commonwrap">
+                                <h4>地区分析<span></span></h4>
+                                <div class='modelwrap'>
+                                    <div class="dqfxwrap"></div>
+                                    <div class='addChart'>
+                                        <a href='#' class='open-panel' data-panel='left'>
+                                            <dl>
+                                                <dt><span></span></dt>
+                                                <dd>添加图表</dd>
+                                            </dl>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clfxmodel commonwrap">
+                                <h4>策略分析<span></span></h4>
+                                <div class='modelwrap'>
+                                    <div class="clfxwrap"></div>
+                                    <div class='addChart'>
+                                        <a href='#' class='open-panel' data-panel='left'>
+                                            <dl>
+                                                <dt><span></span></dt>
+                                                <dd>添加图表</dd>
+                                            </dl>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="jgfxmodel commonwrap">
+                                <h4>机构分析<span></span></h4>
+                                <div class='modelwrap'>
+                                    <div class="jgfxwrap"></div>
+                                    <div class='addChart'>
+                                        <a href='#' class='open-panel' data-panel='left'>
+                                            <dl>
+                                                <dt><span></span></dt>
+                                                <dd>添加图表</dd>
+                                            </dl>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gzjjmodel commonwrap">
+                                <h4>关注基金<span></span></h4>
+                                <div class='modelwrap'>
+                                    <div class="searchResult gxhpage"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbar tabbar tabbar-labels fixedbar">
+            <div class="toolbar-inner">
+                <a href="#dqfx" class="tab-link dqfx-link active">
+                    <i class="icon demo-icon-location"></i>
+                    <span>地区分析</span>
+                </a>
+                <a href="#clfx" class="tab-link clfx-link">
+                    <i class="icon demo-icon-2"></i>
+                    <span>策略分析</span>
+                </a>
+                <a href='#search' class="tab-link search-link">
+                    <i class="icon demo-icon-search"></i>
+                    <span>基金产品</span>
+                </a>
+                <a href="#jgfx" class="tab-link jgfx-link">
+                    <i class="icon demo-icon-jgfx"></i>
+                    <span>机构分析</span>
+                </a>
+                <a href="#gxh" class="tab-link gxh-link">
+                    <i class="icon demo-icon-4"></i>
+                    <span>个性化</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-right panel-cover">
+        <div class="filterCondition">
+            <p>更多筛选条件：</p>
+            <div class="row category conditionname">
+                <div class="col-20 key">类别</div>
+                <div class="col-80 value">
+                    <a id='gm' no='10' href="#" class="gm fundType">公募资金</a>
+                    <a id='sm' no='8' href="#" class="sm fundType">私募资金</a>
+                </div>
+            </div>
+            <div class="row strategy conditionname">
+                <div class="col-20 key">策略</div>
+                <div class="col-80 value">
+                    <a href="#" no='40' class="gmfund fundparam">债券基金</a>
+                    <a href="#" no='49' class='gmfund fundparam'>QDll</a>
+                    <a href="#" no='48' class='gmfund fundparam'>货币基金</a>
+                    <a href="#" no='61' class='gmfund fundparam'>偏股基金</a>
+                    <a href="#" no='62' class='gmfund fundparam'>股债平衡</a>
+                    <a href="#" no='32' class="smfund fundparam">股票多头</a>
+                    <a href="#" no='35' class="smfund fundparam">股票多空</a>
+                    <a href="#" no='36' class="smfund fundparam">债券策略</a>
+                    <a href="#" no='31' class="smfund fundparam">事件驱动</a>
+                    <a href="#" no='33' class="smfund fundparam">CTA/宏观</a>
+                </div>
+            </div>
+            <div class="row star conditionname">
+                <div class="col-20 key">评级</div>
+                <div class="col-80 value">
+                    <a href="#" no='1' class='fundparam'>一星</a>
+                    <a href="#" no='2' class='fundparam'>二星</a>
+                    <a href="#" no='3' class='fundparam'>三星</a>
+                    <a href="#" no='4' class='fundparam'>四星</a>
+                    <a href="#" no='5' class='fundparam'>五星</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ycjgfilter">
+        	<div class="ycjgfilters">
+        		<div class="sxcondition">
+        			<span>更多筛选条件</span>
+        			<a href="#">重置</a>
+        		</div>
+        		<div class="filtermodel area">
+        			<div class="active">地区</div>
+        			<dl>
+        				<dt>热门地区</dt>
+        				<dd>
+        					<a href="#">北京</a>
+        					<a href="#">上海</a>
+        					<a href="#">广州</a>
+        					<a href="#">深圳</a>
+        				</dd>
+        			</dl>
+        			<dl>
+        				<dt>选择省市</dt>
+        				<dd>
+        					<div id='citySelect'>
+	        					<select class='province prov'>
+	        						<option>请选择</option>
+	        					</select>
+	        					<select class='citys city'>
+	        						<option>请选择</option>
+	        					</select>
+        					</div>
+        				</dd>
+        			</dl>
+        		</div>
+        		<div class="filtermodel establishyear">
+        			<div class="active">成立年份</div>
+        			<dl>
+        				<dd>
+        					<a href="#"><1年</a>
+        					<a href="#">1年~3年</a>
+        					<a href="#">3年~5年</a>
+        					<a href="#">5年~10年</a>
+        					<a href="#">>10年</a>
+        				</dd>
+        			</dl>
+        			
+        		</div>
+        		<div class="filtermodel abnormaltype">
+        			<div class="active">异常类型</div>
+        			<dl>
+        				<dd>
+        					<a href="#">异常机构</a>
+        					<a href="#">失联机构</a>
+        					<a href="#">重大遗漏</a>
+        					<a href="#">虚假填报</a>
+        				</dd>
+        			</dl>
+        			
+        		</div>
+        	</div>
+        </div>
+        
+    </div>
+    <div class="panel panel-left panel-cover">
+        <div class="content-block">
+            <div class='dqfxpanel panelwrap'>
+                <p>
+                    <a href="javascript:void(0)">基金数量增长图</a>
+                    <a href="javascript:void(0)">数量占比图</a>
+                    <a href="javascript:void(0)">规模占比图</a>
+
+                    <a href="javascript:void(0)">实际运行期分布</a>
+
+                    <a href="javascript:void(0)">基金平均规模</a>
+                    <a href="javascript:void(0)">管理人、托管人数量增长图</a>
+                    <a href="javascript:void(0)">管理人类型占比</a>
+                    <a href="javascript:void(0)">基金平均收益率变化图</a>
+                    <a href="javascript:void(0)">地域收益率离散性</a>
+                    <a href="javascript:void(0)">最大回撤率</a>
+                    <a href="javascript:void(0)">收益率分布图</a>
+                    <a href="javascript:void(0)">夏普比率</a>
+                    <a href="javascript:void(0)">beta系数</a>
+
+                    <a href="javascript:void(0)">全部基金数量和股权类基金变化</a>
+                    <a href="javascript:void(0)">法律形式数量变化</a>
+                    <a href="javascript:void(0)">法律形式占比</a>
+                    <a href="javascript:void(0)">基金风格等级分布图</a>
+                    <a href="javascript:void(0)">基金收益等级分布图</a>
+                    <a href="javascript:void(0)">基金风险等级分布图</a>
+                </p>
+            </div>
+            <div class="clfxpanel panelwrap">
+                <p>
+                    <a href="javascript:void(0)">基金数量和证券类基金数量变化</a>
+                    <a href="javascript:void(0)">实际运行期分布</a>
+                    <!--策略分析数量规模--->
+                    <a href="javascript:void(0)">排名前十的托管人数量及地域分类</a>
+                    <a href="javascript:void(0)">排名前十的管理人数量及地域分类</a>
+                    <!--策略分析相关机构--->
+
+
+                    <a href="javascript:void(0)">平均收益率变化图</a>
+                    <a href="javascript:void(0)">最佳最差月度回报</a>
+                    <a href="javascript:void(0)">正收益率占比</a>
+
+                    <a href="javascript:void(0)">收益分布</a>
+                    <!--策略分析收益分析--->
+
+                    <a href="javascript:void(0)">投资品种占比饼状图</a>
+                    <a href="javascript:void(0)">风险总结</a>
+                    <a href="javascript:void(0)">策略风险分析</a>
+                    <a href="javascript:void(0)">beta系数</a>
+                    <a href="javascript:void(0)">夏普比率</a>
+                </p>
+            </div>
+
+            <div class="jgfxpanel panelwrap">
+                <p>
+                    <a href="javascript:void(0)">收益率最优管理人榜单</a>
+
+                    <a href="javascript:void(0)">地区管理人数量</a>
+                    <a href="javascript:void(0)">管理人规模分布图</a>
+
+                    <a href="javascript:void(0)">上海及上海部分地区管理人数量统计</a>
+                    <a href="javascript:void(0)">管理人平均收益分布图</a>
+                    <a href="javascript:void(0)">管理人管理基金数量分布图</a>
+                    <a href="javascript:void(0)">非本地区注册管理人注册地区及数量统计</a>
+                    <a href="javascript:void(0)">非本地区注册管理人注册地区占比</a>
+
+                    <a href="javascript:void(0)">失联管理人统计</a>
+                    <a href="javascript:void(0)">异常机构占比统计</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    (function() {
+        var basic = 7.5,
+            d = document.documentElement,
+            changeSize = function() {
+                var w = d.clientWidth;
+                if (w > 750) w = 750;
+                d.style['fontSize'] = (w / basic) + 'px';
+            }
+        changeSize();
+        window.onresize = changeSize;
+    })()
+</script>
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<!-- Path to your app js-->
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src='https://cdn.hcharts.cn/highcharts/highcharts.js'></script>
+<script src="js/jquery.vmap.min.js"></script>
+<script src="js/jquery-jvectormap-cn-mill.js"></script>
+<script type="text/javascript" src="js/jquery.cityselect.js"></script>
+<script src="js/province.js"></script>
+<script src="js/arrData.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/dark-unica.js"></script>
+<script src="js/dataTool.js"></script>
+<script type="text/javascript" src="js/dark.js"></script>
+<script type="text/javascript" src="js/my-app.js"></script>
+</html>

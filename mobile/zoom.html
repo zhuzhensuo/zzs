@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name="x5-orientation" content="portrait">
+		<title></title>
+	</head>
+	<style>
+		*{margin:0;padding:0;}
+		html,body{height:100%;}
+		.zoom{width:100%;height:100%;}
+	</style>
+	<body>
+		<div id='zoom' class='zoom'></div>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/echarts.min.js"></script>
+	<script type="text/javascript" src="js/dark.js"></script>
+	<script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+	<script src="js/dark-unica.js"></script>
+	<script>
+		var opt=JSON.parse(localStorage.getItem('opt')),hc=localStorage.getItem('hc');
+		if(hc=='1'){
+			opt.chart.height='48%';
+			opt.tooltip={
+	            formatter: function () {
+	                return '<p><b>' + this.point.category + '</b><br/>' +
+	                    '管理人数量: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0)+'</p>';
+	            },
+	            //useHTML:true,
+	            style:{
+	
+	            }
+	       }
+			opt.yAxis.labels={
+				formatter: function () {
+                    return (Math.abs(this.value));
+                }
+			}
+			$('.zoom').highcharts(opt);
+		}else{
+			drawChart();
+		}
+		function drawChart(){
+			var id = document.getElementById('zoom');
+			var barChart=echarts.init(id,'dark');
+			barChart.resize();
+			window.onresize=function(){
+				barChart.resize();
+			}
+			barChart.setOption(opt);
+		}
+	</script>
+</html>

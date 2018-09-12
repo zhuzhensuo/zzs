@@ -1,0 +1,217 @@
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div data-page="ynrsdetail" class="page">
+    <!-- Scrollable page content-->
+    <div class="page-content search-content">
+      <div class="detailpage">
+      	<div class="goback"><a href="#" class="back backpage"></a></div>
+      	<div class="title">
+      		<h2>张三</h2>
+      		<p><img src="images/timg.jpg" /></p>
+      		<span page='ynrs' fundid="{{url_query.fundId}}"></span>
+      	</div>
+      	<div class="smallmenu detailroot">
+		        <div class="toolbar tabbar tabbar-labels">
+		            <div class="toolbar-inner">
+		                <a href="#detailjbxx" class="tab-link active">
+		                    <i class="icon demo-icon-5"></i>
+		                    <span>基本信息</span>
+		                </a>
+		                <a href="#detailyjfx" class="tab-link">
+		                    <i class="icon demo-icon-6"></i>
+		                    <span>企业关系</span>
+		                </a>
+		                <a href="#detailjzfx" class="tab-link">
+		                    <i class="icon demo-icon-9"></i>
+		                    <span>合作伙伴</span>
+		                </a>
+		            </div>
+		        </div>
+		    </div>
+		    <div class='tabs'>
+		    	<div class="tab active" id='detailjbxx'>
+		    		<div class="detailjbxx detailusual">
+		    			<h5 class="h5">简介</h5>
+		    			<div>{{personIntro}}</div>
+		    		</div>
+		    		<div class="detailjbxx detailusual">
+		    			<h5 class="h5">人物履历</h5>
+		    			<div>
+		    				{{#each CV}}
+		    				<div class="modeltit">
+		    					<p>时间 {{startDate}}～{{endDate}}</p>
+			    				<div class="row no-gutter">
+				    				<div class="col-50">
+				    					<dl>
+				    						<dt>任职地点</dt>
+				    						<dd>{{workplace}}</dd>
+				    					</dl>
+				    				</div>
+				    				<div class="col-50">
+				    					<dl>
+				    						<dt>职位</dt>
+				    						<dd>{{position}}</dd>
+				    					</dl>
+				    				</div>
+			    				</div>
+		    				</div>
+		    				{{/each}}
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="tab" id='detailyjfx'>
+		    		<div class="detailyjfx detailusual">
+		    			<div class="qygx">
+		    				<div class="modeltit">
+		    					<p class="p">
+			    					<span>相关企业共X家</span>
+			    					<span><a href="#">查看关系图>></a></span>
+			    				</p>
+			    				<div class="row no-gutter qygxwrap">
+				    				<div class="col-50">
+				    					<dl>
+				    						<dd>{{city1}}{{city1_quantity}}家</dd>
+				    						<dd>{{city2}}{{city2_quantity}}家</dd>
+				    						<dd>{{cityOther}}{{cityOther_quantity}}家</dd>
+				    					</dl>
+				    				</div>
+				    				<div class="col-50">
+				    					<div id="companypie" class="companypie"></div>
+				    				</div>
+			    				</div>
+		    				</div>
+		    			</div>
+		    			<div class="detailemployee ynrsdetail">
+		    				<div class="employee">
+		    					<div>
+		    						<p class="">担任法人公司信息 ({{assumeLegalPerson.length}})</p>
+		    						{{#each assumeLegalPerson}}
+			    					<div class="assumeLegalPerson">
+			    						<div class="row no-gutter titlebg">
+			    							<div>公司名称:{{companyName}}</div>
+			    							<div>公司状态:{{station}}</div>
+			    						</div>
+			    						<div class="row no-gutter mt3">
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt class="">社会统一信用代码</dt>
+			    									<dd>{{creditCode}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>注册资本</dt>
+			    									<dd>{{registAsset}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>企业类型</dt>
+			    									<dd>{{companyType}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50"></div>
+			    						</div>
+			    					</div>
+		    						{{/each}}
+		    					</div>
+		    					<div>
+		    						<p>对外投资信息({{assumeStockholder.length}})</p>
+		    						{{#each assumeStockholder}}
+		    						<div class="assumeLegalPerson">
+			    						<div class="row no-gutter titlebg">
+			    							<div>公司名称:{{companyName}}</div>
+			    							<div>公司状态:{{station}}</div>
+			    						</div>
+			    						<div class="row no-gutter mt3">
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>社会统一信用代码</dt>
+			    									<dd>{{creditCode}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>注册资本</dt>
+			    									<dd>{{registAsset}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>企业类型</dt>
+			    									<dd>{{companyType}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>投资认缴出资</dt>
+			    									<dd>{{subcribeAsset}}</dd>
+			    								</dl>
+			    							</div>
+			    						</div>
+			    					</div>
+			    					{{/each}}
+		    					</div>
+		    					<div>
+		    						<p>在外任职信息 ({{employCompany.length}})</p>
+		    						<div class="assumeLegalPerson">
+			    						<div class="row no-gutter titlebg">
+			    							<div>公司名称:{{companyName}}</div>
+			    							<div>公司状态:{{station}}</div>
+			    						</div>
+			    						<div class="row no-gutter mt3">
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>社会统一信用代码</dt>
+			    									<dd>{{creditCode}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>注册资本</dt>
+			    									<dd>{{registAsset}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>企业类型</dt>
+			    									<dd>{{companyType}}</dd>
+			    								</dl>
+			    							</div>
+			    							<div class="col-50">
+			    								<dl>
+			    									<dt>职位</dt>
+			    									<dd>{{position}}</dd>
+			    								</dl>
+			    							</div>
+			    						</div>
+			    					</div>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="tab" id='detailjzfx'>
+		    		<div class="byynrs">
+		    			{{#each partnerRecords}}
+		    			<div class="fundlist">
+		    				<a href="#" onclick="loadPage2('{{this.pId}}')">
+									<div class="row no-gutter">
+										<div class="col-30 lefts"><img src="images/timg.jpg"></div>
+										<div class="col-70 rights">
+											<dl>
+												<dt>姓名：{{pName}}</dt>
+												<dd>曾任{{position}}，{{pIntro}}</dd>
+											</dl>
+										</div>
+									</div>
+								</a>
+							</div>
+							{{/each}}
+		    		</div>
+		    	</div>
+		    </div>
+      </div>
+    </div>
+  </div>
+</div>

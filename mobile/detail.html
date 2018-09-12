@@ -1,0 +1,240 @@
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div data-page="detail" class="page">
+    <!-- Scrollable page content-->
+    <div class="page-content search-content">
+      <div class="detailpage">
+      	<div class="goback"><a href="#" class="back backpage"></a></div>
+      	<div class="title">
+      		<h2>{{this.fund.fundName}}</h2>
+      		<p>基金代码：{{this.fund.fundCode}}</p>
+      		<span fundid="{{url_query.fundId}}"></span>
+      	</div>
+      	<div class="smallmenu detailroot">
+		        <div class="toolbar tabbar tabbar-labels">
+		            <div class="toolbar-inner">
+		                <a href="#detailjbxx" class="tab-link active">
+		                    <i class="icon demo-icon-5"></i>
+		                    <span>基本信息</span>
+		                </a>
+		                <a href="#detailyjfx" class="tab-link">
+		                    <i class="icon demo-icon-6"></i>
+		                    <span>业绩分析</span>
+		                </a>
+		                <a href="#detailjzfx" class="tab-link">
+		                    <i class="icon demo-icon-9"></i>
+		                    <span>净值分析</span>
+		                </a>
+		                <a href="#detailccfx" class="tab-link">
+		                    <i class="icon demo-icon-10"></i>
+		                    <span>持仓分析</span>
+		                </a>
+		            </div>
+		        </div>
+		    </div>
+		    <div class='tabs'>
+		    	<div class="tab active" id='detailjbxx'>
+		    		<div class="detailjbxx detailusual">
+		    			<h5 class="h5">基金简介</h5>
+		    			<div class="table row table1">
+		    				<div class="col-50">
+		    					<table cellpadding="0" cellspacing="0">
+		    						<tr>
+		    							<td>基金类型</td>
+		    							<td class='assetClass'>{{this.fund.assetClass}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>成立日期</td>
+		    							<td>{{fund.inceptionDate}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>托管银行</td>
+		    							<td>{{fund.truOrg}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>证券经纪</td>
+		    							<td>{{fund.secOrg}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>投资风格</td>
+		    							<td class="investType">{{fund.investType}}</td>
+		    						</tr>
+		    					</table>
+		    				</div>
+		    				<div class="col-50">
+		    					<table cellpadding="0" cellspacing="0">
+		    						<tr>
+		    							<td>基金规模</td>
+		    							<td>{{fund.assetSize}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>基金状态</td>
+		    							<td class="state">{{fund.state}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>开放日</td>
+		    							<td>{{fund.openDate}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>币种</td>
+		    							<td class="currency">{{fund.currency}}</td>
+		    						</tr>
+		    						<tr>
+		    							<td>基金策略</td>
+		    							<td>{{fund.fundStrategy}}</td>
+		    						</tr>
+		    					</table>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="detailjbxx detailusual mt3">
+		    			<h5 class="h5">基金评级信息</h5>
+		    			<div class="table table2">
+		    				<table>
+		    					<tr>
+		    						<td>评级</td>
+		    						<td class='starclass'>{{fund.fundRating}}</td>
+		    						<td>评级日期</td>
+		    						<td>{{fund.ratingDate}}</td>
+		    					</tr>
+		    				</table>
+		    			</div>
+		    		</div>
+		    		<div class="detailjbxx detailusual mt3">
+		    			<h5 class="h5">基金管理公司</h5>
+		    			<div class="table table3">
+		    				<table>
+		    					<tr>
+		    						<td>公司名称</td>
+		    						<td><a href="company2.html">{{corp.companyName}}</a></td>
+		    					</tr>
+		    					<tr>
+		    						<td>资产规模</td>
+		    						<td>{{corp.companyAssetSize}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td>基金经理</td>
+		    						<td>{{corp.fundManager}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td>公司地址</td>
+		    						<td>{{corp.address}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td>注册代码</td>
+		    						<td>{{corp.registerNumber}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td>公司简介</td>
+		    						<td>{{corp.companyProfile}}</td>
+		    					</tr>
+		    				</table>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="tab" id='detailyjfx'>
+		    		<div class="detailyjfx detailusual">
+		    			<div>
+			    			<h5>基金回报</h5>
+			    			<div id='yjfx1' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>基金回撤</h5>
+			    			<div id='yjfx3' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>年化标准差</h5>
+			    			<div id='yjfx2' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+		    				<h5 class="h5">风险与收益</h5>
+			    			<div class="table tables1">
+			    				<table class="fxysy"></table>
+			    			</div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+		    				<h5 class="h5">相关性</h5>
+			    			<div class="table tables2">
+			    				<table class='xgx'></table>
+			    			</div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="tab" id='detailjzfx'>
+		    		<div class="detailusual detailjzfx">
+		    			<div>
+			    			<h5>回归分析</h5>
+			    			<div id='jzfx1' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>压力测试</h5>
+			    			<div id='jzfx2' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>风格漂移</h5>
+			    			<div id='jzfx3' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>风格敞口</h5>
+			    			<div id='jzfx4' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>行业敞口</h5>
+			    			<div id='jzfx5' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="tab" id='detailccfx'>
+		    		<div class="detailccfx detailusual">
+		    			<div>
+			    			<h5>总风险因子</h5>
+			    			<div id='ccfx1' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>行业因子风险敞口（Top5)</h5>
+			    			<div id='ccfx2' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>风格因子风险敞口（Top5)</h5>
+			    			<div id='ccfx3' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>行业因子风险贡献</h5>
+			    			<div id='ccfx4' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>行业因子边际风险贡献</h5>
+			    			<div id='ccfx5' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>行业因子风险敞口</h5>
+			    			<div id='ccfx6' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    			<div class="mt3">
+			    			<h5>基金与行业因子的相关性</h5>
+			    			<div id='ccfx7' class="chart"></div>
+			    			<div class="nodata">暂无数据</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+      </div>
+    </div>
+  </div>
+</div>

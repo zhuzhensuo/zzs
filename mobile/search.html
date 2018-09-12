@@ -1,0 +1,118 @@
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div data-page="search" class="page">
+    <!-- Scrollable page content-->
+    <div class="page-content infinite-scroll">
+    	<div class='scrollTop'>
+      <form action='' class="searchbar searchbar-init">
+      		<a href="#" class="back backpage"></a>
+			    <div class="searchbar-input" style='width:80%;'>
+			    	<div class="searchclose" style="width: 97%;">
+			    		<span></span>
+			    	</div>
+			      <input type="search" placeholder="输入基金名称、代码、管理机构" class="searchinput searchbtn2" onsearch='searchAction(this)'>
+			      <div class="search-condition search-condition2 jjcp2">
+	      			<div class="row no-gutter">
+	      				<div class="col-50">
+	      					<a href="#byjj2" class='tab-link byjj2 active'>按基金查询</a>
+	      				</div>
+	      				<div class="col-50">
+	      					<a href="#byjg2" class='tab-link byjg2'>按机构查询</a>
+	      				</div>
+	      			</div>
+	      			<div class="tabs searchlist searchtag">
+	      				<div class="tab active" id='byjj2'></div>
+	      				<div class="tab" id='byjg2'></div>
+	      			</div>
+	      		</div>
+	      		<div class="search-condition gljg2">
+	      			<div class="searchlist">
+	      				<div style='padding:5px 10px;' id='gljg2'></div>
+	      			</div>
+		      	</div>
+		      	<div class="search-condition ynrs2">
+	      			<div class="searchlist">
+	      				<div style='padding:5px 10px;' id='ynrs2'></div>
+	      			</div>
+		      	</div>
+			    </div>
+			    <a href="#" class="open-panel selectcondition" data-panel='right' style="margin-left: 5px;"></a>
+			</form>
+			<div class="searchResult">
+				<p>查询到{{this.total}}个结果</p>
+				<div class='byjjcp'>
+					{{#each this.results}}
+					<div class="fundlist">
+						<span fundid='{{this.fundId}}'></span>
+						<a href="#" onclick="loadPage('{{this.fundId}}',1)">
+							<div class='row no-gutter'>
+								<div class="col-40 lefts">
+									<h4>{{this.fundName}}</h4>
+									<p>{{this.fundCode}}</p>
+								</div>
+								<div class="col-60 rights">
+									<div class="row time">
+										<div class="col-40">成立时间</div>
+										<div class="col-60">{{this.inceptionDate}}</div>
+									</div>
+									<div class="row place">
+										<div class="col-40">管理机构</div>
+										<div class="col-60">{{this.mngOrg}}</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					{{/each}}
+				</div>
+				<div class='bygljg'>
+					{{#each this.results}}
+					<div class="fundlist">
+						<span page='gljg' fundid='{{id}}'></span>
+						<a href="#" onclick="loadPage('{{this.id}}',1)">
+							<div class='row no-gutter'>
+								<div class="col-40 lefts">
+									<h4>{{this.companyName}}</h4>
+									<p>{{this.companyType}}</p>
+								</div>
+								<div class="col-60 rights">
+									<div class="row time">
+										<div class="col-40">成立日期</div>
+										<div class="col-60">{{this.establishDate}}</div>
+									</div>
+									<div class="row place">
+										<div class="col-40">公司地址</div>
+										<div class="col-60">{{this.companyAddress}}</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					{{/each}}
+				</div>
+				<div class='byynrs'>
+					{{#each this.results}}
+					<div class="fundlist">
+						<span page='ynrs' fundid='{{this.pId}}'></span>
+						<a href="#" onclick="loadPage('{{this.pId}}',1)">
+							<div class='row no-gutter'>
+								<div class="col-30 lefts"><img src="images/timg.jpg" /></div>
+								<div class="col-70 rights">
+									<dl>
+										<dt>姓名：{{pName}}</dt>
+										<dd>曾任{{position}}，{{pIntro}}</dd>
+									</dl>
+								</div>
+							</div>
+						</a>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+			<div class="infinite-scroll-preloader">
+		    <div class="preloader"></div>
+		  </div>
+		  </div>
+    </div>
+  </div>
+</div>

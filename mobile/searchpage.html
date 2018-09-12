@@ -1,0 +1,57 @@
+<div class="pages">
+	<div class="page" data-page='searchpage'>
+		<div class="page-content">
+			<form class="searchbar searchbar-init">
+			    <div class="searchbar-input">
+			    	<div class="searchclose">
+			    		<span></span>
+			    	</div>
+		      		<input type="text" placeholder="输入基金名称、代码、管理机构等关键字搜索" class="searchinput searchbtn">
+		      		
+		      		<a href="search.html" class="searchbar-start">搜索</a>
+		      		<div class="search-condition jjcp">
+		      			<div class="row no-gutter">
+		      				<div class="col-50">
+		      					<a href="#byjj" class='tab-link byjj active'>按基金查询</a>
+		      				</div>
+		      				<div class="col-50">
+		      					<a href="#byjg" class='tab-link byjg'>按机构查询</a>
+		      				</div>
+		      			</div>
+		      			<div class="tabs searchlist searchtag">
+		      				<div class="tab active" id='byjj'></div>
+		      				<div class="tab" id='byjg'></div>
+		      			</div>
+		      		</div>
+		      		<div class="search-condition gljg">
+		      			<div class="searchlist">
+		      				<div style='padding:5px 10px;' id='gljg'></div>
+		      			</div>
+		      			
+		      		</div>
+		      		<div class="search-condition ynrs">
+		      			<div class="searchlist">
+		      				<div style='padding:5px 10px;' id='ynrs'></div>
+		      			</div>
+		      			
+		      		</div>
+			    </div>
+			</form>
+			<div class="recordandhot">
+				<div class="history searchlink">
+					<p>
+						<span>历史搜索</span>
+						<a href='javascript:void(0)' class="record-clear">清空</a>
+					</p>
+					<div class="searchtag searchtags"></div>
+				</div>
+				<div class="hotsearch searchlink">
+					<p>
+						<span>热门搜索</span>
+					</p>
+					<div class="searchtag hotsearchs"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
