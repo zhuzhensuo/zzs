@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  	*{margin:0;padding:0;}
+	body{background:#000;}
+  	.container{position:absolute;left:356px;top:130px;width:100px;height:100px;border:1px solid #000;border-radius:50%;filter:blur(5px) contrast(10);overflow:hidden;transform:scale(0.5)}
+	span.span{border-radius:50%;background:pink;position:absolute;mix-blend-mode:screen;}
+	@-webkit-keyframes mymove{
+		0%{
+			opacity:1;
+		}
+		50%{
+			opacity:0;
+			top:00px;
+		}
+		100%{
+			opacity:0;
+			top:0px;
+		}
+	}
+  </style>
+ </head>
+ <body>
+ 	<img src='timg.jpg' />
+	<div class="container" id="c1"></div>
+ </body>
+ <script>
+ 	var Fire = function(el){
+		this.el = el;
+		this.init.call(this);
+	}
+	Fire.prototype = {
+		init:function(){
+			this.create();
+		},
+		random:function(min,max){
+			return Math.floor(Math.random()*(max - min + 1) + min);
+		},
+		create:function(){
+			var frag = document.createDocumentFragment();
+			for(var i = 0;i <100;i++){
+				var el = document.createElement('span');
+				el.className = 'span';
+				el.style['width'] = el.style['height'] = this.random(10,20) + 'px';
+				el.style['left'] = this.random(20,60) + 'px';
+				el.style['top'] = this.random(100,100) + 'px';
+				el.style['animation'] = `mymove 1.5s linear ${this.random(0,3000)/1000}s infinite`;
+				frag.appendChild(el);
+			}
+			this.el.appendChild(frag);
+		}
+	}
+	var c1 = document.getElementById('c1');
+	new Fire(c1);
+ </script>
+</html>
