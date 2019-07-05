@@ -76,7 +76,7 @@ module.exports = {
 				use:[{
 					loader:miniCssExtract.loader,
 					options:{publicPath:'../'}
-				},'css-loader','postcss-loader','less-loader']//postcss-loader必须放在less-loader前面
+				},'css-loader','postcss-loader','less-loader']//postcss-loader卤脴脨毛路脜脭脷less-loader脟掳脙忙
 			},{
 				test:/\.(jpg|jpeg|png|gif)?$/,
 				use:['url-loader?limit=10000&name=images/[name].[hash:7].[ext]','image-webpack-loader?{pngquant:{quality: "55-90", speed: 4}}']
