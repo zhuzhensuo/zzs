@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="x5-orientation" content="portrait">
+    <meta HTTP-EQUIV="pragma" content="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" content="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" content="0">
+  <title>index</title>
+  <% if(htmlWebpackPlugin.options.cdn) {%>
+		<% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
+	<link rel="stylesheet" href="<%=css%>">
+		<% } %>
+	<% } %>
+ </head>
+ <script>
+        (function() {
+            let basic = 7.5,
+                d = document.documentElement,
+                changeSize = function() {
+                    let w = d.clientWidth;
+                    if (w > 750) w = 750;
+                    d.style['fontSize'] = (w / basic) + 'px';
+                };
+            changeSize();
+            window.onresize = changeSize;
+        })();
+    </script>
+ <body>
+ 	<div id="app">
+		<div ref="isLoading" class="isLoading" style="position: fixed;width:100%;height:100%;z-index: 1000;left:0;top:0;background: white;font-size: 20px;"  flex="main:center cross:center" ><span>正在加载...</span></div>
+    <div class="login">
+        <h6 class="userAccount" style="padding-bottom: 0;text-align: center;">当前微信用户已绑定代理商账号为：<span></span></h6>
+        <div class="input">
+                <div>
+                    <h6 class="tit">1、请输入代理商手机号和密码完成绑定</h6>
+                    <div>
+                        <form id="userInfo">
+                            <div flex="main:center cross:center box:first">
+                                <div class="title">代理商账号：</div>
+                                <div class="inputbox" flex="cross:center"><input placeholder="请输入手机号" v-blur v-model="form.mobile" type="text" pattern="[0-9]*" placeholder2="手机号不能为空" class="mobile cantEmpty" id="mobile"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap pwdBox" flex="main:center cross:center box:first">
+                                <div class="title">密码：</div>
+                                <div class="inputbox" flex="cross:center"><input type="password" placeholder="请输入你的密码" class="password subBtn cantEmpty" v-model="form.password" placeholder2="密码不能为空" id="password"><label class="tipLabel"></label></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="infoTip">提示：手机号为接收短信的手机号码。密码为短信中初始密码或者预设密码。短信有效时间为15分钟，超过时间请邀请方重新发起。</div>
+                </div>
+                <div class="certifyWay" flex="main:center cross:center box:mean">
+                    <div v-if="form.personBlock">
+                        <input checked v-model="form.personal" value="true" type="radio" name="certify" id="a"> <label for="a">个人认证</label>
+                    </div>
+                    <div v-if="form.companyBlock">
+                        <input v-model="form.personal" value="false" type="radio" name="certify" id="b"> <label for="b">企业认证</label>
+                    </div>
+                </div>
+                <div class="personal information">
+                    <form id="personalVerify">
+                    <div>
+                        <h6>2、个人认证</h6>
+                        <div>
+                            <div flex="main:center cross:center box:first">
+                                <div class="title">姓名：</div>
+                                <div class="inputbox" flex="cross:center"><input type="text" placeholder="请输入你的姓名" placeholder2="姓名不能为空" id="userName" class="userName cantEmpty"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">身份证：</div>
+                                <div class="inputbox" flex="cross:center"><input type="text" placeholder="请输入你的身份证号" class="idNo cantEmpty" id="idNo" placeholder2="身份证号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">详细地址：</div>
+                                <div id="distpicker" class="inputbox" flex="cross:center box:mean">
+                                    <select data-province="--省--" class="province" id="province"></select>
+                                    <select data-city="--市--" class="city" id="city"></select>
+                                    <select id="town" class="town" data-district="--区--">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title"></div>
+                                <div class="inputbox" flex="cross:center"><input id="detailAddress" type="text" placeholder="请输入详细地址(xx路xx号)" class="detailAddress cantEmpty" placeholder2="详细地址不能为空"><label style="width:98%" class="tipLabel"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxwrap">
+                        <h6>3、提现绑卡</h6>
+                        <div>
+                            <div flex="main:center cross:center box:first">
+                                <div class="title">开户银行：</div>
+                                <div class="inputbox" flex="cross:center"><input type="text" id="accountBank" readonly placeholder="输入卡号后自动显示" placeholder2="开户银行不能为空" class="accountBank noBorder"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">银行卡号：</div>
+                                <div class="inputbox" flex="cross:center"><input id="bankNo" placeholder="请输入银行卡号" class="bankNo cantEmpty" placeholder2="银行卡号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">开户名称：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input id="accountName" type="text" placeholder="请输入开户名称" class="accountName cantEmpty noBorder" readonly placeholder2="开户名称不能为空">
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="width:2.3rem;margin-left: -0.6rem;">银行预留手机号：</div>
+                                <div class="inputbox" flex="cross:center"><input id="bankMobile" placeholder="请输入银行预留手机号" class="bankMobile immobile cantEmpty" placeholder2="预留手机号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <div class="boxwrap">
+                        <h6>4、上传照片</h6>
+                        <form id="person" method="post">
+                            <div class="uploadImg">
+                                <div flex="main:center cross:center box:mean">
+                                    <div class="photo idCardAdd" @click="uploads('pImg1')">
+                                        <div></div>
+                                        <input @change="uploadEvent" ref="pImg1" name="authImgFile1" class="files pImg1" type="file" id="pImg1" imageType="1" />
+                                        <p>身份证正面</p>
+                                    </div>
+                                    <div class="photo idCardMinus">
+                                        <div></div>
+                                        <input name="authImgFile2" class="files pImg2" type="file" id="pImg2" imageType="2" />
+                                        <p>身份证反面</p>
+                                    </div>
+                                    <div class="photo handIdCard">
+                                        <div></div>
+                                        <input name="authImgFile3" class="files pImg3" type="file" id="pImg3" imageType="3" />
+                                        <p>手持身份证</p>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 0.2rem;" flex="main:center cross:center box:mean">
+                                    <div class="photo bankCard">
+                                        <div></div>
+                                        <input name="authImgFile4" class="files pImg4" type="file" id="pImg4" imageType="4" />
+                                        <p>银行卡照片</p>
+                                    </div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="company information">
+                    <form id="company">
+                    <div>
+                        <h6>2、企业认证</h6>
+                        <div>
+                            <div flex="main:center cross:center box:first">
+                                <div class="title">企业名称：</div>
+                                <div class="qiyeName inputbox" flex="cross:center">
+                                    <button type="button">查询</button>
+                                    <input type="text" placeholder="请输入企业名称" placeholder2="企业名称不能为空" id="companyName" class="companyName cantEmpty">
+                                    <label class="tipLabel"></label>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">注册地址：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="营业执照上住所(自动显示，下同)" readonly id="registerAddress" class="registerAddress noBorder"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:top box:first">
+                                <div class="title">经营范围：</div>
+                                <div style="height: auto;" class="inputbox" flex="cross:center">
+                                    <textarea readonly class="operateRange noBorder" placeholder="营业执照上经营范围"></textarea></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="width: 2rem;margin-left: -0.3rem;">企业成立日期：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="营业执照上成立日期" readonly class="companyStart noBorder"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">营业期限自：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="营业执照上营业期限起始日期" readonly class="companyOperate noBorder"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">营业期限止：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="营业执照上营业期限结束日期" readonly class="companyOperateEnd noBorder"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">注册资本：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="营业执照上注册资本" readonly class="registerMoney noBorder"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">企业类型：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="营业执照上类型" readonly class="companyType noBorder" id="companyType"></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="width:2.3rem;margin-left: -0.6rem;">营业执照编号：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input type="text" placeholder="营业执照编号" class="licenseNo noBorder" id="licenseNo" readonly>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">法人姓名：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input type="text" placeholder="法人姓名" class="legalName noBorder" id="legalName" readonly>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">营业地址：</div>
+                                <div id="distpicker2" class="inputbox" flex="cross:center box:mean">
+                                    <select id="companyProvince" data-province="--省--" class="companyProvince"></select>
+                                    <select data-city="--市--" class="companyCity" id="companyCity"></select>
+                                    <select id="companyTown" class="companyTown" data-district="--区--">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title"></div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input placeholder="请输入企业地址(xx路xx号)" placeholder2="企业地址不能为空" id="companyAddress" class="companyAddress cantEmpty">
+                                    <label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">法人身份证：</div>
+                                <div class="inputbox" flex="cross:center"><input id="legalIdCard" type="text" placeholder="请输入法人身份证号" class="legalIdCard cantEmpty" placeholder2="法人身份证号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="width:2.3rem;margin-left: -0.6rem;">业务联系人姓名：</div>
+                                <div class="inputbox" flex="cross:center"><input id="businessContactName" type="text" placeholder="请输入业务联系人姓名" class="businessContactName cantEmpty" placeholder2="业务联系人姓名不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">所属行业：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <select id="industry" placeholder2="请选择所属行业" class="industry cantEmpty">
+                                        <option selected value="">请选择</option>
+                                        <option value="2A">农、林、牧、渔业</option>
+                                        <option value="2B">采矿业</option>
+                                        <option value="2C">制造业</option>
+                                        <option value="2D">电力、燃气及水的生产和供应业</option>
+                                        <option value="2E">建筑业</option>
+                                        <option value="2F">交通运输、仓储和邮政业</option>
+                                        <option value="2G">信息传输、计算机服务和软件业</option>
+                                        <option value="2H">批发和零售业</option>
+                                        <option value="2I">住宿和餐饮业</option>
+                                        <option value="2J">金融业</option>
+                                        <option value="2K">房地产业</option>
+                                        <option value="2L">租赁和商务服务业</option>
+                                        <option value="2M">科学研究、技术服务和地质勘查业</option>
+                                        <option value="2N">水利、环境和公共设施管理业</option>
+                                        <option value="2O">居民服务和其他服务业</option>
+                                        <option value="2P">教育</option>
+                                        <option value="2Q">卫生、社会保障和社会福利业</option>
+                                        <option value="2R">文化、体育和娱乐业</option>
+                                        <option value="2S">公共管理和社会组织</option>
+                                        <option value="2T">国际组织</option>
+                                    </select>
+                                    <label class="tipLabel"></label>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="margin-left: -0.6rem;width:2.3rem;">业务联系手机号：</div>
+                                <div class="inputbox" flex="cross:center"><input id="businessMobile" type="number" placeholder="请输入业务联系手机号" pattern="[0-9]*" class="businessMobile cantEmpty" placeholder2="业务联系手机号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="margin-left: -0.6rem;width:2.3rem;">业务联系地址：</div>
+                                <div id="distpicker3" class="inputbox" flex="cross:center box:mean">
+                                    <select id="businessProvince" data-province="--省--" class="businessProvince"></select>
+                                    <select id="businessCity" data-city="--市--" class="businessCity"></select>
+                                    <select id="businessTown" class="businessTown" data-district="--区--">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title"></div>
+                                <div class="inputbox" flex="cross:center"><input type="text" placeholder="请输入业务联系地址(xx路xx号)" class="businessAddress cantEmpty" id="businessAddress" placeholder2="业务联系地址不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="width:3.5rem;margin-left: -0.7rem;">法定代表人证件过期时间：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input type="date" placeholder="请输入证件过期时间" style="width:3.4rem;" id="legalExpDate" class="legalExpDate cantEmpty" placeholder2="证件过期时间不能为空">
+                                    <label class="tipLabel"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxwrap">
+                        <h6>3、提现账户</h6>
+                        <div style="padding-bottom: 0.2rem;">
+                            <div flex="main:center cross:center box:first">
+                                <div class="title">账户类别：</div>
+                                <div class="accountType">
+                                    <div flex="main:center cross:center box:mean">
+                                        <div class="duiSi" style="display: none;">
+                                            <input type="radio" class="personalAccount" name="type" id="p"> <label for="p">对私</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" class="commonAccount" name="type" id="c" checked> <label for="c">对公</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toPersonal">
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">开户银行：</div>
+                                <div class="inputbox" flex="cross:center"><input type="text" placeholder="输入卡号后自动显示" placeholder2="开户银行不能为空" id="companyAccountBank" class="companyAccountBank cantEmpty"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">银行卡号：</div>
+                                <div class="inputbox" flex="cross:center"><input placeholder="请输入银行卡号" id="companyBankNo" class="companyBankNo cantEmpty" placeholder2="银行卡号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">开户名称：</div>
+                                <div class="inputbox" flex="cross:center">
+                                    <input type="text" id="companyAccountName" placeholder="开户名称" class="companyAccountName noBorder" readonly>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title" style="width:2.3rem;margin-left: -0.6rem;">银行预留手机号：</div>
+                                <div class="inputbox" flex="cross:center"><input id="companyBankMobile" placeholder="请输入银行预留手机号" class="immobile companyBankMobile cantEmpty" placeholder2="预留手机号不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                        </div>
+                        <div class="toCommon">
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">开户银行：</div>
+                                <div class="inputbox accountBankWrap" flex="cross:center">
+                                    <input id="chooseAccountBank" class="cantEmpty chooseAccountBank" placeholder2="请选择开户银行" placeholder="请选择"/>
+                                    <label class="tipLabel"></label>
+                                    <ul></ul>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">开户支行：</div>
+                                <div class="inputbox accountBankWrap" flex="cross:center">
+                                    <input type="text" placeholder="请输入支行名称" class="branchBankName cantEmpty" id="branchBankName" placeholder2="支行名称不能为空">
+                                    <label class="tipLabel"></label>
+                                    <ul></ul>
+                                </div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">银行卡号：</div>
+                                <div class="inputbox" flex="cross:center"><input type="text" placeholder="请输入银行卡号" placeholder2="银行卡号不能为空" id="commonAccountBank" class="commonAccountBank cantEmpty"><label class="tipLabel"></label></div>
+                            </div>
+                            <div class="boxwrap" flex="main:center cross:center box:first">
+                                <div class="title">开户名称：</div>
+                                <div class="inputbox" flex="cross:center"><input type="text" placeholder="请输入开户名称" class="commonAccountName cantEmpty" id="commonAccountName" placeholder2="开户名称不能为空"><label class="tipLabel"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <div class="boxwrap">
+                        <h6>4、上传照片</h6>
+                        <form id="legal" method="post">
+                            <div class="uploadImg">
+                                <div flex="main:center cross:center box:mean">
+                                    <div class="photo idCardAdd">
+                                        <div></div>
+                                        <input name="authImgFile5" class="files lImg1" type="file" id="lImg1" imageType="5" />
+                                        <p>法人身份证正面</p>
+                                    </div>
+                                    <div class="photo idCardMinus">
+                                        <div></div>
+                                        <input name="authImgFile6" class="files lImg2" type="file" id="lImg2" imageType="6" />
+                                        <p>法人身份证反面</p>
+                                    </div>
+                                    <div class="photo license">
+                                        <div></div>
+                                        <input name="authImgFile7" class="files lImg3" type="file" id="lImg3" imageType="7" />
+                                        <p>营业执照</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uploadImg" style="margin-top: 0.3rem;">
+                                <div flex="main:center cross:center box:mean">
+                                    <div class="photo openAccount">
+                                        <div></div>
+                                        <input name="authImgFile8" class="files lImg4" type="file" id="lImg4" imageType="8" />
+                                        <p>开户证明文件图片</p>
+                                    </div>
+                                    <div class="photo personalPhoto">
+                                        <div></div>
+                                        <input name="authImgFile9" class="files lImg5" type="file" id="lImg5" imageType="9" />
+                                        <p>银行卡拍照</p>
+                                    </div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </form>
+                        <form id="video" method="post">
+                            <div class="uploadImg">
+                                <div style="margin-top: 0.2rem;" flex="main:center cross:center box:mean">
+                                    <div class="photo video">
+                                        <div></div>
+                                        <input name="legalPromiseVideoFile" class="files lImg6" type="file" id="lImg6" imageType="10" />
+                                        <p>法人或者负责人开通账户承诺视频</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="btn">
+                    <div flex="main:center box:mean">
+                        <div><input type="reset" value="重置" class="reset"></div>
+                        <div ><input type="button" value="确认" class="submit loginsubmit"></div>
+                    </div>
+                </div>
+                <div class="protocol" flex="main:center cross:center box:first">
+                    <input id="agreement" type="checkbox">
+                    <dl>
+                        <dd><a href="zztProtocol.html" target="_blank">《账账通账户系统服务协议》</a></dd>
+                        <dd class="hft xy" v-if="form.xwcf == true"><a href="hftProtocol.html" target="_blank">《网络支付业务合作协议书》</a></dd>
+                        <dd class="xwcf xy" v-else><a href="xwcfProtocol.html" target="_blank">《网络支付业务合作协议书》</a></dd>
+                    </dl>
+                </div>
+                <div class="infoTip2" style="padding:0 0 0.5rem;">提示：其中1涉及基础功能信息，2、3、4涉及分润提现功能。认证信息、银行账户信息、照片信息需真实且一致。</div>
+        </div>
+    </div>
+	</div>
+
+	<% if(htmlWebpackPlugin.options.cdn) {%>
+		<% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+	<script src="<%=js%>"></script>
+		<% } %>
+	<% } %>
+	<script src="static/js/distpicker.data.min.js"></script>
+	<script src="static/js/distpicker.min.js"></script>
+ </body>
+</html>

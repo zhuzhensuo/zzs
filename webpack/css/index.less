@@ -1,0 +1,116 @@
+.fix{position: fixed;-webkit-overflow-scrolling: touch;}
+.static{position: static;height:100vh;background: white;}
+body{width:7.5rem;font-family:'PingFangSC-Regular',"Microsoft YaHei" ;margin-left: auto;margin-right: auto;position: relative;background: white;
+}
+.hidden{overflow: hidden;}
+//登录页面
+.login{
+  .accountBankWrap{
+    ul{font-size: 0.3rem;position: absolute;min-width: 100%;border: 1px solid #979797;left: 0;top: 0.72rem;z-index: 999;background: white;border-radius: 0.12rem;text-indent: 0.2rem;padding:0.1rem 0;display: none;max-height: 5rem;box-sizing: border-box;overflow:auto;
+      li{line-height: 0.5rem;}
+    }
+  }
+  .certifyWay{font-size: 0.3rem;margin-top: 0.3rem;
+    div{text-align: center;}
+  }
+  .accountType{font-size: 0.3rem;}
+  h6{font-size: .32rem;margin: 0;padding:0.36rem 0;font-weight: normal;}
+  .userAccount{text-align: center;}
+  .input{padding:0 0.6rem;margin-top: 0.13rem;}
+  .boxwrap{margin-top: 0.26rem;}
+  .uploadImg{
+    input{display: none;}
+    img,video{width:100%;background: white;vertical-align: middle;}
+    div.photo{text-align: center;position: relative;
+      div{width:1.28rem;height:1.28rem;margin: 0 auto;overflow: hidden;position: relative;padding-bottom: 3px;
+        span{position: absolute;width:100%;height:100%;left:0;top:0;background: white url("../images/loading.gif") no-repeat center center;background-size: 80% auto;opacity: 0.8;}
+      }
+    }
+    div.video{
+      div{height:2rem;width:2rem;}
+      video{height: 100%;}
+    }
+    .idCardAdd div{background:#fff url(../images/idcardadd.png) no-repeat center center;background-size: 100% 100%;}
+    .idCardMinus div{background:#fff url(../images/idcardminus.png) no-repeat center center;background-size: 120% 120%;}
+    .handIdCard div{background:#fff url(../images/handidcard.png) no-repeat center center;background-size: 80% 80%;}
+    .bankCard div{background:#fff url(../images/bankCard.png) no-repeat center center;background-size: 100% 100%;}
+    .license div{background:#fff url(../images/license.png) no-repeat center center;background-size: 100% 100%;}
+    .openAccount div{background:#fff url(../images/open.png) no-repeat center center;background-size: 100% 80%;}
+    .personalPhoto div{background:#fff url(../images/bankCard.png) no-repeat center center;background-size: 100% 100%;}
+    .video div{background:#fff url(../images/video.png) no-repeat center center;background-size: 100% 80%;}
+    .idCardAdd,.bankCard,.idCardMinus,.handIdCard,.license,.video,.openAccount,.personalPhoto{
+      div.active{background-image: none;}
+    }
+    p{font-size: 0.3rem;margin: 0;margin-top: 0.2rem;}
+  }
+  .company{display: none;
+    .uploadImg p{font-size: 0.2rem;}
+  }
+  .title{font-size: 0.28rem;width:1.7rem;text-align: right;
+    @media(width:320px){font-size:0.25rem;}
+  }
+  .qiyeName{
+    button{position: absolute;right:0;top:0;height:100%;width:1rem;background: #0475FB;border-radius:0.12rem;font-size: 0.26rem;color:white;border:none 0;display: none;z-index: 999;}
+  }
+  .inputbox{height: 0.69rem;
+    input,textarea,select{font-size: 0.28rem;width:100%;height:99%;padding:0;border:1px solid #979797;border-radius: 0.12rem;text-indent: 0.2rem;line-height:0.69rem;background: white;
+      &:focus{border-color:#0475FB;}
+    }
+    textarea{line-height:normal;padding:0 0.2rem;text-indent: 0;max-height: 4rem;-webkit-overflow-scrolling: touch;}
+    select{background:white;margin: 0 1px;text-align: center;}
+    .noBorder{border:none !important;color:#000;background: transparent;}
+  }
+  .protocol{text-align: center;font-size: 0.28rem;
+    input{height: 0.3rem;width:0.3rem;background: #333;border-radius: 0;border:1px solid #000;margin-left: 20%;}
+    dl{text-align: left;
+      dd{height:0.4rem;}
+    }
+    a{text-decoration: none;color:#000;margin-left: 10px;text-align: left;}
+  }
+}
+.btn{height:0.8rem;padding: 0.62rem 0;
+  div{height:100%;}
+  .reset{background: #808080}
+  .submit{background: #0475FB}
+  input.disable{background: #808080;}
+  input{width:98%;height:100%; background: none;border-radius: 0.4rem;font-size:0.28rem;color:white;outline: 0 none;display: block;border:none;margin: 0 auto;}
+  .tip{text-align: center;font-size: 0.24rem;color:#808080;margin-top: 0.3rem;display: none;}
+}
+//交易查询
+
+
+
+//绑定代理商 1期
+//子代理管理
+.protocols{position:absolute;width:100%;height:100%;z-index: 100;top:0%;left:0%;background: rgba(0,0,0,0.5);
+  div{height:100%;background: white;overflow: auto;width:80%;}
+}
+
+//子代理管理详情
+
+.inputbox{position: relative;
+  textarea.active,select.active{border:1px solid red;}
+}
+input.active{border:1px solid red !important;}
+.tipLabel{position: absolute;width:95%;height:90%;color:red;left:2px;top:50%;background: white;transform: translate(0,-50%);font-size: 0.28rem;line-height: 0.62rem;display: none;border-radius: 0.12rem;z-index: 100;text-indent: 8px;}
+.pwdMng{
+  .tipLabel{line-height: 0.6rem;font-size: 0.26rem;width:97.5%;height:0.6rem;text-indent: 8px;}
+}
+
+.infoTip,.infoTip2{color:#F98E58;font-size: 0.23rem; line-height: 0.3rem;margin-top: 0.5rem;text-align: justify;}
+
+.loading{font-size: 0.28rem;text-align: center;padding:0.2rem 0;display: block;}
+.mask{position:fixed;width:100%;height:100%;top:0;left:0;z-index:11;-webkit-overflow-scrolling: touch; -webkit-transform: translate3d(0, 0, 0);overflow-scrolling: touch;transform: translate3d(0, 0, 0);
+  .masks{height: 100%;position: absolute;left:0;bottom:0;width:100%;}
+  .close{color:white;position: absolute;font-size: 0.4rem;top:10px;right:10px;z-index: 1;}
+}
+.maskDiv{position: fixed;width:100%;height:100%;z-index: 1001;background:rgba(0,0,0,0.3);left:0;top:0;font-size: 0.32em;
+  div{position: absolute;width:80%;background: white;left:50%;top:50%;transform: translate(-50%,-50%);border-radius: 12px;
+    dl{padding:0.2rem;
+      dt{line-height: 25px;}
+      dd{text-align: right;margin-top: 0.5rem;}
+      span{color:#1782EC;}
+    }
+  }
+}
+.isLoading{}

@@ -1,0 +1,60 @@
+{
+  "name": "wp1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "element-ui": "^2.12.0",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "autoprefixer": "^9.6.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "dynamic-cdn-webpack-plugin": "^4.0.0",
+    "file-loader": "^4.2.0",
+    "flex.css": "^1.1.7",
+    "html-loader": "^0.5.5",
+    "html-url-loader": "^1.0.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "jquery": "^3.4.1",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "merge": "^1.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "module-to-cdn": "^3.1.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss": "^7.0.18",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.0.0",
+    "transfer-webpack-plugin": "^0.1.4",
+    "url-loader": "^2.1.0",
+    "vue": "^2.6.10",
+    "webpack": "^4.39.3",
+    "webpack-cdn-plugin": "^3.1.4",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "author": "zzs",
+  "license": "ISC",
+  "browserslist": [
+    "defaults",
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "ios > 7"
+  ]
+}
