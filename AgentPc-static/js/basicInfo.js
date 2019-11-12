@@ -1,7 +1,7 @@
 new Vue({
     el:'#app',
     data:{
-        step:2,
+        step:1,
         step1:{
             idCardFront:false,//是否上传身份证正面照
             idCardBack:false,//是否上传身份证反面照

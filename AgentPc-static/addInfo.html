@@ -425,7 +425,7 @@
                             </div>
                         </div>
                         <div class="layui-row" align="center" style="margin-top: 20px;">
-                            <button type="button" class="layui-btn layui-btn-lg">提交</button>
+                            <button type="button" @click="step = 2" class="layui-btn layui-btn-lg">下一步</button>
                         </div>
                     </form>
                 </div>
@@ -544,7 +544,6 @@
                         </div>
                         <div class="layui-row" align="center">
                             <button type="button" class="layui-btn layui-btn-lg" @click="step  = 1">上一步</button>
-                            <button type="button" class="layui-btn layui-btn-lg">提交</button>
                             <button type="button" class="layui-btn layui-btn-lg" @click="step = 3">下一步</button>
                         </div>
                     </form>
@@ -579,7 +578,6 @@
                         </div>
                         <div class="layui-row" align="center" style="margin-top: 40px;">
                             <button type="button" class="layui-btn layui-btn-lg" @click="step  = 2">上一步</button>
-                            <button type="button" class="layui-btn layui-btn-lg">提交</button>
                             <button type="button" class="layui-btn layui-btn-lg" @click="step = 4">下一步</button>
                         </div>
                     </form>
@@ -639,7 +637,6 @@
                         </div>
                         <div class="layui-row" align="center" style="margin-top: 40px;">
                             <button type="button" class="layui-btn layui-btn-lg" @click="step  = 3">上一步</button>
-                            <button type="button" class="layui-btn layui-btn-lg">提交</button>
                             <button type="button" class="layui-btn layui-btn-lg" @click="step = 5">下一步</button>
                         </div>
                     </form>
@@ -843,7 +840,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="https://www.layuicdn.com/layui-v2.5.5/layui.js"></script>
     <script src="https://cdn.bootcss.com/less.js/3.10.3/less.min.js"></script>
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
     <script src="js/distpicker.data.min.js"></script>
     <script src="js/distpicker.min.js"></script>
     <script src="js/main.js"></script>
