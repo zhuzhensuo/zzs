@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户进件-基础信息</title>
+    <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/flex.css" />
+    <link rel="stylesheet/less" type="text/css" href="css/index.less" />
+    <style>
+        .loading{position: fixed;width:100%;height:100%;z-index: 999;background: white;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div id="app" class="fillInfo">
+        <div class="header layui-main">
+            <div class="userMobile">
+                <ul class="layui-nav layui-row">
+                    <li class="layui-nav-item" style="margin-left: 30px;"><button class="layui-btn">退出</button></li>
+                    <li class="layui-nav-item"><span>13002172132</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="notice" v-cloak>
+            <div class='layui-row'>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>法人企业</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>非法人企业</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class='layui-row'>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>个体工商户</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>党政、机关及事业单位</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class='layui-row'>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>民办非企业组织</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>社会团体</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class='layui-row'>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>小微商户</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-col-xs6">
+                    <dl>
+                        <dt>其他组织</dt>
+                        <dd>
+                            <div><img src="images/qszs.jpg" width="300"/></div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="mains">
+            <h1><strong>快速进件</strong></h1>
+            <div class="progresses">
+                <div class="now">
+                    <ul class="layui-row">
+                        <li class="layui-col-xs4 border active">基础信息</li>
+                        <li class="layui-col-xs4 border">结算绑卡</li>
+                        <li class="layui-col-xs4">其他材料</li>
+                    </ul>
+                </div>
+                <button class="layui-btn">退出进件</button>
+            </div>
+            <div class="box">
+                <div class="progress">
+                    <dl>
+                        <dt>选择主题类别</dt>
+                        <dd class="first">主题信息</dd>
+                        <dd>联系信息</dd>
+                    </dl>
+                </div>
+                <div class="type">
+                    <h2 align="center">选择主题类别<span @click="noticeShow()">？</span></h2>
+                    <div class="types">
+                        <div flex="main:center cross:center box:justify">
+                            <div :class="['block',type === 1 ? 'active' : '']" @click="getType(1)">法人企业</div>
+                            <div></div>
+                            <div :class="['block',type === 2 ? 'active' : '']" @click="getType(2)">非法人企业</div>
+                        </div>
+                        <div flex="main:center cross:center box:justify">
+                            <div :class="['block',type === 3 ? 'active' : '']" @click="getType(3)">个体工商户</div>
+                            <div></div>
+                            <div :class="['block',type === 4 ? 'active' : '']" @click="getType(4)">党政、机关及事业单位</div>
+                        </div>
+                        <div flex="main:center cross:center box:justify">
+                            <div :class="['block',type === 5 ? 'active' : '']" @click="getType(5)">民办非企业组织</div>
+                            <div></div>
+                            <div :class="['block',type === 6 ? 'active' : '']" @click="getType(6)">社会团体</div>
+                        </div>
+                        <div flex="main:center cross:center box:justify">
+                            <div :class="['block',type === 7 ? 'active' : '']" @click="getType(7)">小微商户</div>
+                            <div></div>
+                            <div :class="['block',type === 8 ? 'active' : '']" @click="getType(8)">其他组织</div>
+                        </div>
+                    </div>
+                    <div class="nextStep" align="center">
+                        <button v-show="type !== 0" type="button" class="layui-btn" @click="location.href = 'basicInfo.html'">下一步</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script src="https://www.layuicdn.com/layui-v2.5.5/layui.js"></script>
+    <script src="https://cdn.bootcss.com/less.js/3.10.3/less.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/fillInfo.js"></script>
+</body>
+
+</html>

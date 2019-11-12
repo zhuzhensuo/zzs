@@ -1,0 +1,110 @@
+[v-cloak]{display: none};
+.w1140{min-width: 1140px;}
+.hidden{visibility: hidden;}
+.readonly{cursor: not-allowed;}
+.noCursor{cursor: none;}
+.noBorder{border:none !important;}
+.dn{display: none;}
+//登录注册
+.main{width:800px;margin: 100px auto 0;
+  .loginForm{border:1px solid #797979;padding:20px;float:right;width:355px;
+    .tit{text-align: center;font-size: 22px;color:#00A05D;margin-bottom: 30px;}
+  }
+}
+.progress{width:100px;text-align: right;color:#00A05D;margin-top: 50px;
+  dt{height:150px;border-left:1px solid #00A05D;position: relative;
+    &:before{content: '';position: absolute;left:-11px;top:0;height: 20px;width: 20px;border-radius: 50%;background: #00A05D;}
+  }
+  dd{border-left:1px solid #00A05D;position:relative;
+    &:before{content: '';position: absolute;left:-11px;top:0;height: 20px;width: 20px;border-radius: 50%;background: #00A05D;}
+  }
+}
+.loginPage{
+  .progress{float:left;}
+}
+//商户管理
+.businessMng {
+  .userMobile{
+    ul li{float:right;}
+  }
+  .myMain{margin-top: 50px;
+    h1{color:#00A05D;}
+    .display{width: 80%;margin: 0 auto;}
+    .jjList{margin-top: 10px;padding: 10px;
+      .title{color:#00A05D;font-size: 20px;
+        li:first-child{visibility: hidden;}
+      }
+      .content{font-size: 16px;margin-top: 20px;
+        li{line-height: 34px;
+          div{margin-top: 0;}
+        }
+      }
+      .lists{padding: 30px 0;border-bottom: 1px solid #e6e6e6;}
+    }
+    .jjTips{border:1px solid #e6e6e6;padding:50px 0;text-align: center;font-size: 20px;}
+  }
+}
+.progresses{position: relative;
+  button{position: absolute;right:100px;top:0;}
+  .now{width:300px;margin: 0 auto;
+    li{line-height: 100px;position: relative;
+      &:before{content:'';position:absolute;width:20px;height: 20px;border-radius: 50%;background: #797979;top:0px;left:18%;}
+      &.active:before{background:#00A05D;}
+      &.border:after{content: '';position: absolute;width:100%;height:1px;background:#797979;left:30px;top:10px;}
+      &.active:after{background:#00A05D;}
+    }
+  }
+}
+//商户进件-基础信息
+.fillInfo{
+  .userMobile{
+    ul li{float:right;}
+  }
+  .notice{display: none;text-align: center;
+    dl{font-size: 18px;}
+    dd div{margin: 0 auto;}
+  }
+  .mains{width:1140px;margin: 30px auto;
+    h1{color:#00A05D}
+    .box{border:1px solid #e6e6e6;padding:50px;border-radius: 5px;position: relative;margin-top: 20px;
+      .progress{text-align: center;width:125px;position: absolute;left:50px;top:20%;
+        dt{height:100px;}
+        dd{color:#797979;border-color:#797979;
+          &:before{background: #797979;}
+          &.first{height:100px;}
+        }
+      }
+      .type h2{height:50px;
+        span{border:2px solid #00A05D;height:30px;width:30px;text-align: center;line-height: 30px;display: inline-block;border-radius: 50%;color:#00A05D;margin-left: 15px;cursor: pointer;}
+      }
+      .types{width:340px;margin: 0 auto;
+        & > div{margin:20px 0 0;}
+        .active{color:white;background: #00A05D;}
+        .block{width:160px;border:1px solid #797979;height:70px;text-align: center;line-height: 70px;border-radius: 5px;cursor: pointer;}
+      }
+      .nextStep{height:40px;margin-top: 40px;}
+    }
+  }
+}
+//进件第一步
+.selectBtn{position: relative;
+  span{color:#cc0000;position: absolute;top:55px;left:10px;}
+}
+.left{text-align: right;line-height: 38px;}
+.layui-upload-list{
+  img,video{width:100px;}
+}
+
+//下载
+.form{margin-top:40px;border:1px solid #e6e6e6;padding:20px 0;}
+.result{padding:0px 20px;
+  span{margin:0 10px;}
+}
+//进件管理修改
+.modify-main{margin-top: 80px;padding-bottom: 50px;
+  .w100{width:135px;}
+  .progresses .now{width:700px;margin: 0 auto;padding-left: 100px;
+    li{cursor: pointer;}
+    li:last-child{padding-left:20px;}
+  }
+}

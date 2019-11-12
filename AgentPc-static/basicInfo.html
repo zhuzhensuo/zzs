@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商户进件-基础信息</title>
+    <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/flex.css" />
+    <link rel="stylesheet/less" type="text/css" href="css/index.less" />
+</head>
+<body>
+<div class="fillInfo" id="app">
+    <div class="header layui-main">
+        <div class="userMobile">
+            <ul class="layui-nav layui-row">
+                <li class="layui-nav-item" style="margin-left: 30px;"><button class="layui-btn">退出</button></li>
+                <li class="layui-nav-item">13002172132</li>
+            </ul>
+        </div>
+    </div>
+    <div class="mains">
+        <h1><strong>快速进件</strong></h1>
+        <div class="progresses">
+            <div class="now">
+                <ul class="layui-row">
+                    <li class="layui-col-xs4 border active">基础信息</li>
+                    <li class="layui-col-xs4 border">结算绑卡</li>
+                    <li class="layui-col-xs4">其他材料</li>
+                </ul>
+            </div>
+            <button class="layui-btn">退出进件</button>
+        </div>
+        <div class="box">
+            <div class="progress" style="position: fixed;left:18%;top:30%;">
+                <dl>
+                    <dt>选择主题类别</dt>
+                    <dt>主题信息</dt>
+                    <dd>联系信息</dd>
+                </dl>
+            </div>
+            <div class="form" style="margin:0;border: 0;">
+                <div v-show="step === 1" class="layui-form">
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 left">企业名称</div>
+                        <div class="layui-col-md5 layui-col-sm5 layui-col-xs5 mid">
+                            <input type="text" name="companyName" placeholder="请输入企业工商注册名称" class="layui-input" lay-verify="required">
+                        </div>
+                        <div class="layui-col-md3 layui-col-sm3 layui-col-xs3 right selectBtn">
+                            <button class="layui-btn" type="button">工商信息查询</button>
+                            <span>输入企业名称后点击按钮预填信息</span>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 left">企业简称</div>
+                        <div class="layui-col-md5 layui-col-sm5 layui-col-xs5 mid">
+                            <input type="text" name="companyBrief" lay-verify="required" placeholder="请输入企业简称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 left">社会信用代码(注册号)</div>
+                        <div class="layui-col-md5 layui-col-sm5 layui-col-xs5 mid">
+                            <input lay-verify="required" name="creditCode" type="text" placeholder="如：123AFJ31234121208" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 left">经营地址国家（地区）/省市区</div>
+                        <div class="layui-col-md8 layui-col-sm8 layui-col-xs8 mid">
+                            <div class="layui-row layui-col-space10" id="distpicker">
+                                <div class="layui-input-inline layui-col-md2 layui-col-sm2 layui-col-xs2">
+                                    <select lay-verify="country">
+                                        <option value="1">中国</option>
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-col-md2 layui-col-sm2 layui-col-xs2">
+                                    <select id="province" name="country" lay-filter="province" data-province="--省--" lay-verify="required"></select>
+                                </div>
+                                <div class="layui-input-inline layui-col-md2 layui-col-sm2 layui-col-xs2">
+                                    <select id="city" name="city" lay-filter="city" data-city="--市--" lay-verify="required"></select>
+                                </div>
+                                <div class="layui-input-inline layui-col-md2 layui-col-sm2 layui-col-xs2">
+                                    <select id="town" name="town" lay-filter="town" data-district="--区--" lay-verify="required"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 left">经营详细地址</div>
+                        <div class="layui-col-md5 layui-col-sm5 layui-col-xs5 mid">
+                            <input type="text" lay-verify="required" name="address" placeholder="请输入详细地址" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-xs4 left">营业执照</div>
+                        <div class="layui-col-md5 layui-col-sm5 layui-col-xs5 mid">
+                            <input type="text" placeholder="请上传彩色原件或加盖公司公章的复印件 " class="layui-input noBorder" readonly>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 left"></div>
+                        <div class="layui-col-md5 mid">
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="license1">上传图片</button>
+                                <button @click="zoomPic({url:'qszs.jpg',width:500,height:400})" class="layui-btn" type="button">查看案例</button>
+                                <div class="layui-upload-list">
+                                    <img class="layui-upload-img" id="license2">
+                                    <p id="license3"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 left">法人身份证</div>
+                        <div class="layui-col-md4 mid">
+                            <input type="text" placeholder="正面照" class="layui-input noBorder" readonly>
+                        </div>
+                        <div class="layui-col-md4 mid">
+                            <input type="text" placeholder="反面照" class="layui-input noBorder" readonly>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-col-md4 left"></div>
+                        <div class="layui-col-md4 mid">
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="idCardFront1">上传图片</button>
+                                <button @click="zoomPic({url:'qszs.jpg',width:500,height:400})" class="layui-btn" type="button">查看案例</button>
+                                <div class="layui-upload-list">
+                                    <img class="layui-upload-img" id="idCardFront2">
+                                    <p id="idCardFront3"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4 mid">
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="idCardBack1">上传图片</button>
+                                <button @click="zoomPic({url:'qszs.jpg',width:500,height:400})" class="layui-btn" type="button">查看案例</button>
+                                <div class="layui-upload-list">
+                                    <img class="layui-upload-img" id="idCardBack2">
+                                    <p id="idCardBack3"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <!-----法人姓名，证件号，上传正面照成功后控件显示且自动填充------>
+                            <div id="legalInfo" v-if="step1.idCardFront === true">
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">法人姓名</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input v-model="step1.legalName" lay-verify="required" type="text" id="legalName" name="idCardFront" placeholder="请输入法人姓名" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">法人证件号</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input v-model="step1.legalId" type="text" id="idCardNo" name="idCardNo" placeholder="请输入法人证件号" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-----证件过期日期，上传反面照成功后控件显示且自动填充------>
+                            <div id="pastDate" v-if="step1.idCardBack === true">
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">证件过期日期</div>
+                                    <div class="layui-col-md5 mid">
+                                        <div class="layui-input-inline">
+                                            <input :checked="step1.fixDate === false" value="longTime" lay-filter="longTime" id="longTime" name="pastDate" type="radio" title="长期">
+                                            <input :checked="step1.fixDate === true" value="pastDate" lay-filter="pastDate" id="fixDateRadio" name="pastDate" type="radio" title="到期日期">
+                                        </div>
+                                        <div id="fixDate" class="layui-input-inline" v-if="step1.fixDate === true">
+                                            <input lay-verify="required" v-model="step1.date" type="text" name="fixDate" class="layui-input" id="date" autocomplete="false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">实际控制人身份</div>
+                                <div class="layui-col-md5 mid">
+                                    <div class="layui-input-inline">
+                                        <input :checked="step1.control === 'legal'" lay-filter="legalControl" name="legal" type="radio" title="法定代表人" value="legal">
+                                        <input :checked="step1.control === 'unLegal'" lay-filter="unLegalControl" name="legal" type="radio" title="非法定代表人" value="unLegal">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-----如果实际控制人为非法定代表人，则填写实际控制人信息------>
+                        <div id="realControl" v-show="step1.control === 'unLegal'">
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">实际控制人身份证</div>
+                                <div class="layui-col-md4 mid">
+                                    <input type="text" placeholder="正面照" class="layui-input noBorder" readonly>
+                                </div>
+                                <div class="layui-col-md4 mid">
+                                    <input type="text" placeholder="反面照" class="layui-input noBorder" readonly>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left"></div>
+                                <div class="layui-col-md4 mid">
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="controllerFront1">上传图片</button>
+                                        <button @click="zoomPic({url:'qszs.jpg',width:500,height:400})" class="layui-btn" type="button">查看案例</button>
+                                        <div class="layui-upload-list">
+                                            <img class="layui-upload-img" id="controllerFront2">
+                                            <p id="controllerFront3"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md4 mid">
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="controllerBack1">上传图片</button>
+                                        <button @click="zoomPic({url:'qszs.jpg',width:500,height:400})" class="layui-btn" type="button">查看案例</button>
+                                        <div class="layui-upload-list">
+                                            <img class="layui-upload-img" id="controllerBack2">
+                                            <p id="controllerBack3"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div v-if="step1.controlFront === true">
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">实际控制人姓名</div>
+                                        <div class="layui-col-md5 mid">
+                                            <input lay-verify="required" v-model="step1.controlName" type="text" placeholder="请输入实际控制人姓名" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">实际控制人证件号</div>
+                                        <div class="layui-col-md5 mid">
+                                            <input lay-verify="required" v-model="step1.controlId" type="text" placeholder="请输入实际控制人证件号" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="step1.controlBack === true">
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">证件过期日期</div>
+                                        <div class="layui-col-md5 mid">
+                                            <div class="layui-input-inline">
+                                                <input :checked="step1.controlFixedTime === false" name="pastDate1" type="radio" title="长期" value="longTime" lay-filter="controlLong">
+                                                <input :checked="step1.controlFixedTime === true" name="pastDate1" type="radio" title="到期日期" value="fixedDate" lay-filter="controlFixed">
+                                            </div>
+                                            <div v-if="step1.controlFixedTime == true" class="layui-input-inline">
+                                                <input v-model="step1.controlDate" type="text" class="layui-input" id="controlDate" autocomplete="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">受益人身份</div>
+                                <div class="layui-col-md5 mid">
+                                    <div class="layui-input-inline">
+                                        <input name="benefit" type="radio" title="法定代表人" value="legal" checked lay-filter="legalBenefit">
+                                        <input name="benefit" type="radio" title="非法定代表人" value="unLegal" lay-filter="unLegalBenefit">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="step1.benefit === true">
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">受益人身份证</div>
+                                    <div class="layui-col-md4 mid">
+                                        <input type="text" placeholder="正面照" class="layui-input noBorder" readonly>
+                                    </div>
+                                    <div class="layui-col-md4 mid">
+                                        <input type="text" placeholder="反面照" class="layui-input noBorder" readonly>
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left"></div>
+                                    <div class="layui-col-md4 mid">
+                                        <div class="layui-upload">
+                                            <button type="button" class="layui-btn" id="benefitFront1">上传图片</button>
+                                            <button @click="zoomPic({url:'qszs.jpg',width:500,height:400})" class="layui-btn" type="button">查看案例</button>
+                                            <div class="layui-upload-list">
+                                                <img class="layui-upload-img" id="benefitFront2">
+                                                <p id="benefitFront3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4 mid">
+                                        <div class="layui-upload">
+                                            <button type="button" class="layui-btn" id="benefitBack1">上传图片</button>
+                                            <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                            <div class="layui-upload-list">
+                                                <img class="layui-upload-img" id="benefitBack2">
+                                                <p id="benefitBack3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <diiv>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">受益人姓名</div>
+                                        <div class="layui-col-md5 mid">
+                                            <input type="text" placeholder="请输入受益人姓名" class="layui-input" v-model="benefit.benefitName">
+                                        </div>
+                                    </div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">受益人证件号</div>
+                                        <div class="layui-col-md5 mid">
+                                            <input type="text" placeholder="请输入受益人证件号" class="layui-input" v-model="benefit.controllerLic">
+                                        </div>
+                                    </div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">证件过期日期</div>
+                                        <div class="layui-col-md5 mid">
+                                            <div class="layui-input-inline">
+                                                <input name="pastDate2" type="radio" title="长期" value="longTime" lay-filter="benefitLong">
+                                                <input name="pastDate2" type="radio" title="到期日期" value="fixedDate" lay-filter="benefitFixed">
+                                            </div>
+                                            <div v-if="benefit.dateType == 'longTime'" class="layui-input-inline">
+                                                <input v-model="controller.date" type="text" class="layui-input" id="benefitDate" autocomplete="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </diiv>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" align="center" style="margin-top: 30px;">
+                        <button type="button" id="step1" lay-filter="step1" lay-submit class="layui-btn layui-btn-lg">下一步</button>
+                    </div>
+                </div>
+                <div v-show="step === 2">
+                    <div class="layui-form">
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-md4 left">业务联系人姓名</div>
+                            <div class="layui-col-md5 mid">
+                                <input type="text" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-md4 left">业务联系人电话</div>
+                            <div class="layui-col-md5 mid">
+                                <input type="text" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-md4 left">业务联系人邮箱</div>
+                            <div class="layui-col-md5 mid">
+                                <input type="text" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-md4 left">业务联系人地址</div>
+                            <div class="layui-col-md1">
+                                <select>
+                                    <option>上海</option>
+                                </select>
+                            </div>
+                            <div class="layui-col-md1">
+                                <select>
+                                    <option>上海</option>
+                                </select>
+                            </div>
+                            <div class="layui-col-md1">
+                                <select>
+                                    <option>浦东新区</option>
+                                </select>
+                            </div>
+                            <div class="layui-col-md4">
+                                <input type="text" class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-md4 left">投诉联系人</div>
+                            <div class="layui-col-md5 mid">
+                                <div class="layui-input-inline">
+                                    <input checked name="contact" type="radio" title="同业务联系人" value="longTime" lay-filter="sameContact">
+                                    <input name="contact" type="radio" title="不同业务联系人" value="fixedDate" lay-filter="unSameContact">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">投诉联系人姓名</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">投诉联系人电话</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">投诉联系人邮箱</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" align="center" style="margin-top: 30px;">
+                        <button type="button" @click="step = 3" id="step2" lay-filter="step2" lay-submit class="layui-btn layui-btn-lg">下一步</button>
+                    </div>
+                </div>
+                <div v-show="step === 3">
+                    <div class="layui-form">
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-md4 left">账户类型</div>
+                            <div class="layui-col-md5 mid">
+                                <input type="radio" name="accountType" title="对私" :checked="step2.toPerson === 'true'" lay-filter="toPerson">
+                                <input type="radio" name="accountType" title="对公" :checked="step2.toPerson === 'false'" lay-filter="toCommon">
+                            </div>
+                        </div>
+                        <div v-if="step2.toPerson === 'true'">
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户名称</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input" placeholder="法人姓名">
+
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">银行账号</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input" placeholder="请输入银行账号">
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户银行</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input" placeholder="请选择开户银行">
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">银行预留手机号</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input" placeholder="请输入银行预留手机号">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">银行卡拍照</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input type="text" readonly class="layui-input noBorder" placeholder="拍摄银行卡的实体照片，尽量无拍摄反光亮点">
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left"></div>
+                                    <div class="layui-col-md4 mid">
+                                        <div class="layui-upload">
+                                            <button type="button" class="layui-btn" id="bankImg1">上传图片</button>
+                                            <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                            <div class="layui-upload-list">
+                                                <img class="layui-upload-img" id="bankImg2">
+                                                <p id="bankImg3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户名称</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" class="layui-input" placeholder="法人姓名">
+
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户银行</div>
+                                <div class="layui-col-md5 mid">
+                                    <select lay-search="">
+                                        <option>请选择</option>
+                                        <option>中国银行</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户支行</div>
+                                <div class="layui-col-md5 mid">
+                                    <select lay-search="">
+                                        <option>请选择</option>
+                                        <option>中国银行</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">账号</div>
+                                <div class="layui-col-md5 mid">
+                                    <input class="layui-input" placeholder="请输入账号">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">开户许可证</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input type="text" readonly class="layui-input noBorder" placeholder="19年之后注册的商户，没有开户许可证的，要提供印鉴卡或银行开户回单">
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left"></div>
+                                    <div class="layui-col-md4 mid">
+                                        <div class="layui-upload">
+                                            <button type="button" class="layui-btn" id="openAllow1">上传图片</button>
+                                            <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                            <div class="layui-upload-list">
+                                                <img class="layui-upload-img" id="openAllow2">
+                                                <p id="openAllow3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row" align="center">
+                            <button type="button" class="layui-btn layui-btn-lg" @click="step  = 2">上一步</button>
+                            <button type="button" class="layui-btn layui-btn-lg" @click="step = 4">下一步</button>
+                        </div>
+                    </div>
+                </div>
+                <div v-show="step === 4">
+                    <div class="layui-form">
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">所属机构或代理商</div>
+                                <div class="layui-col-md5 mid">
+                                    <input class="layui-input" placeholder="输入代理商或机构编码" type="text" />
+                                </div>
+                                <div class="layui-col-md3 right" style="line-height: 38px;color:#cc0000;">
+                                    无代理商或不填默认归属瀚银</div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left" style="line-height: normal;">开通产品</div>
+                                <div class="layui-col-md8 mid">
+                                    <input lay-skin="primary" type="checkbox" name="product" title="快捷支付" value="kjzf"/>
+                                    <input lay-skin="primary" type="checkbox" name="product" title="银联支付" value="wyzf"/>
+                                    <input lay-skin="primary" type="checkbox" name="product" title="快捷支付API" value="kjzfapi"/>
+                                    <input lay-skin="primary" type="checkbox" name="product" title="网银B2C" value="wyb2c"/>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">所属行业类别</div>
+                                <div class="layui-col-md5 mid">
+                                    <select lay-search="">
+                                        <option>请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">ICP备案证书</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" readonly class="layui-input noBorder" placeholder="请上传彩色原件或加盖公司公章的复印件"/>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left"></div>
+                                <div class="layui-col-md5 mid">
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="record1">上传图片</button>
+                                        <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                        <div class="layui-upload-list">
+                                            <img class="layui-upload-img" id="record2">
+                                            <p id="record3"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----ICP备案证书 上传成功后显示以下控件---->
+                            <div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">网址</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input type="text" class="layui-input" placeholder="http://xxx.com" />
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">ICP备案编号</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input type="text" class="layui-input" placeholder="请输入备案编号" />
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">ICP名称</div>
+                                    <div class="layui-col-md5 mid">
+                                        <input type="text" class="layui-input" placeholder="请输入ICP名称" />
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">网站或APP 流程截图</div>
+                                    <div class="layui-col-md5 mid">
+                                        <div class="layui-upload">
+                                            <button type="button" class="layui-btn" id="process1">上传图片</button>
+                                            <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                            <div class="layui-upload-list">
+                                                <img class="layui-upload-img" id="process2">
+                                                <p id="process3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户意愿书</div>
+                                <div class="layui-col-md5 mid">
+                                    <input type="text" readonly class="layui-input noBorder" placeholder="请上传开户意愿书图片或PDF盖企业公章"/>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left"></div>
+                                <div class="layui-col-md5 mid">
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="desireBook1">上传图片</button>
+                                        <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                        <div class="layui-upload-list">
+                                            <img class="layui-upload-img" id="desireBook2">
+                                            <p id="desireBook3"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户申请视频</div>
+                                <div class="layui-col-md5 mid">
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="applyVideo1">上传视频</button>
+                                        <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                        <div class="layui-upload-list">
+                                            <img class="layui-upload-img" id="applyVideo2">
+                                            <p id="applyVideo3"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-md4 left">开户申请视频拍摄人</div>
+                                <div class="layui-col-md5 mid">
+                                    <input lay-filter="applyLegal" type="radio" name="applier" value="legal" checked title="法定代表人" />
+                                    <input lay-filter="applyCharge" type="radio" name="applier" value="charge" title="负责人" />
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">负责人身份证</div>
+                                        <div class="layui-col-md4 mid">
+                                            <input type="text" readonly class="layui-input noBorder" placeholder="个人信息页"/>
+                                        </div>
+                                        <div class="layui-col-md4 right">
+                                            <input type="text" readonly class="layui-input noBorder" placeholder="国徽页"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left"></div>
+                                        <div class="layui-col-md4 mid">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="chargeId1">上传视频</button>
+                                                <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="chargeId2">
+                                                    <p id="chargeId3"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4 right">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="chargeIdBack1">上传视频</button>
+                                                <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="chargeIdBack2">
+                                                    <p id="chargeIdBack3"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left">开户授权书</div>
+                                        <div class="layui-col-md5 mid">
+                                            <input type="text" readonly class="layui-input noBorder" placeholder="请上传开户意愿书图片或PDF盖企业公章"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-row layui-col-space20">
+                                        <div class="layui-col-md4 left"></div>
+                                        <div class="layui-col-md5 right">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="grant1">上传视频</button>
+                                                <button @click="zoomPic('qszs.jpg')" class="layui-btn" type="button">查看案例</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="grant2">
+                                                    <p id="grant3"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">附件1类别</div>
+                                    <div class="layui-col-md5 mid">
+                                        <select>
+                                            <option>请选择</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left">附件1</div>
+                                    <div class="layui-col-md5 mid">
+                                        <div class="layui-upload">
+                                            <button type="button" class="layui-btn" id="enclosure1">上传附件</button>
+                                            <div class="layui-upload-list">
+                                                <img class="layui-upload-img" id="enclosure2">
+                                                <p id="enclosure3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row layui-col-space20">
+                                    <div class="layui-col-md4 left"></div>
+                                    <div class="layui-col-md5 mid">
+                                        <button type="button" class="layui-btn">添加附件</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-row" align="center" style="margin-top: 40px;">
+                                <button class="layui-btn layui-btn-lg" type="button" @click="step = 3">上一步</button>
+                                <button class="layui-btn layui-btn-lg" type="button">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="https://www.layuicdn.com/layui-v2.5.5/layui.js"></script>
+<script src="https://cdn.bootcss.com/less.js/3.10.3/less.min.js"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="js/distpicker.data.min.js"></script>
+<script src="js/distpicker.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/basicInfo.js"></script>
+</body>
+
+</html>
