@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	body{overflow:hidden;}
+	*{margin:0;padding:0;}
+  </style>
+ </head>
+ <body>
+	<canvas></canvas>
+ </body>
+ <script>
+	let canvas = document.querySelector('canvas'),
+		ctx = canvas.getContext('2d'),
+		w = document.documentElement.clientWidth,
+		h = document.documentElement.clientHeight,
+		x = w / 2,
+		y = h - 1;
+	canvas.width = w;
+	canvas.height = h;
+	
+	
+	function getCoordinate(){
+		let size = 100;
+		ctx.font = `${size}px Helvetica Neue`;
+		ctx.textBaseline  = 'top';
+		ctx.fillStyle = '#000';
+		ctx.fillText('TEST',0,0);
+		let position = ctx.getImageData(0, 0, w, h);
+		ctx.clearRect(0,0,w,h);
+		let point = [];
+		for(let ypos = 0;ypos < position.height; ypos += 10){
+			for(let xpos = 0;xpos < position.width; xpos += 10){
+				let i = (ypos * position.width + xpos);
+				if (position.data[i + 3] !== 0){
+					point.push({x:xpos*1.2 + 300,y:ypos + 300}); //让文字向x , y轴偏移
+				}
+			}
+		}
+		
+		console.log(point);
+		return point;
+	}
+	//getCoordinate();
+	function doMove(from,to,cb1,cb2){
+		var array = [];
+		let run = function(){
+			let complete = true;
+			for(let i = 0;i < to.length;i++){
+				let f = from[i],
+					t = to[i];
+				let speed = (t - f) / 20;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				cb1 && cb1(from);
+				from[i] = f + speed;
+				cb2 && cb2(from);
+				if(from[i] != to[i]){
+					complete = false;
+				}
+			}
+			if(complete === true){
+				cancelAnimationFrame(run.timer);
+				return false;
+			}
+			run.timer = requestAnimationFrame(run);
+		}
+		return run();
+	}
+	function animate(){
+		ctx.fillStyle = '#cc0000'
+		ctx.fillRect(x,y,10,100);
+		let timer = null;
+		let run = function(){
+			ctx.clearRect(x,y,10,100);
+			y -= 2;
+			if(y <= h / 2){
+				stop();
+				return false;
+			}
+			ctx.fillRect(x,y,10,100);
+			timer = window.requestAnimationFrame(run);
+		}
+		run();
+		let getRandom = function(max,min){
+			return Math.floor(Math.random()*(max - min + 1) + min)
+		}
+		let getColor = function(){
+			var color = getRandom(0xFFF,0).toString(16);
+			while (color.length < 6){
+				color += "0";
+			}
+			return "#"+color;
+		}
+		let stop = function(){
+			window.cancelAnimationFrame(timer);
+			let coordinate = getCoordinate();
+			for(let i = 0;i < coordinate.length;i++){
+
+				doMove([x,y],[coordinate[i].x,coordinate[i].y],data => {
+					ctx.clearRect(data[0] - 5,data[1] - 5,5 * 2,5 * 2);
+				},data => {
+					ctx.beginPath();
+					ctx.fillStyle = getColor();
+					ctx.arc(data[0],data[1],5,0,Math.PI * 2);
+					ctx.fill();
+				});
+			}
+		}
+		//stop();
+	}
+	animate();
+ </script>
+</html>
