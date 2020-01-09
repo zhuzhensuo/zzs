@@ -26,7 +26,7 @@
 	canvas.height = h;
 	
 	
-	function getCoordinate(){
+	function getCoordinate(){ //写字，获取字点的坐标
 		let size = 100;
 		ctx.font = `${size}px Helvetica Neue`;
 		ctx.textBaseline  = 'top';
@@ -48,7 +48,7 @@
 		return point;
 	}
 	//getCoordinate();
-	function doMove(from,to,cb1,cb2){
+	function doMove(from,to,cb1,cb2){ //从起点到目标点的 运动算法
 		var array = [];
 		let run = function(){
 			let complete = true;
@@ -72,7 +72,7 @@
 		}
 		return run();
 	}
-	function animate(){
+	function animate(){ // 烟花起飞到指定位置后爆炸
 		ctx.fillStyle = '#cc0000'
 		ctx.fillRect(x,y,10,100);
 		let timer = null;
@@ -87,7 +87,7 @@
 			timer = window.requestAnimationFrame(run);
 		}
 		run();
-		let getRandom = function(max,min){
+		let getRandom = function(max,min){ 
 			return Math.floor(Math.random()*(max - min + 1) + min)
 		}
 		let getColor = function(){
@@ -97,17 +97,16 @@
 			}
 			return "#"+color;
 		}
-		let stop = function(){
+		let stop = function(){ //爆炸后画圆 飞到保存的坐标点
 			window.cancelAnimationFrame(timer);
 			let coordinate = getCoordinate();
 			for(let i = 0;i < coordinate.length;i++){
-
 				doMove([x,y],[coordinate[i].x,coordinate[i].y],data => {
-					ctx.clearRect(data[0] - 5,data[1] - 5,5 * 2,5 * 2);
+					ctx.clearRect(data[0] - 5,data[1] - 5,5 * 2,5 * 2);//清除上一次的轨迹
 				},data => {
 					ctx.beginPath();
 					ctx.fillStyle = getColor();
-					ctx.arc(data[0],data[1],5,0,Math.PI * 2);
+					ctx.arc(data[0],data[1],5,0,Math.PI * 2);//画圆
 					ctx.fill();
 				});
 			}
