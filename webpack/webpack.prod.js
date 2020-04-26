@@ -12,6 +12,9 @@ module.exports = merge(config,{
 	module:{
 		
 	},
+	externals:{
+		jquery:'jQuery',
+	},
 	plugins:[
 		new optimizeCssAssets({
             assetNameRegExp: /\.style\.css$/g,

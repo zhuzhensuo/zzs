@@ -19,7 +19,13 @@ module.exports = merge(config,{
 	module:{
 		
 	},
+
 	plugins:[
+		new webpack.ProvidePlugin({
+			$:"jquery",
+			jquery:"jquery",
+			jQuery:"jquery",
+		}),
 		new webpack.DefinePlugin({
 			"process.env":{
 				"MODE":'"development"',

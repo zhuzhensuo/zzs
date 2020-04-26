@@ -21,11 +21,6 @@ module.exports = {
 			'vue':'vue/dist/vue.min.js'
 		}
 	},
-	externals:{
-		jquery:'jQuery',
-		vue:'Vue',
-		'element-ui':'ELEMENT'
-	},
 	entry:entrysObj,
 	output:{
 		path:path.resolve(__dirname,'dist'),
@@ -80,11 +75,6 @@ module.exports = {
 		new miniCssExtractPlugin({
 			filename:'css/[name].css'
 		}),
-		new webpack.ProvidePlugin({
-			$:"jquery",
-			jquery:"jquery",
-			jQuery:"jquery",
-		})
 	]
 };
 Object.keys(entrysObj).forEach(v => {
@@ -98,8 +88,8 @@ Object.keys(entrysObj).forEach(v => {
 			collapseWhitespace:true
 		},
 		cdn: {
-			css:['https://unpkg.com/element-ui/lib/theme-chalk/index.css'],
-			js: ['https://code.jquery.com/jquery-3.4.1.js','https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js','https://unpkg.com/element-ui/lib/index.js']
+			css:[],
+			js: ['https://code.jquery.com/jquery-3.4.1.js']
 		}
 	}));
 });
