@@ -40,6 +40,7 @@
  </head>
  <body>
 	<a href="alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/bax09911dkqcq68xxisn5020" target="_blank" id="pay">这是一个支付宝链接</a>
+	<iframe src="alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/bax09911dkqcq68xxisn5020"></iframe>
 	<div class="triangle"></div>
 	<div>
 		<div class="container">
@@ -59,7 +60,8 @@
  <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
  <script src="https://underscorejs.net/underscore.js"></script>
  <script>
-	document.querySelector('#pay').click();
+	//document.querySelector('#pay').click();
+	
 	let range = document.getElementById('range');
 	range.onchange = function(){
 		progress(this.value);
