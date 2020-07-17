@@ -39,7 +39,7 @@
   </style>
  </head>
  <body>
-	<h1><a href="alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/bax09911dkqcq68xxisn5020" target="_blank">这是一个支付宝链接</a></h1>
+	<a href="alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/bax09911dkqcq68xxisn5020" target="_blank" id="pay">这是一个支付宝链接</a>
 	<div class="triangle"></div>
 	<div>
 		<div class="container">
@@ -55,5 +55,241 @@
 		</div>
 	</div>
  </body>
+ <script src='./handpaaspay.min.js'></script>
+ <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+ <script src="https://underscorejs.net/underscore.js"></script>
+ <script>
+	document.querySelector('#pay').click();
+	let range = document.getElementById('range');
+	range.onchange = function(){
+		progress(this.value);
+		document.getElementById('rate').innerHTML = this.value;
+	}
+	function progress(deg){
+		let half = deg <= 180 ? true : false;
+		if(half){
+			document.styleSheets[0].addRule('.container::before',`transform:rotate(${deg}deg)`);
+			document.styleSheets[0].addRule('.container::after',`transform:rotate(180deg);border-color:white;`);
+		}else{
+			document.styleSheets[0].addRule('.container::before',`transform:rotate(180deg)`);
+			document.styleSheets[0].addRule('.container::after',`transform:rotate(${deg - 180}deg);border-color:red;`);
+		}
+	}
+	//_.where
+	let arr = [{a:1,b:'hehe',c:function(){alert(1)}},{a:2,b:'hehe',c:function(){}},{a:2,b:'he',c:function(){}}];
+	let v1 = _.where(arr,{a:1});
 
+	//_.reject
+	let arr2 = [1,2,3,4];
+	let v2 = _.reject(arr2,(value) => value % 2 === 0);
+
+	//_.contains
+	let ar3 = [1,2,3,'c',{a:2}];
+	let v3 = _.contains(ar3,'c');
+	
+	//_.invoke
+	let v4 = _.invoke([1,2,4,3],'Math.max'); // x
+
+	//pluck
+	let v5 = _.pluck([{name:1,age:21},{name:2,age:22}],'age'); //like map
+
+	//max
+	let max = _.max([{age:101},{age:99}],(o) => o.age);
+	console.log(max);
+	
+	let res = _.chain([1,2,3,4,5,6]).filter((num) => num % 2 === 0).map((num) => num * 2).value();
+
+	console.log(_.isEqual({},{}));
+
+	function Promises(execute){
+		this.status = 'pending';
+		this.value = undefined;
+		this.reason = undefined;
+		this.onResolved = [];
+		this.onRejected = [];
+			
+		let self = this;
+		execute(resolve,reject);
+		function resolve(value){
+			if(self.status == 'pending'){
+				self.value = value;
+				self.status = 'resolved';
+				self.onResolved.forEach(fn => fn(value));
+			}
+		}
+
+		function reject(value){
+			if(self.status == 'pending'){
+				self.value = value;
+				self.status = 'rejected';
+				self.onRejected.forEach(fn => fn(value));
+			}
+		}
+	}
+
+	Promises.prototype.then = function(resolve,reject){
+		setTimeout(()=>{
+			if(this.status === 'resolved'){
+				resolve(this.value);
+			}
+			if(this.status === 'rejected'){
+				reject(this.value);
+			}
+			
+			if(this.status === 'pending'){
+				if(typeof resolve === 'function'){
+					this.onResolved.push(resolve);
+				}
+			}
+
+			if(this.status === 'pending'){
+				if(typeof reject === 'function'){
+					this.onRejected.push(resolve);
+				}
+			}
+		},0);
+	}
+	
+	new Promises((resolve,reject)=>{
+		setTimeout(()=>{
+			reject('error');
+		},1000);
+		
+	}).then(res => {
+	});
+
+
+	class Vue{
+		constructor(option){
+			this.el = document.getElementById(option.el);
+			this.data = option.data;
+			this.direactive = {};
+
+			this.observe(this.data);
+			this.compile(this.el);
+		}
+		
+		observe(data){
+			for(let key in data){
+				this.direactive[key] = [];
+				let oldVal = data[key];
+				Object.defineProperty(this.data,key,{
+					get:function(){
+						return oldVal;
+					},
+					set:function(newVal){
+						if(newVal != oldVal){
+							oldVal = newVal;
+							this.compile(this.el);
+							this.direactive[key].forEach(function(watch){
+								watch.update();
+							});
+						}
+					}.bind(this)
+				});
+			}
+			
+		}
+
+		compile(el){
+			let nodes = el.children;
+			for(let i = 0; i < nodes.length; i++){
+				let node = nodes[i];
+				if(node.children.length){
+					this.compile(node);
+				}
+				if(node.hasAttribute('v-text')){
+					let dataVal = node.getAttribute('v-text');
+					this.direactive[dataVal].push(new Watcher(this,node,'innerHTML',this.data[dataVal]));
+				}
+				if(node.hasAttribute('v-model')){
+					let self = this,
+						dataVal = node.getAttribute('v-model');
+					node.value = self.data[dataVal];
+					node.addEventListener('input',function(){
+						self.data[dataVal] = this.value;
+					});
+				}
+			}
+		}
+	}
+	
+	class Watcher{
+		constructor(obj,el,attr,val){
+			this.el = el;
+			this.attr = attr;
+			this.val = val;
+			this.update();
+		}
+		update(){
+			this.el[this.attr] = this.val;
+		}
+	}
+
+	new Vue({
+		el:'app',
+		data:{
+			name:'zzs',
+			age:29
+		}
+	});
+
+	//继承
+	
+	function Animal(){
+		
+	}
+	//1
+	function Dog(){
+		Animal.call(this,arguments);
+	}
+	//2 //3
+	Dog.prototype = new Animal();
+	
+	//4
+	Dog.prototype = Animal.prototype;
+	Dog.prototype.Constructor = Dog;
+
+	//5 
+	Dog.prototype = Object.create(Animal.prototype);
+	Dog.prototype.Constructor = Dog;
+
+	//new的意义
+	function F(){
+		let o = {};
+		o.__proto__ = F.prototype;
+		F.call(o);
+		return o;
+	}
+
+	//function sum(1,2,3,4,5){} like sum(1)(2);
+	function sum(...args){
+		return args.reduce(function(sum,cur){
+			return sum + cur
+		},0)
+	}
+
+	function sum(num){
+		let init = num;
+		function innerSum(num2){
+			init += num2;
+			return innerSum;
+		}
+		innerSum.toString = function(){
+			return init;
+		}
+		return innerSum;
+	}
+	Array.prototype.myMap = function(fn){
+		let self = this;
+		return this.reduce(function(prev,cur,i){
+			let value = fn.call(this,cur,i);
+			return [...prev,value];
+		},[]);
+	}
+	let newarr = [1,2,3].myMap(function(val,i){
+		return val * 2;
+	});
+	
+ </script>
 </html>
