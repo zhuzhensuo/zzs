@@ -1,0 +1,60 @@
+body{background: #f5f5f5;font-family:'微软雅黑',"Microsoft YaHei";}
+.gradient{
+	background: -webkit-linear-gradient(to bottom,#4864ff, #4f95ff);
+	background: -moz-linear-gradient(to bottom,#4864ff, #4f95ff);
+	background: -o-linear-gradient(to bottom,#4864ff, #4f95ff);
+	background: linear-gradient(to bottom,#4864ff, #4f95ff);
+}
+.whole{width: 7.5rem;margin: 0 auto;}
+.btn{width: 6.9rem;height: 1rem;border-radius: 0.1rem;color: white;font-size: 0.3rem;box-shadow: 0 0 0.2rem #4866FF;}
+
+.header{height: 1.68rem;background-color:#4292FF;color:white;font-size: 0.36rem;position: relative;
+	a{color:white;position: absolute;left:0.65rem;bottom: 0.6rem;}
+	i{font-size: 0.46rem;}
+}
+.order{line-height: 1.2rem;text-align: center;font-size: 0.3rem;}
+.payInfo{width: 6.9rem;height: 3.6rem;margin: 0 auto;border-radius: 0.2rem;color:white;box-shadow: 0 0 0.2rem #4866FF;color:#c4e2ff;font-size: 0.24rem;text-align: center;
+	dt{line-height: 1rem;}
+	.amount{font-size: 0.72rem;color: white;height: 1rem;border-bottom: 1px solid #A2E4FF;line-height: 0.5rem;}
+	dd:not(.amount){margin-top: 0.35rem;text-align: left;line-height: 0.2rem;text-indent: 5em;}
+	dd span{color:white;font-size: 0.28rem;}
+}
+.payList{background-color: white;font-size: 0.32rem;margin-top: 0.6rem;border-top: 1px solid #D9D9D9;
+	.layui-form-radio{margin: 0;padding: 0;
+		i{margin: 0;color:#4D85FF;font-size: 0.4rem;}
+	}
+	& > div{height: 1.08rem;border-bottom: 1px solid #D9D9D9;padding:0 0.43rem;
+		a{height: 100%;color:#222;}
+		a img{height: 0.7rem;}
+	}
+	.fastPay a{color:#222;
+		span:last-child i{font-size: 0.5rem;color:#ADADAD;}
+	}
+	.allPay{
+		span:last-child{color: #096bff;
+			i{padding-left: 10px;font-size: 0.5rem;}
+		}
+	}
+}
+.payForm{
+	p{color:#096bff;font-size: 0.24rem;margin-top: 0.7rem;}
+	p span{margin-left: 5px;}
+	p img{width: 0.33rem;}
+	.payBtn{margin:0.3rem 0 1rem;text-align: center;
+		button{width: 6.9rem;box-shadow: 0 0 0.2rem #4866FF; }
+	}
+}
+
+/**快捷支付**/
+.payBank{text-align: center;font-size: 0.32rem;margin-top: 0.8rem;}
+.payBank span{color:#096bff;padding: 0 10px;}
+.amounts{font-size: 0.72rem;color: #ff6000;text-align: center;margin-top: 0.4rem;}
+.verifyBox{background-color: white;width: 6.9rem;margin: 0 auto;padding: 0.35rem;box-sizing: border-box;margin-top: 0.45rem;border-radius: 0.15rem;box-shadow: 0 0 0.2rem #EBEBEB;
+	div{margin-top: 0.35rem;}
+	p{font-size: 0.28rem;}
+	input{background-color: #f5f5f5;height: 0.9rem;border-radius: 0.15rem;font-size: 0.32rem;border: 1px solid transparent;text-indent: 1em;}
+	button{margin-left:10px;border-radius: 0.15rem;width: 2.3rem !important;height: 0.9rem;color:white;font-size: 0.28rem;}
+}
+.confirmPay{text-align: center;margin: 0.55rem 0;}
+.layui-btn i.layui-icon-loading{display:none;font-size: 0.3rem;margin-right: 10px;}
+.layui-disabled i.layui-icon-loading{display: inline-block !important;}
