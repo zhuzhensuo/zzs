@@ -22,8 +22,8 @@
 	.flower{width:4px;height:30px;border-radius:10px;background:white;position:absolute;}
 	.box{width:560px;height:290px;position:absolute;bottom:-60px;left:50%;margin-left:-280px;z-index:2;box-sizing:border-box;transform:scale(0.6);}
 	.person{position:absolute;bottom:0;}
-	.b{right:2000px;}
-	.g{left:2000px;bottom:3px;}
+	.b{right:3000px;}
+	.g{left:3000px;bottom:3px;}
 
   </style>
  </head>
@@ -150,7 +150,7 @@ function fireFlowers(x,y){
 	let hug = function(){
 		let bo = document.querySelector('#b'),
 			gi = document.querySelector('#g');
-		doMove({init:2000,target:3,step:17,time:1000,
+		doMove({init:3000,target:3,step:17,time:1000,
 			callback:function(init,target,timer){
 				bo.style['right'] = init + 'px';
 				gi.style['left'] = init + 'px';
