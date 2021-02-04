@@ -1,0 +1,169 @@
+
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+  <title>想和她去迪士尼看烟花</title>
+  <style>
+	body{overflow:hidden;background:#000;}
+	*{margin:0;padding:0;}
+	.sky{position:absolute;left:0;top:0;width:100%;height:100%;}
+	.white{background:white;z-index:1;}
+	span.span{position:absolute;font-size:20px;}
+	.flower{width:4px;height:30px;border-radius:10px;background:white;position:absolute;}
+	.box{width:560px;height:290px;position:absolute;bottom:-60px;left:50%;margin-left:-280px;z-index:2;box-sizing:border-box;transform:scale(0.6);}
+	.person{position:absolute;bottom:0;}
+	.b{right:2000px;}
+	.g{left:2000px;bottom:3px;}
+
+  </style>
+ </head>
+ <body>
+	<div class="sky white" id='white'></div>
+	<div class="box">
+		
+		<div class="g person" id="g"><img src="image/li.png" /></div>
+		<div class="b person" id="b"><img src="image/me.png" /></div>
+	</div>
+ </body>
+ <script>
+
+	let w = document.documentElement.scrollWidth;
+	let h = document.documentElement.scrollHeight;
+function boom(x,y){
+	let frag = document.createDocumentFragment();
+	for(let i = 0;i < random(30,20);i++){
+		let span = document.createElement('span');
+			span.className = 'span';
+			span.innerHTML = '♡';
+			span.style['left'] = x + 'px';
+			span.style['top'] = y + 'px';
+			span.style['color'] = randomColor();
+			move({span,x,y,direct:random(1,0)})
+		frag.appendChild(span);
+	}
+	document.body.appendChild(frag);
+
+}
+function move({span,x,y,direct}){
+	var xspeed = random(5,-5);
+	var yspeed = random(-15,-20);
+	var max = 0;
+	var w = document.documentElement.clientWidth;
+	span.timer=setInterval(function(){
+			
+			span.style["left"]=span.offsetLeft+xspeed+"px";
+			var top=span.offsetTop;
+			yspeed += 1;
+			var total=top+yspeed;
+			
+			span.style["top"]=total+"px";
+			if(span.offsetTop > h){
+				clearInterval(span.timer);
+				document.body.removeChild(span);
+			}
+
+	},20);
+	
+}
+
+
+ // 范围随机数
+function random(max,min){
+	return Math.round(Math.random()*(max-min)+min);
+}
+// 随机颜色
+function randomColor(){
+ return "rgb("+random(0,255)+","+random(0,255)+","+random(0,255)+")";
+}
+
+function doMove({init = 100,target = 0,callback,step = 100,time = 10000}){
+	let move = function(){
+		let speed = (target - init) / step;
+		speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+		init = init + speed;
+		let timer = requestAnimationFrame(move,time);
+		callback && callback(init,target,timer);
+	}
+	move();
+}
+function sky2black(){
+	let white = document.querySelector('#white');
+	doMove({
+		callback:function(init,target,timer){
+			white.style['opacity'] = init / 100;
+			if(!init){
+				cancelAnimationFrame(timer);
+				white.style['display'] = 'none';
+				playFlowers();
+			};
+		}
+	})
+}
+function playFlowers(){
+	setInterval(randomPlay,random(2000,1000));
+	
+	function randomPlay(){
+		arr = [];
+		let x = random(w - 100,100),
+			y = random(h / 2 ,100);
+		fireFlowers(x,y);
+	}
+	
+}
+function fireFlowers(x,y){
+	let el = document.createElement('span');
+	
+	el.className = 'flower';
+	el.style['left'] = x + 'px';
+	el.style['top'] = h + el.offsetHeight + 'px';
+	document.body.appendChild(el);
+	let init = h + el.offsetHeight;
+	doMove({
+		init,
+		target:y,
+		time:1000,
+		step:17,
+		callback:function(init,target,timer){
+			el.style['top'] = init + 'px';
+			if(init == target){
+				try{
+					document.body.removeChild(el);
+				}catch(e){
+					return;
+				}
+				boom(x,y);
+			}
+		}
+	});
+}
+
+	let hug = function(){
+		let bo = document.querySelector('#b'),
+			gi = document.querySelector('#g');
+		doMove({init:2000,target:3,step:17,time:1000,
+			callback:function(init,target,timer){
+				bo.style['right'] = init + 'px';
+				gi.style['left'] = init + 'px';
+				if(init == target){
+					cancelAnimationFrame(timer);
+					sky2black();
+				}
+			}
+		});
+	}
+	
+	window.onload = function(){
+		hug();
+	}
+ </script>
+</html>
