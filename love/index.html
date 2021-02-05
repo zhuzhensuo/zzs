@@ -24,10 +24,11 @@
 	.person{position:absolute;bottom:0;}
 	.b{right:3000px;}
 	.g{left:3000px;bottom:3px;}
-
+	audio{visibility:hidden;}
   </style>
  </head>
  <body>
+	<audio src="mp3/likeu.mp3" id='audio' preload loop autoplay='autoplay' controls></audio>
 	<div class="sky white" id='white'></div>
 	<div class="box">
 		
@@ -37,7 +38,7 @@
  </body>
  <script>
 
-	let w = document.documentElement.scrollWidth;
+	let w = document.documentElement.clientWidth;
 	let h = document.documentElement.scrollHeight;
 function boom(x,y){
 	let frag = document.createDocumentFragment();
@@ -45,7 +46,7 @@ function boom(x,y){
 		let span = document.createElement('span');
 			span.className = 'span';
 			span.innerHTML = '♡';
-			span.style['left'] = x + 'px';
+			span.style['left'] = x - 7 + 'px';
 			span.style['top'] = y + 'px';
 			span.style['color'] = randomColor();
 			move({span,x,y,direct:random(1,0)})
@@ -164,6 +165,13 @@ function fireFlowers(x,y){
 	
 	window.onload = function(){
 		hug();
+		function audioAutoPlay() {
+			var audio = document.getElementById('audio');
+			document.addEventListener("WeixinJSBridgeReady", function () {
+				audio.play();
+			}, false);
+		}
+		audioAutoPlay();
 	}
  </script>
 </html>
