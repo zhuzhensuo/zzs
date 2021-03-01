@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="x5-orientation" content="portrait">
+  <title></title>
+  <style>
+	*{margin:0;padding:0;}
+	body{background:#F5F5F5;}
+	.name{height:0.8rem;border-bottom:1px solid #E7E7E7;font-size:0.3rem;text-align:center;line-height:0.8rem;font-weight:700;box-sizing:border-box;}
+	.respond{height:auto;border-top:1px solid #E7E7E7;position:absolute;bottom:0;left:0;width:100%;background:#F9F9F9;display:none;}
+	.respond .wrap{padding:0.15rem 0.2rem;}
+	.answer{outline:none;border:0;border-radius:8px;display:block;width:75%;height:0.7rem;font-size:16px;text-indent:10px;}
+	.send{position:absolute;border:0;border-radius:8px;display:block;width:24%;height:0.7rem;top:0.15rem;right:0.1rem;background:#129611;color:white;font-size:16px;}
+	.clearfix{clear:both;}
+	.content{padding:10px;box-sizing:border-box;height:calc(100vh - 0.8rem);overflow:auto;}
+	.msgBox{font-size:16px;position:relative;padding-bottom:15px;}
+	.info{background:white;padding:10px;display:inline-block;border-radius:5px;position:relative;}
+	.me{padding-left:55px;}
+	.msgBox::before{content:'';width:41px;height:41px;position:absolute;border-radius:5px;}
+	.me::before{top:0;left:0rem;background:url(images/me.jpg) no-repeat center center;background-size:cover;}
+	.me .info::before{content:'';position:absolute;width:0;height:0;border-top:10px solid transparent;border-left:10px solid white;left:-5px;top:15px;transform:rotate(45deg);}
+	.you{text-align:right;padding-right:55px;}
+	.you::before{top:0;right:0rem;background:url(images/you.jpg) no-repeat center center;background-size:cover;}
+	.you .info{background:#9EEA6A;}
+	.you .info::before{content:'';position:absolute;width:0;height:0;border-top:10px solid transparent;border-left:10px solid #9EEA6A;right:-5px;top:15px;transform:rotate(-135deg);}
+  </style>
+  <script>
+	(function() {
+		let basic = 7.5,
+			d = document.documentElement,
+			changeSize = function() {
+				let w = d.clientWidth;
+				if (w > 750) w = 750;
+				d.style['fontSize'] = (w / basic) + 'px';
+			};
+		changeSize();
+		window.onresize = changeSize;
+	})();
+</script>
+ </head>
+ <body>
+	<div class="wx">
+		<div class="name">张三</div>
+		<div class="content" id="content"></div>
+		<div class="respond">
+			<div class='wrap'>
+				<input type="text" class="answer" />
+				<button type="button" class="send">发送</button>
+			</div>
+		</div>
+	</div>
+ </body>
+
+ <script>
+	let dialog = [
+		{id:'me',content:'1',timeout:1000},
+		{id:'me',content:'2',timeout:1000},
+		{id:'you',content:'3',timeout:3000},
+		{id:'me',content:'4',timeout:1000},
+	];
+	let no = function(){
+		let index = 0;
+		return function(){
+			return index++;
+		}
+	}
+	let sendMsg = function({id,content,timeout},callback){
+		let wrap = document.querySelector('#content');
+		let send = function(){
+			let html = 
+				`<div class="msgBox ${id}">
+					<div class="info">${content}</div>
+				</div>`;
+			wrap.innerHTML += html;
+			let clientHeight = wrap.clientHeight,
+				scrollHeight = wrap.scrollHeight,
+				over = scrollHeight - clientHeight;
+			wrap.scrollTop = over;
+			callback && callback();
+		}
+		setTimeout(send,timeout);
+	}
+	let play = function(){
+		let getNo = no();
+		let chat = function(){
+			let i = getNo();
+			if(i < dialog.length) sendMsg(dialog[i],chat);
+		}
+		chat();
+	}
+	play();
+ </script>
+ 
+</html>
