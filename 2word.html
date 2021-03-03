@@ -50,12 +50,13 @@
 	//getCoordinate();
 	function doMove(from,to,cb1,cb2){ //从起点到目标点的 运动算法
 		var array = [];
+		let step = Math.random() * 100;
 		let run = function(){
 			let complete = true;
 			for(let i = 0;i < to.length;i++){
 				let f = from[i],
 					t = to[i];
-				let speed = (t - f) / 20;
+				let speed = (t - f) / step;
 				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
 				cb1 && cb1(from);
 				from[i] = f + speed;
