@@ -25,11 +25,9 @@
 	.b{right:3000px;}
 	.g{left:3000px;bottom:3px;}
 	audio{visibility:hidden;}
-	pre{position:absolute;z-index:1;width:100%;left:0;top:0;color:white;transform:scale(0.5);}
   </style>
  </head>
  <body>
-	<pre id="pre"></pre>
 	<audio src="mp3/likeu.mp3" id='audio' preload loop autoplay='autoplay' controls></audio>
 	<div class="sky white" id='white'></div>
 	<div class="box">
@@ -106,7 +104,6 @@ function sky2black(){
 				cancelAnimationFrame(timer);
 				white.style['display'] = 'none';
 				playFlowers();
-				draw();
 			};
 		}
 	})
