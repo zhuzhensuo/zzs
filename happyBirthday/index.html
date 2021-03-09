@@ -4,27 +4,118 @@
 <title>祝小丸子生日快乐we are together forever</title>
 <meta charset="utf-8">
 <meta http-equiv="x-dns-prefetch-control" content="on" />
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="x5-orientation" content="portrait">
 </head>
 <style>
-	p{transform:translatey(50%);}
+	#rose{text-align:center;position:absolute;left:0;top:50px;width:100%;z-index:1;background:#F5F5F5;}
+	*{margin:0;padding:0;}
+	body{background:#F5F5F5;}
+	.name{height:0.8rem;border-bottom:1px solid #E7E7E7;font-size:0.3rem;text-align:center;line-height:0.8rem;font-weight:700;box-sizing:border-box;background:#F5F5F5;}
+	.respond{height:auto;border-top:1px solid #E7E7E7;position:absolute;bottom:0;left:0;width:100%;background:#F9F9F9;display:none;}
+	.respond .wrap{padding:0.15rem 0.2rem;}
+	.answer{outline:none;border:0;border-radius:8px;display:block;width:75%;height:0.7rem;font-size:16px;text-indent:10px;}
+	.send{position:absolute;border:0;border-radius:8px;display:block;width:24%;height:0.7rem;top:0.15rem;right:0.1rem;background:#129611;color:white;font-size:16px;}
+	.clearfix{clear:both;}
+	.content{padding:10px;box-sizing:border-box;height:calc(100vh - 0.8rem);overflow:auto;}
+	.msgBox{font-size:16px;position:relative;padding-bottom:15px;}
+	.info{background:white;padding:10px;display:inline-block;border-radius:5px;position:relative;}
+	.you{padding-left:55px;}
+	.msgBox::before{content:'';width:41px;height:41px;position:absolute;border-radius:5px;}
+	.you::before{top:0;left:0rem;background:url(images/you.jpg) no-repeat center center;background-size:cover;}
+	.you .info::before{content:'';position:absolute;width:0;height:0;border-top:10px solid transparent;border-left:10px solid white;left:-5px;top:15px;transform:rotate(45deg);}
+	.me{text-align:right;padding-right:55px;}
+	.me::before{top:0;right:0rem;background:url(images/me.jpg) no-repeat center center;background-size:cover;}
+	.me .info{background:#9EEA6A;}
+	.me .info::before{content:'';position:absolute;width:0;height:0;border-top:10px solid transparent;border-left:10px solid #9EEA6A;right:-5px;top:15px;transform:rotate(-135deg);}
+	.wx{display:none;position:relative;z-index:2;}
+	.rose{transition:1.5s ease;filter:blur(5px);opacity:0.5;}
 </style>
-<body>
-<p style="text-align: center;">
-<canvas id="c" height="500" width="500"></canvas>
 <script>
- var b = document.body;
- var c = document.getElementsByTagName('canvas')[0];
- var a = c.getContext('2d');
- document.body.clientWidth;
+	(function() {
+		let basic = 7.5,
+			d = document.documentElement,
+			changeSize = function() {
+				let w = d.clientWidth;
+				if (w > 750) w = 750;
+				d.style['fontSize'] = (w / basic) + 'px';
+			};
+		changeSize();
+		window.onresize = changeSize;
+	})();
 </script>
-<script>
-
-with(m=Math)C=cos,S=sin,P=pow,R=random;c.width=c.height=f=500;h=-250;function p(a,b,c){if(c>60)return[S(a*7)*(13+5/(.2+P(b*4,4)))-S(b)*50,b*f+50,625+C(a*7)*(13+5/(.2+P(b*4,4)))+b*400,a*1-b/2,a];A=a*2-1;B=b*2-1;if(A*A+B*B<1){if(c>37){n=(j=c&1)?6:4;o=.5/(a+.01)+C(b*125)*3-a*300;w=b*h;return[o*C(n)+w*S(n)+j*610-390,o*S(n)-w*C(n)+550-j*350,1180+C(B+A)*99-j*300,.4-a*.1+P(1-B*B,-h*6)*.15-a*b*.4+C(a+b)/5+P(C((o*(a+1)+(B>0?w:-w))/25),30)*.1*(1-B*B),o/1e3+.7-o*w*3e-6]}if(c>32){c=c*1.16-.15;o=a*45-20;w=b*b*h;z=o*S(c)+w*C(c)+620;return[o*C(c)-w*S(c),28+C(B*.5)*99-b*b*b*60-z/2-h,z,(b*b*.3+P((1-(A*A)),7)*.15+.3)*b,b*.7]}o=A*(2-b)*(80-c*2);w=99-C(A)*120-C(b)*(-h-c*4.9)+C(P(1-b,7))*50+c*2;z=o*S(c)+w*C(c)+700;return[o*C(c)-w*S(c),B*99-C(P(b, 7))*50-c/3-z/1.35+450,z,(1-b/1.2)*.9+a*.1, P((1-b),20)/4+.05]}}setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46/.74)){z=s[2];x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",a.fillRect(x,y,1,1)}',50)
-
-</script><br>
-</p>
+<body>
+<div class="wx" id="wx">
+	<div class="name">小丸子</div>
+	<div class="content" id="content"></div>
+	<div class="respond">
+		<div class='wrap'>
+			<input type="text" class="answer" />
+			<button type="button" class="send">发送</button>
+		</div>
+	</div>
+</div>
+<p id='rose'>
+<canvas id="c" height="500" style='width:80%'></canvas>
+<script>var b = document.body;var c = document.getElementsByTagName('canvas')[0];var a = c.getContext('2d');document.body.clientWidth;with(m=Math)C=cos,S=sin,P=pow,R=random;c.width=c.height=f=500;h=-250;function p(a,b,c){if(c>60)return[S(a*7)*(13+5/(.2+P(b*4,4)))-S(b)*50,b*f+50,625+C(a*7)*(13+5/(.2+P(b*4,4)))+b*400,a*1-b/2,a];A=a*2-1;B=b*2-1;if(A*A+B*B<1){if(c>37){n=(j=c&1)?6:4;o=.5/(a+.01)+C(b*125)*3-a*300;w=b*h;return[o*C(n)+w*S(n)+j*610-390,o*S(n)-w*C(n)+550-j*350,1180+C(B+A)*99-j*300,.4-a*.1+P(1-B*B,-h*6)*.15-a*b*.4+C(a+b)/5+P(C((o*(a+1)+(B>0?w:-w))/25),30)*.1*(1-B*B),o/1e3+.7-o*w*3e-6]}if(c>32){c=c*1.16-.15;o=a*45-20;w=b*b*h;z=o*S(c)+w*C(c)+620;return[o*C(c)-w*S(c),28+C(B*.5)*99-b*b*b*60-z/2-h,z,(b*b*.3+P((1-(A*A)),7)*.15+.3)*b,b*.7]}o=A*(2-b)*(80-c*2);w=99-C(A)*120-C(b)*(-h-c*4.9)+C(P(1-b,7))*50+c*2;z=o*S(c)+w*C(c)+700;return[o*C(c)-w*S(c),B*99-C(P(b, 7))*50-c/3-z/1.35+450,z,(1-b/1.2)*.9+a*.1, P((1-b),20)/4+.05]}}setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46/.74)){z=s[2];x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",a.fillRect(x,y,1,1)}',0)
+</script>
 <!--
 data:text/html,<meta charset="utf-8"><div id="name"></div><div><canvas id="c" height="500" width="500"></canvas></div><script>var b = document.body;var c = document.getElementsByTagName('canvas')[0];var a = c.getContext('2d');document.body.clientWidth;with(m=Math)C=cos,S=sin,P=pow,R=random;c.width=c.height=f=500;h=-250;function p(a,b,c){if(c>60)return[S(a*7)*(13+5/(.2+P(b*4,4)))-S(b)*50,b*f+50,625+C(a*7)*(13+5/(.2+P(b*4,4)))+b*400,a*1-b/2,a];A=a*2-1;B=b*2-1;if(A*A+B*B<1){if(c>37){n=(j=c&1)?6:4;o=.5/(a+.01)+C(b*125)*3-a*300;w=b*h;return[o*C(n)+w*S(n)+j*610-390,o*S(n)-w*C(n)+550-j*350,1180+C(B+A)*99-j*300,.4-a*.1+P(1-B*B,-h*6)*.15-a*b*.4+C(a+b)/5+P(C((o*(a+1)+(B>0?w:-w))/25),30)*.1*(1-B*B),o/1e3+.7-o*w*3e-6]}if(c>32){c=c*1.16-.15;o=a*45-20;w=b*b*h;z=o*S(c)+w*C(c)+620;return[o*C(c)-w*S(c),28+C(B*.5)*99-b*b*b*60-z/2-h,z,(b*b*.3+P((1-(A*A)),7)*.15+.3)*b,b*.7]}o=A*(2-b)*(80-c*2);w=99-C(A)*120-C(b)*(-h-c*4.9)+C(P(1-b,7))*50+c*2;z=o*S(c)+w*C(c)+700;return[o*C(c)-w*S(c),B*99-C(P(b, 7))*50-c/3-z/1.35+450,z,(1-b/1.2)*.9+a*.1, P((1-b),20)/4+.05]}}setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i% 46/0.74)){z=s[2];x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",a.fillRect(x,y,1,1)}',10);var name="%E6%88%91%E5%AE%B6%E5%A5%B9%E7%BE%8E%E5%A6%82%E8%8A%B1";document.getElementById('name').innerHTML=name;</script>
 -->
+</p>
 </body>
+<script>
+	let dialog = [
+		{id:'me',content:'male test data',timeout:1000},
+		{id:'me',content:'male test data',timeout:1000},
+		{id:'you',content:'female test data',timeout:3000},
+		{id:'me',content:'male test data',timeout:1000},
+	];
+	let no = function(){
+		let index = 0;
+		return function(){
+			return index++;
+		}
+	}
+	let sendMsg = function({id,content,timeout},callback){
+		let wrap = document.querySelector('#content');
+		let send = function(){
+			let html = 
+				`<div class="msgBox ${id}">
+					<div class="info">${content}</div>
+				</div>`;
+			wrap.innerHTML += html;
+			let clientHeight = wrap.clientHeight,
+				scrollHeight = wrap.scrollHeight,
+				over = scrollHeight - clientHeight;
+			wrap.scrollTop = over;
+			callback && callback();
+		}
+		setTimeout(send,timeout);
+	}
+	let play = function(){
+		let getNo = no();
+		let chat = function(){
+			let i = getNo();
+			if(i < dialog.length) sendMsg(dialog[i],chat);
+		}
+		chat();
+	}
+	//play();
+	let wx = document.querySelector('#wx'),
+		rose = document.querySelector('#rose');
+	function delay(){
+		setTimeout(function(){
+			wx.style['display'] = 'block';
+			rose.className = 'rose';
+			play();
+		},4000)
+	}
+	delay();
+	
+ </script>
 </html>
