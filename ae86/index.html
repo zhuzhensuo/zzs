@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="x5-orientation" content="portrait">
+  <title>是86，86上山了</title>
+  <style>
+	*{margin:0;padding:0;}
+	body{overflow:hidden;}
+	.ae86{height:300px;width:300px;background:#000;color:#F2EEEF;text-align:center;line-height:300px;font-size:360px;transform:scale(1.5);
+	position:relative;transition:1s ease;font-family:'Arial';
+	left:0px;top:0px;display:block;}
+	span.ae{width:20px;height:30px;position:absolute;left:55px;top:0px;z-index:2;}
+	span.ae img{width:60%;position:absolute;left:0;top:0;transform:rotate(180deg);}
+	span.drift img{animation:ae86 2s ease;}
+	@keyframes ae86{
+		0%{transform:rotate(0deg);}
+		100%{transform:rotate(-180deg);}
+	}
+  </style>
+ </head>
+ <body>
+	
+	<div class="ae86"><span class="ae" id="disc"><img src="images/ae86.jpg" /></span>U</div>
+ </body>
+ <script>
+	function pwx(current,target,callback){
+		let params = {
+			rate:-0.0075, //a => 抛物线弯曲程度，+-开口方向
+			speed:7, //step => x 轴移动速度
+		}
+		var a = params.rate, b = 0, c = 0;
+		
+		// 移动元素的中心点坐标
+		centerElement = {
+			x:current[0], //原地位置 x坐标
+			y:current[1], //原地位置 y坐标
+		};
+		
+		// 目标元素的中心点位置
+		centerTarget = {
+			x:target[0], //目标位置 x坐标
+			y:target[1] //目标位置 y坐标
+		};
+		
+		
+		let coordTarget = {
+			x: -1 * (centerElement.x - centerTarget.x), //原点和目标位置之间的距离
+			y: -1 * (centerElement.y - centerTarget.y)	
+		};
+		b = (coordTarget.y - a * coordTarget.x * coordTarget.x) / coordTarget.x;
+		let move = function(){
+			var startx = 0, rate = coordTarget.x > 0 ? 1 : -1,timer = null;
+			let step = function(){
+				let done = false;
+				var tangent = 2 * a * startx + b;
+				startx = startx + rate * Math.sqrt(params.speed / (tangent * tangent + 1));
+				
+				if ((rate == 1 && startx > coordTarget.x) || (rate == -1 && startx < coordTarget.x)) {
+					startx = coordTarget.x;
+				}
+				var x = startx, y = a * x * x + b * x;
+				if (startx !== coordTarget.x) {
+					timer = window.requestAnimationFrame(step);	
+				} else {
+					window.cancelAnimationFrame(timer);
+					done = true;
+				}
+				callback && callback({x,y,done});
+			}
+			step();
+		}
+		move();
+
+	}
+	let span = document.querySelector('#disc');
+	
+	function doMove({init = 0,max = 720,callback}){
+		let move = function(){
+			let speed = (max - init) / 100;
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+			init = init + speed;
+			let timer = requestAnimationFrame(move,200);
+			callback && callback(init,max,timer);
+		}
+		move();
+	}
+	function acceleration({init = 0,max = 720,callback}){
+		let speed = 0;
+		let move = function(){
+			speed += 0.05;
+			init = init + speed;
+			let timer = window.requestAnimationFrame(move,100);
+			callback && callback(init,max,timer);
+			
+		}
+		move();
+	}
+	function start(){
+		acceleration({
+			max:200,
+			callback:function(init,max,timer){
+				if(init >= max - 50) span.className += ' drift';
+				if(init >= max){
+					window.cancelAnimationFrame(timer);
+					
+					pwx([70,0],[245,0],function({x,y,done}){
+						span.style['transform'] = `translate(${x}px,${y}px)`;
+						if(done){
+							doMove({
+								init:200,
+								max:0,
+								callback:function(start,target,timeout){
+									if(start == target){
+										window.cancelAnimationFrame(timeout);
+										return;
+									}
+									span.style['top'] = start + 'px';
+								}
+							});
+						}
+					});
+					return;
+				}
+				span.style['top'] = init + 'px';
+			}
+		})
+	}
+	start();
+	
+	document.body.ondblclick = function(){
+		span.style['transform'] = `translate(0px,0px)`;
+		start();
+	}
+	
+ </script>
+</html>
